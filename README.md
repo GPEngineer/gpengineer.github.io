@@ -54,3 +54,9 @@ You are free to use, modify, and extend it with attribution.
 
 **Grzegorz Pieniak**  
 Educational platform for mechanical vibrations and modal analysis.
+
+## Project Directory Structure
+
+<!-- STRUCTURE_START -->
+
+<!-- STRUCTURE_END -->
