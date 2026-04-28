@@ -59,4 +59,14 @@ Educational platform for mechanical vibrations and modal analysis.
 
 <!-- STRUCTURE_START -->
 
+```
+content/
+├── [36mansys_modal/[0m
+│   └── [33m[zadanie1.html](content/ansys_modal/zadanie1.html)[0m
+├── [36mdocs/[0m
+└── [36minman/[0m
+    └── [33m[intro.html](content/inman/intro.html)[0m
+
+```
+
 <!-- STRUCTURE_END -->
