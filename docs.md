@@ -1,4 +1,4 @@
-docs/
+**docs/
 │
 ├── index.html
 ├── style.css
@@ -27,3 +27,4 @@ docs/
 ├── en.json
 ├── de.json
 └── fr.json
+**
