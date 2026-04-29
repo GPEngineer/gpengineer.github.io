@@ -43,7 +43,7 @@ body {
 .lang-btn {
   flex: 1;
   padding: 4px 6px;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   background-color: #222;
   color: #ccc;
   border: 1px solid #444;
@@ -64,19 +64,21 @@ body {
 
 .profile .name {
   font-weight: 700; /* mocniejsze pogrubienie */
-  font-size: 1.4rem; /* większy tekst */
+  font-size: 1rem; /* większy tekst */
   color: #ffaa00; /* kolor (#00ffcc - ciekawa zieleń ) */
   letter-spacing: 0.5px; /* lekka estetyka */
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 }
 
-#cv-link {
-  color: #3b82f6;
+.cv-link {
+  color: #3b82f6; /*#ff9900 #3b82f6  ; */
   text-decoration: none;
   font-size: 0.9rem;
+  /*font-style: italic;           kursywa */
+  font-weight: 500;
 }
 
-#cv-link:hover {
+.cv-link:hover {
   text-decoration: underline;
 }
 
