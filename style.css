@@ -23,11 +23,11 @@ body {
 /* Sidebar */
 
 #sidebar {
-  width: 20%;
+  width: 30%;
   min-width: 220px;
   max-width: 320px;
   background-color: #181818;
-  border-right: 1px solid #333;
+  border-right: 1px solid #333333; /* #17ae32 */
   display: flex;
   flex-direction: column;
   padding: 12px;
@@ -96,7 +96,7 @@ body {
   width: 100%;
   text-align: left;
   background-color: #222;
-  color: #eee;
+  color: #eeeeee; /*#ffaa00 #eeeeee*/
   border: none;
   padding: 6px 8px;
   cursor: pointer;
@@ -128,7 +128,7 @@ body {
 
 .toc-sublist a:hover {
   background-color: #333;
-  color: #fff;
+  color: #80f16c;
 }
 
 /* Content */

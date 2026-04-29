@@ -65,6 +65,11 @@ content/
 │   └── [33m[zadanie1.html](content/ansys_modal/zadanie1.html)[0m
 ├── [36mdocs/[0m
 └── [36minman/[0m
+    ├── [33m[01_free_vibration.html](content/inman/01_free_vibration.html)[0m
+    ├── [33m[02_harmonic_excitation.html](content/inman/02_harmonic_excitation.html)[0m
+    ├── [33m[03_forced_response.html](content/inman/03_forced_response.html)[0m
+    ├── [33m[04_mdof.html](content/inman/04_mdof.html)[0m
+    ├── [33m[05_modal_analysis.html](content/inman/05_modal_analysis.html)[0m
     └── [33m[intro.html](content/inman/intro.html)[0m
 
 ```

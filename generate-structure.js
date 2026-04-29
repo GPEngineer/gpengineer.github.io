@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const README_FILE = "README.md";
+//komenda do uruchomienia skryptu: node generate-structure.js
 
 // Foldery, które mają być uwzględnione
 const DIRECTORIES = ["docs", "src", "content"];
