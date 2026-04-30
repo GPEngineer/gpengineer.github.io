@@ -55,7 +55,12 @@ async function loadContent(file) {
   const res = await fetch(file);
   const html = await res.text();
   document.getElementById("content-inner").innerHTML = html;
+
+  if (window.MathJax) {
+    MathJax.typesetPromise();
+  }
 }
+
 
 // Obsługa przycisków językowych
 document.querySelectorAll(".lang-btn").forEach(btn => {

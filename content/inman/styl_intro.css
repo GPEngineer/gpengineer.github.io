@@ -182,3 +182,24 @@
     width: 100%;
   }
 }
+
+/* MathJax – elegancki wygląd w dark theme */
+
+mjx-container {
+  color: #e6e6e6 !important;
+  font-size: 1.25rem; /* większe, czytelniejsze wzory */
+}
+
+mjx-container[display="true"] {
+  margin: 1.2em 0;
+}
+
+/* Blok równania */
+.equation {
+  text-align: center;
+  padding: 12px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  margin: 20px 0;
+}
