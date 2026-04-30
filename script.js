@@ -1,49 +1,70 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const tocToggles = document.querySelectorAll(".toc-toggle");
-    const tocLinks = document.querySelectorAll(".toc-sublist a");
-    const contentInner = document.getElementById("content-inner");
-    const langButtons = document.querySelectorAll(".lang-btn");
+let currentLang = localStorage.getItem("lang") || "pl";
 
-    // Rozwijanie / zwijanie sekcji TOC
-    tocToggles.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const section = btn.getAttribute("data-section");
-            const sublist = document.querySelector(`.toc-sublist[data-section="${section}"]`);
-            if (!sublist) return;
-            const isVisible = sublist.style.display === "block";
-            sublist.style.display = isVisible ? "none" : "block";
-        });
+async function loadLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+
+  const res = await fetch(`lang/${lang}.json`);
+  const dict = await res.json();
+
+  // Tłumaczenia interfejsu
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    el.textContent = dict[key] || key;
+  });
+
+  // Generowanie sidebaru
+  generateSidebar(dict.sections);
+}
+
+function generateSidebar(sections) {
+  const toc = document.getElementById("toc");
+  toc.innerHTML = "";
+
+  sections.forEach(section => {
+    const div = document.createElement("div");
+    div.className = "toc-section";
+
+    const btn = document.createElement("button");
+    btn.className = "toc-toggle";
+    btn.textContent = section.title;
+    btn.onclick = () => {
+      ul.style.display = ul.style.display === "block" ? "none" : "block";
+    };
+
+    const ul = document.createElement("ul");
+    ul.className = "toc-sublist";
+
+    section.items.forEach(item => {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = "#";
+      a.textContent = item.title;
+      a.onclick = () => loadContent(item.file);
+      li.appendChild(a);
+      ul.appendChild(li);
     });
 
-    // Ładowanie treści
-    tocLinks.forEach(link => {
-        link.addEventListener("click", async (e) => {
-            e.preventDefault();
-            const url = link.getAttribute("data-content");
-            if (!url) return;
+    div.appendChild(btn);
+    div.appendChild(ul);
+    toc.appendChild(div);
+  });
+}
 
-            try {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    contentInner.innerHTML = `<h1>Błąd</h1><p>Nie udało się załadować treści: ${url}</p>`;
-                    return;
-                }
-                const html = await response.text();
-                contentInner.innerHTML = html;
-            } catch (err) {
-                contentInner.innerHTML = `<h1>Błąd</h1><p>Wystąpił problem podczas ładowania treści.</p>`;
-            }
-        });
-    });
+async function loadContent(file) {
+  const res = await fetch(file);
+  const html = await res.text();
+  document.getElementById("content-inner").innerHTML = html;
+}
 
-    // Wybór języka – na razie tylko zaznaczenie aktywnego
-    langButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const lang = btn.getAttribute("data-lang");
-            langButtons.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-            console.log("Wybrany język:", lang);
-            // tu później można dodać ładowanie plików lang/*.json
-        });
-    });
+// Obsługa przycisków językowych
+document.querySelectorAll(".lang-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    loadLanguage(btn.dataset.lang);
+  };
 });
+
+// Start
+loadLanguage(currentLang);

@@ -1,0 +1,51 @@
+{
+  "profile_title": "My interests – professional development",
+  "cv_link": "Resume / CV",
+
+  "welcome_title": "Welcome to the mechanical vibrations site",
+  "welcome_text": "Choose an item from the menu on the left to load content.",
+
+  "sections": [
+    {
+      "id": "inman",
+      "title": "Mechanical Vibrations – Inman 4th Edition",
+      "items": [
+        { "title": "Introduction", "file": "content/inman/intro_en.html" },
+        {
+          "title": "1. Free vibration",
+          "file": "content/inman/01_free_vibration_en.html"
+        },
+        {
+          "title": "2. Harmonic excitation",
+          "file": "content/inman/02_harmonic_excitation_en.html"
+        },
+        {
+          "title": "3. Forced response",
+          "file": "content/inman/03_forced_response_en.html"
+        },
+        { "title": "4. MDOF systems", "file": "content/inman/04_mdof_en.html" },
+        {
+          "title": "5. Modal analysis",
+          "file": "content/inman/05_modal_analysis_en.html"
+        }
+      ]
+    },
+
+    {
+      "id": "gdt",
+      "title": "GD&T – Geometric Dimensioning and Tolerancing",
+      "items": [
+        { "title": "Problems", "file": "content/gdt/problems_en.html" },
+        { "title": "Tasks", "file": "content/gdt/tasks_en.html" }
+      ]
+    },
+
+    {
+      "id": "industry",
+      "title": "Industrial problem solving",
+      "items": [
+        { "title": "Introduction", "file": "content/industry/intro_en.html" }
+      ]
+    }
+  ]
+}

@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <title>Grzegorz.Pieniak.Eng.mech</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate"
-    />
+
+    <!-- Anti-cache -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
+
     <link rel="stylesheet" href="style.css?v=20260428" />
   </head>
+
   <body>
     <div id="app">
       <aside id="sidebar">
@@ -23,148 +24,20 @@
         </div>
 
         <div class="profile">
-          <div class="profile">My interests - professional development</div>
+          <div class="profile-title" data-i18n="profile_title"></div>
           <div class="name">Grzegorz Pieniak</div>
-          <a href="#" class="cv-link">Resume / CV</a> -
+          <a href="#" class="cv-link" data-i18n="cv_link"></a> -
           <a href="#" class="cv-link">[PDF]</a>
-
-          <!-- wyjasnienie później -->
         </div>
 
-        <nav id="toc">
-          <div class="toc-section">
-            <button class="toc-toggle" data-section="inman">
-              Drgania mechaniczne – Inman 4th Edition
-            </button>
-            <ul class="toc-sublist" data-section="inman">
-              <li>
-                <a href="#" data-content="content/inman/intro.html"
-                  >Wprowadzenie</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/inman/01_free_vibration.html"
-                  >1. Drgania swobodne</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  data-content="content/inman/02_harmonic_excitation.html"
-                  >2. Wymuszenia harmoniczne</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/inman/03_forced_response.html"
-                  >3. Odpowiedź na wymuszenia ogólne</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/inman/04_mdof.html"
-                  >4. Układy wielomasowe</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/inman/05_modal_analysis.html"
-                  >5. Analiza modalna</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="toc-section">
-            <button class="toc-toggle" data-section="ewins">
-              Modal Testing Theory Practice and Application – D.J.Ewins 2nd
-              Edition
-            </button>
-            <ul class="toc-sublist" data-section="ewins">
-              <li>
-                <a href="#" data-content="content/ewins/intro.html"
-                  >Wprowadzenie</a
-                >
-              </li>
-              <!-- kolejne <li> rozdziały będą później dodawane -->
-            </ul>
-          </div>
-
-          <div class="toc-section">
-            <button class="toc-toggle" data-section="ansys_modal">
-              Analiza modalna – ANSYS
-            </button>
-            <ul class="toc-sublist" data-section="ansys_modal">
-              <li>
-                <a href="#" data-content="content/ansys_modal/zadanie1.html"
-                  >Zadanie 1</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/ansys_modal/zadanie2.html"
-                  >Zadanie 2</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/ansys_modal/zadanie3.html"
-                  >Zadanie 3</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="toc-section">
-            <button class="toc-toggle" data-section="hypermesh_modal">
-              Analiza modalna – HyperMesh
-            </button>
-            <ul class="toc-sublist" data-section="hypermesh_modal">
-              <li>
-                <a href="#" data-content="content/hypermesh_modal/zadanie1.html"
-                  >Zadanie 1</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/hypermesh_modal/zadanie2.html"
-                  >Zadanie 2</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/hypermesh_modal/zadanie3.html"
-                  >Zadanie 3</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="toc-section">
-            <button class="toc-toggle" data-section="matlab_modal">
-              Analiza modalna – MATLAB
-            </button>
-            <ul class="toc-sublist" data-section="matlab_modal">
-              <li>
-                <a href="#" data-content="content/matlab_modal/zadanie1.html"
-                  >Zadanie 1</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/matlab_modal/zadanie2.html"
-                  >Zadanie 2</a
-                >
-              </li>
-              <li>
-                <a href="#" data-content="content/matlab_modal/zadanie3.html"
-                  >Zadanie 3</a
-                >
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <!-- Dynamic sidebar will be injected here -->
+        <nav id="toc"></nav>
       </aside>
 
       <main id="content">
         <div id="content-inner">
-          <h1>Witaj na stronie z drganiami mechanicznymi</h1>
-          <p>
-            Wybierz pozycję z menu po lewej stronie, aby załadować treść.<br />Kolejna
-            linija tekstu<br />
-          </p>
+          <h1 data-i18n="welcome_title"></h1>
+          <p data-i18n="welcome_text"></p>
         </div>
       </main>
     </div>
