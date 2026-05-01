@@ -14,8 +14,8 @@
       "title": "Rozwiązywanie problemów przemysłowych",
       "items": [
         {
-          "title": "Wprowadzenie",
-          "file": "content/industry/intro_ind_pl.html"
+          "title": "Rozwiązany problem 1",
+          "file": "content/industry/indus_problem1_pl.html"
         }
       ]
     },
@@ -55,7 +55,7 @@
         { "title": "Zadania", "file": "content/gdt/tasks_pl.html" }
       ]
     },
-    
+
     {
       "id": "inman",
       "title": "Drgania mechaniczne – Inman 4th Edition",
