@@ -1,7 +1,24 @@
+/* ===== RESET / BASE ===== */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+:root {
+  --bg-main: #0b0c10;
+  --bg-panel: #151821;
+  --bg-panel-alt: #181b26;
+  --border-soft: #2b2f3a;
+  --accent: #3b82f6;
+  --accent-soft: #5a98fa;
+  --accent-warm: #ffaa00;
+  --text-main: #eeeeee;
+  --text-muted: #bbbbbb;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --shadow-soft: 0 0 18px rgba(0, 0, 0, 0.45);
 }
 
 body {
@@ -11,70 +28,85 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  background-color: #111111;
-  color: #eeeeee; /* # */
+  background-color: var(--bg-main);
+  color: var(--text-main);
 }
+
+/* ===== GRID LAYOUT: APP (NASA-style) ===== */
 
 #app {
-  display: flex;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
   height: 100vh;
+  background: radial-gradient(circle at top left, #1b2430 0, #050608 55%);
 }
 
-/* Sidebar */
+/* ===== SIDEBAR ===== */
 
 #sidebar {
-  width: 30%;
-  min-width: 220px;
-  max-width: 320px;
-  background-color: #181818;
-  border-right: 1px solid #333333; /* #17ae32 */
+  background-color: var(--bg-panel);
+  border-right: 1px solid var(--border-soft);
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  padding: 12px;
+  gap: 12px;
   overflow-y: auto;
+  box-shadow: var(--shadow-soft);
 }
 
+/* Language switcher */
+
 .language-switcher {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 4px;
-  margin-bottom: 10px;
 }
 
 .lang-btn {
-  flex: 1;
   padding: 4px 6px;
-  font-size: 0.6rem;
-  background-color: #222;
-  color: #ccc;
-  border: 1px solid #444;
+  font-size: 0.65rem;
+  background-color: #20232f;
+  color: #cccccc;
+  border: 1px solid #333a4a;
   cursor: pointer;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .lang-btn.active {
-  background-color: #3b82f6;
-  color: #fff;
-  border-color: #3b82f6;
+  background-color: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
 }
 
+/* Profile */
+
 .profile {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-soft);
   padding-bottom: 10px;
 }
 
+.profile-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
 .profile .name {
-  font-weight: 700; /* mocniejsze pogrubienie */
-  font-size: 1rem; /* większy tekst */
-  color: #ffaa00; /* kolor (#00ffcc - ciekawa zieleń ) */
-  letter-spacing: 0.5px; /* lekka estetyka */
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent-warm);
+  letter-spacing: 0.5px;
   margin-bottom: 2px;
 }
 
 .cv-link {
-  color: #5a98fa; /*#ff9900 #3b82f6  ; */
+  color: var(--accent-soft);
   text-decoration: none;
-  font-size: 0.9rem;
-  /*font-style: italic;           kursywa */
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
@@ -82,7 +114,7 @@ body {
   text-decoration: underline;
 }
 
-/* TOC */
+/* TOC (rozwijane menu) */
 
 #toc {
   font-size: 0.9rem;
@@ -95,23 +127,27 @@ body {
 .toc-toggle {
   width: 100%;
   text-align: left;
-  background-color: #222;
-  color: #eeeeee; /*#ffaa00 #eeeeee*/
-  border: none;
+  background-color: #20232f;
+  color: #f5f5f5;
+  border: 1px solid #2f3545;
   padding: 6px 8px;
   cursor: pointer;
   font-weight: 500;
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .toc-toggle:hover {
-  background-color: #2b2b2b;
+  background-color: #262b3a;
 }
 
 .toc-sublist {
   list-style: none;
   margin-left: 8px;
   margin-top: 4px;
-  display: none; /* start collapsed */
+  display: none;
 }
 
 .toc-sublist li {
@@ -119,7 +155,7 @@ body {
 }
 
 .toc-sublist a {
-  color: #ccc;
+  color: #cccccc;
   text-decoration: none;
   display: block;
   padding: 3px 6px;
@@ -127,15 +163,14 @@ body {
 }
 
 .toc-sublist a:hover {
-  background-color: #333;
-  color: #aafc9bd4;
+  background-color: #2b3142;
+  color: #aafc9b;
 }
 
-/* Content */
+/* ===== CONTENT AREA ===== */
 
 #content {
-  flex: 1;
-  padding: 16px;
+  padding: 16px 20px;
   overflow-y: auto;
 }
 
@@ -146,113 +181,39 @@ body {
 
 #content-inner h1 {
   margin-bottom: 12px;
+  font-size: 1.8rem;
+  color: var(--accent-soft);
 }
 
 #content-inner p {
   margin-bottom: 8px;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: var(--text-main);
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   #app {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
   }
 
   #sidebar {
-    width: 100%;
-    height: 40vh;
-    max-width: none;
+    height: auto;
+    max-height: 40vh;
   }
 
   #content {
-    height: 60vh;
+    max-height: 60vh;
   }
 }
 
-/* ===== ARTICLE (INMAN) ===== */
+/* ===== ARTICLE-SAFE GLOBALS (dla podstron z własnym CSS) ===== */
 
-.article h1 {
-  font-size: 1.8rem;
-  margin-bottom: 16px;
+.article {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.article h2 {
-  margin-top: 28px;
-  margin-bottom: 10px;
-  color: #5a98fa;
-  font-size: 1.2rem;
-}
-
-.article h3 {
-  margin-top: 20px;
-  margin-bottom: 6px;
-  color: #ffaa00;
-  font-size: 1rem;
-}
-
-.article p {
-  margin-bottom: 10px;
-  line-height: 1.6;
-}
-
-.article ul {
-  margin: 10px 0 10px 18px;
-}
-
-.article li {
-  margin-bottom: 4px;
-}
-
-/* Highlight / note */
-
-.note {
-  background-color: #1a2332;
-  border-left: 4px solid #3b82f6;
-  padding: 10px;
-  margin: 12px 0;
-  color: #dbeafe;
-}
-
-/* Stats */
-
-.stats {
-  background-color: #1a2a1a;
-  border-left: 4px solid #22c55e;
-  padding: 10px;
-  margin: 12px 0;
-}
-
-/* Equation */
-
-.equation {
-  text-align: center;
-  font-size: 1.2rem;
-  margin: 16px 0;
-}
-
-/* Image placeholder */
-
-.img-placeholder {
-  margin: 12px 0;
-  padding: 30px;
-  background-color: #222;
-  border: 1px dashed #444;
-  text-align: center;
-  font-size: 0.85rem;
-  color: #888;
-}
-
-@media (max-width: 800px) {
-  .link-card {
-    flex-direction: column;
-  }
-
-  .link-card img {
-    width: 100px;
-    height: auto;
-    max-height: 100px;
-    object-fit: contain;
-  }
-}
+/* Nie narzucamy globalnych stylów img, żeby nie psuć lokalnych layoutów */

@@ -6,46 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Anti-cache -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <link rel="stylesheet" href="style.css?v=20260501" />
+    <link rel="stylesheet" href="style.css?v=20260428" />
 
-    <!-- MathJax global config -->
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [
-            ["\\(", "\\)"],
-            ["$", "$"],
-          ],
-          displayMath: [
-            ["\\[", "\\]"],
-            ["$$", "$$"],
-          ],
-        },
-        svg: { fontCache: "global" },
-      };
-    </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-      id="MathJax-script"
-      async
-    ></script>
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [["\\(", "\\)"], ["$", "$"]],
+      displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+    },
+    svg: { fontCache: "global" }
+  };
+</script>
+<script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+  id="MathJax-script"
+  async
+></script>
+
+
   </head>
 
   <body>
     <div id="app">
       <aside id="sidebar">
         <div class="language-switcher">
-          <button data-lang="pl" class="lang-btn active">PL</button>
-          <button data-lang="en" class="lang-btn">EN</button>
+          <button data-lang="en" class="lang-btn active">EN</button>
           <button data-lang="de" class="lang-btn">DE</button>
           <button data-lang="fr" class="lang-btn">FR</button>
+          <button data-lang="pl" class="lang-btn">PL</button>
         </div>
 
         <div class="profile">
@@ -55,7 +47,7 @@
           <a href="#" class="cv-link">[PDF]</a>
         </div>
 
-        <!-- TOC: rozwijane menu (Inman, GD&T, FEM, MATLAB, HyperMesh, ANSYS, Industry) -->
+        <!-- Dynamic sidebar will be injected here -->
         <nav id="toc"></nav>
       </aside>
 
@@ -67,6 +59,6 @@
       </main>
     </div>
 
-    <script src="script.js?v=20260501"></script>
+    <script src="script.js?v=20260428"></script>
   </body>
 </html>

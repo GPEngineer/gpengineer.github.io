@@ -1,73 +1,69 @@
-/* --- Global article layout --- */
+/* ===== Article base (Inman intro) ===== */
 
 .article {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px 10px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: #e6e6e6;
   font-size: 1rem;
+  font-family: system-ui, sans-serif;
 }
+
+/* ===== Headings (NASA-style) ===== */
 
 .article h1,
 .article h2,
 .article h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
   font-weight: 600;
-  color: #ffcc66;
+  margin-top: 28px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 
 .article h1 {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
+  color: #5a98fa; /* NASA blue */
+  border-bottom: 1px solid #2b2f3a;
+  padding-bottom: 6px;
 }
 
 .article h2 {
-  font-size: 1.4rem;
+  font-size: 1.45rem;
+  color: #5a98fa;
 }
 
 .article h3 {
   font-size: 1.2rem;
+  color: #ffaa00;
 }
 
-/* --- Paragraphs --- */
+/* ===== Paragraphs ===== */
 
 .article p {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  color: #e6e6e6;
 }
 
-/* --- Notes / highlights --- */
+/* ===== Notes ===== */
 
 .note {
-  background-color: #222;
+  background-color: #1b1f2a;
   border-left: 4px solid #ffaa00;
-  padding: 10px 14px;
-  margin: 14px 0;
+  padding: 12px 16px;
+  margin: 18px 0;
   border-radius: 4px;
   font-size: 0.95rem;
   color: #f0f0f0;
 }
 
-/* --- Equation block --- */
-
-.equation {
-  background-color: #1a1a1a;
-  padding: 10px;
-  border-radius: 4px;
-  border-left: 4px solid #3b82f6;
-  margin: 16px 0;
-  font-size: 1.1rem;
-  color: #d0e0ff;
-  font-family: "Courier New", monospace;
-}
-
-/* --- Stats box --- */
+/* ===== Stats ===== */
 
 .stats {
-  background-color: #1a1a1a;
-  padding: 12px;
+  background-color: #151c24;
+  padding: 14px;
   border-radius: 4px;
-  margin: 16px 0;
+  margin: 20px 0;
   border: 1px solid #333;
 }
 
@@ -81,72 +77,73 @@
   color: #b0d8ff;
 }
 
-/* --- Image row (Tacoma Narrows) --- */
+/* ===== Image row (Tacoma Narrows) – CSS Grid ===== */
 
 .image-row {
-  display: flex;
-  gap: 8px;
-  margin: 16px 0;
-  flex-wrap: wrap;
-}
-
-.image-row img {
-  width: calc(25% - 6px);
-  border-radius: 4px;
-  border: 1px solid #333;
-  object-fit: cover;
-}
-
-/* --- Placeholder for missing images --- */
-
-.img-placeholder {
-  background-color: #222;
-  border: 1px dashed #555;
-  padding: 20px;
-  text-align: center;
-  color: #888;
-  font-size: 0.9rem;
-  border-radius: 4px;
-  margin: 12px 0;
-}
-
-/* --- Link cards (Comet) --- */
-
-.link-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
   margin: 20px 0;
 }
 
+.image-row img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+
+/* ===== Single image placeholder ===== */
+
+img.img-placeholder {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  object-fit: contain;
+  border-radius: 4px;
+  border: 1px solid #333;
+}
+
+/* ===== Link cards (Comet) – CSS Grid ===== */
+
+.link-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 24px 0;
+}
+
 .link-card {
-  display: flex;
-  align-items: center;
-  background-color: #1c1c1c;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 14px;
+  background-color: #1c1f2a;
   border: 1px solid #333;
   border-radius: 6px;
-  width: 100%;
   text-decoration: none;
   color: #eee;
   transition: 0.2s ease;
+  align-items: center;
+  padding: 10px;
 }
 
 .link-card:hover {
-  background-color: #262626;
+  background-color: #252a38;
   border-color: #3b82f6;
 }
 
 .link-card img {
-  width: 100px;
-  height: auto;
-  max-height: 100px;
-  object-fit: contain;
-  border-right: 1px solid #333;
-  border-radius: 6px 0 0 6px;
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #333;
 }
 
 .link-card-content {
-  padding: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,7 +152,7 @@
 .link-title {
   font-weight: 600;
   margin-bottom: 4px;
-  color: #ffcc66;
+  color: #5a98fa;
 }
 
 .link-desc {
@@ -163,52 +160,49 @@
   color: #ccc;
 }
 
-/* --- Lists --- */
+/* ===== Lists ===== */
 
 .article ul {
-  margin: 10px 0 16px 20px;
+  margin: 10px 0 16px 22px;
 }
 
 .article ul li {
   margin: 4px 0;
 }
 
-/* --- Responsive --- */
-
-@media (max-width: 800px) {
-  .image-row img {
-    width: calc(50% - 6px);
-  }
-
-  .link-card {
-    width: 100%;
-  }
-}
-
-/* --- MathJax – elegancki wygląd w dark theme --- */
+/* ===== MathJax – NASA-style ===== */
 
 mjx-container {
   color: #e6e6e6 !important;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
 }
 
 mjx-container[display="true"] {
-  margin: 1.2em 0;
+  margin: 1.4em 0;
 }
 
-/* Blok równania */
+/* Equation block wrapper */
+
 .equation {
   text-align: center;
-  padding: 12px;
-  background-color: #1a1a1a;
+  padding: 14px;
+  background-color: #151821;
   border: 1px solid #333;
   border-radius: 6px;
-  margin: 20px 0;
+  margin: 24px 0;
+  font-size: 1.2rem;
 }
 
-.link-card img {
-  width: 100px !important;
-  height: auto !important;
-  max-height: 100px;
-  object-fit: contain;
+/* ===== Responsive ===== */
+
+@media (max-width: 800px) {
+  .link-card {
+    grid-template-columns: 1fr;
+  }
+
+  .link-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
 }
