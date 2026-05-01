@@ -121,10 +121,11 @@
 
 .link-card {
   display: flex;
+  align-items: center;
   background-color: #1c1c1c;
   border: 1px solid #333;
   border-radius: 6px;
-  width: calc(33.33% - 8px);
+  width: 100%;
   text-decoration: none;
   color: #eee;
   transition: 0.2s ease;
@@ -136,9 +137,10 @@
 }
 
 .link-card img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
+  width: 100px;
+  height: auto;
+  max-height: 100px;
+  object-fit: contain;
   border-right: 1px solid #333;
   border-radius: 6px 0 0 6px;
 }
@@ -183,11 +185,11 @@
   }
 }
 
-/* MathJax – elegancki wygląd w dark theme */
+/* --- MathJax – elegancki wygląd w dark theme --- */
 
 mjx-container {
   color: #e6e6e6 !important;
-  font-size: 1.25rem; /* większe, czytelniejsze wzory */
+  font-size: 1.25rem;
 }
 
 mjx-container[display="true"] {
@@ -202,4 +204,11 @@ mjx-container[display="true"] {
   border: 1px solid #333;
   border-radius: 6px;
   margin: 20px 0;
+}
+
+.link-card img {
+  width: 100px !important;
+  height: auto !important;
+  max-height: 100px;
+  object-fit: contain;
 }
