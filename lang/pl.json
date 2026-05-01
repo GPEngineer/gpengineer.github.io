@@ -10,7 +10,7 @@
       "id": "inman",
       "title": "Drgania mechaniczne – Inman 4th Edition",
       "items": [
-        { "title": "Wprowadzenie", "file": "content/inman/intro_pl.html" },
+        { "title": "Wprowadzenie", "file": "content/inman/intro_inm_pl.html" },
         {
           "title": "1. Drgania swobodne",
           "file": "content/inman/01_free_vibration_pl.html"
@@ -47,7 +47,10 @@
       "id": "industry",
       "title": "Rozwiązywanie problemów przemysłowych",
       "items": [
-        { "title": "Wprowadzenie", "file": "content/industry/intro_pl.html" }
+        {
+          "title": "Wprowadzenie",
+          "file": "content/industry/intro_ind_pl.html"
+        }
       ]
     }
   ]
