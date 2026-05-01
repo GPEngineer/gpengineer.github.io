@@ -5,7 +5,57 @@
   "welcome_title": "Witaj na stronie o drganiach mechanicznych",
   "welcome_text": "Wybierz pozycję z menu po lewej stronie, aby załadować treść.",
 
-  "sections": [
+  "sections": 
+  [
+    
+
+    {
+      "id": "industry",
+      "title": "Rozwiązywanie problemów przemysłowych",
+      "items": [
+        {
+          "title": "Wprowadzenie",
+          "file": "content/industry/intro_ind_pl.html"
+        }
+      ]
+    },
+    {
+      "id": "modal_matlab",
+      "title": "Analiza modlana – MATLAB",
+      "items": [
+        {"title": "Zadanie 1","file": "content/modal_matlab/modal_matlab1_pl.html"},
+        {"title": "Zadanie 2","file": "content/modal_matlab/modal_matlab2_pl.html"},
+        {"title": "Zadanie 3","file": "content/modal_matlab/modal_matlab3_pl.html"}
+      ]
+    },
+    {
+      "id": "modal_hypermesh",
+      "title": "Analiza modlana – HyperMesh",
+      "items": [
+        {"title": "Zadanie 1","file": "content/modal_hypermesh/modal_hypermesh1_pl.html"},
+        {"title": "Zadanie 2","file": "content/modal_hypermesh/modal_hypermesh2_pl.html"},
+        {"title": "Zadanie 3","file": "content/modal_hypermesh/modal_hypermesh3_pl.html"}
+      ]
+    },
+    {
+      "id": "modal_ansys",
+      "title": "Analiza modlana – ANSYS",
+      "items": [
+        {"title": "Zadanie 1","file": "content/modal_ansys/modal_modal_ansys1_pl.html"},
+        {"title": "Zadanie 2","file": "content/modal_ansys/modal_modal_ansys2_pl.html"},
+        {"title": "Zadanie 3","file": "content/modal_ansys/modal_modal_ansys3_pl.html"}
+      ]
+    },
+
+    {
+      "id": "gdt",
+      "title": "GD&T – Geometrical Dimensioning and Tolerancing",
+      "items": [
+        { "title": "Problemy", "file": "content/gdt/problems_pl.html" },
+        { "title": "Zadania", "file": "content/gdt/tasks_pl.html" }
+      ]
+    },
+    
     {
       "id": "inman",
       "title": "Drgania mechaniczne – Inman 4th Edition",
@@ -30,26 +80,6 @@
         {
           "title": "5. Analiza modalna",
           "file": "content/inman/05_modal_analysis_pl.html"
-        }
-      ]
-    },
-
-    {
-      "id": "gdt",
-      "title": "GD&T – Geometrical Dimensioning and Tolerancing",
-      "items": [
-        { "title": "Problemy", "file": "content/gdt/problems_pl.html" },
-        { "title": "Zadania", "file": "content/gdt/tasks_pl.html" }
-      ]
-    },
-
-    {
-      "id": "industry",
-      "title": "Rozwiązywanie problemów przemysłowych",
-      "items": [
-        {
-          "title": "Wprowadzenie",
-          "file": "content/industry/intro_ind_pl.html"
         }
       ]
     }

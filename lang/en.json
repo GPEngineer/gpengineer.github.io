@@ -47,5 +47,33 @@
         { "title": "Introduction", "file": "content/industry/intro_en.html" }
       ]
     }
+    ,
+    {
+      "id": "modal_matlab",
+      "title": "Modal analysis - MATLAB",
+      "items": [
+        {"title": "Task 1","file": "content/modal_matlab/modal_matlab1_en.html"},
+        {"title": "Task 2","file": "content/modal_matlab/modal_matlab2_en.html"},
+        {"title": "Task 3","file": "content/modal_matlab/modal_matlab3_en.html"}
+      ]
+    },
+    {
+      "id": "modal_hypermesh",
+      "title": "Modal analysis – HyperMesh",
+      "items": [
+        {"title": "Task 1","file": "content/modal_hypermesh/modal_hypermesh1_en.html"},
+        {"title": "Task 2","file": "content/modal_hypermesh/modal_hypermesh2_en.html"},
+        {"title": "Task 3","file": "content/modal_hypermesh/modal_hypermesh3_en.html"}
+      ]
+    },
+    {
+      "id": "modal_ansys",
+      "title": "Modal analysis – ANSYS",
+      "items": [
+        {"title": "Task 1","file": "content/modal_ansys/modal_modal_ansys1_en.html"},
+        {"title": "Task 2","file": "content/modal_ansys/modal_modal_ansys2_en.html"},
+        {"title": "Task 3","file": "content/modal_ansys/modal_modal_ansys3_en.html"}
+      ]
+    }
   ]
 }
