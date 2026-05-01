@@ -3,8 +3,8 @@
 .article {
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px 10px;
-  line-height: 1.7;
+  padding: 10px 10px;
+  line-height: 1;
   color: #e6e6e6;
   font-size: 1rem;
   font-family: system-ui, sans-serif;
@@ -16,7 +16,7 @@
 .article h2,
 .article h3 {
   font-weight: 600;
-  margin-top: 28px;
+  margin-top: 5px;
   margin-bottom: 12px;
   letter-spacing: 0.5px;
 }
@@ -205,4 +205,39 @@ mjx-container[display="true"] {
     height: 180px;
     object-fit: cover;
   }
+}
+
+/* ===== Video in image grid ===== */
+
+.video-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 150px; /* identycznie jak zdjęcia */
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #333;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* ===== Source note (powtarzalny styl) ===== */
+
+.source-note {
+  font-size: 0.75rem;
+  color: #bbbbbb;
+  text-align: center;
+  margin-top: 4px;
+}
+
+.source-note a {
+  color: #5a98fa;
+  text-decoration: none;
+}
+
+.source-note a:hover {
+  text-decoration: underline;
 }

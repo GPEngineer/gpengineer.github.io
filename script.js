@@ -83,7 +83,7 @@ async function loadContent(file) {
 
   /* === ŁADOWANIE CSS PODSTRONY === */
   if (file.includes("inman")) {
-    loadCSS("content/inman/styl_intro.css");
+    loadCSS("content/inman/styl_inman.css");
   }
   if (file.includes("gdt")) {
     loadCSS("content/gdt/styl_gdt.css");

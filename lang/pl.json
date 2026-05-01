@@ -6,46 +6,25 @@
   "welcome_text": "Wybierz pozycję z menu po lewej stronie, aby załadować treść.",
 
   "sections": [
-    {
-      "id": "inman",
-      "title": "Drgania mechaniczne – Inman 4th Edition",
+        {
+      "id": "industry",
+      "title": "Rozwiązywanie problemów przemysłowych",
       "items": [
-        { "title": "Wprowadzenie", "file": "content/inman/intro_inman_pl.html" },
         {
-          "title": "1. Drgania swobodne",
-          "file": "content/inman/01_free_vibration_pl.html"
+          "title": "Optymalizacja CNC",
+          "file": "content/industry/opt_cnc_pl.html"
         },
-        {
-          "title": "2. Wymuszenia harmoniczne",
-          "file": "content/inman/02_harmonic_excitation_pl.html"
-        },
-        {
-          "title": "3. Odpowiedź na wymuszenia ogólne",
-          "file": "content/inman/03_forced_response_pl.html"
-        },
-        {
-          "title": "4. Układy wielomasowe",
-          "file": "content/inman/04_mdof_pl.html"
-        },
-        {
-          "title": "5. Analiza modalna",
-          "file": "content/inman/05_modal_analysis_pl.html"
+                {
+          "title": "Kodowanie",
+          "file": "content/industry/Coding_pl.html"
         }
       ]
     },
 
-    {
-      "id": "gdt",
-      "title": "GD&T – Geometrical Dimensioning and Tolerancing",
-      "items": [
-        { "title": "Problemy", "file": "content/gdt/problems_pl.html" },
-        { "title": "Zadania", "file": "content/gdt/tasks_pl.html" }
-      ]
-    },
 
     {
       "id": "modal_fem",
-      "title": "Analiza modalna – Finite Element Method",
+      "title": "Analiza modalna – FEM",
       "items": [
         {
           "title": "Zadanie 1",
@@ -120,12 +99,40 @@
     },
 
     {
-      "id": "industry",
-      "title": "Rozwiązywanie problemów przemysłowych",
+      "id": "gdt",
+      "title": "GD&T – Geometrical Dimensioning and Tolerancing",
+      "items": [
+        { "title": "Problemy", "file": "content/gdt/problems_pl.html" },
+        { "title": "Zadania", "file": "content/gdt/tasks_pl.html" }
+      ]
+    },
+    {
+      "id": "inman",
+      "title": "Drgania mechaniczne – Inman 4th Edition",
       "items": [
         {
-          "title": "Optymalizacja CNC",
-          "file": "content/industry/opt_cnc_pl.html"
+          "title": "Wprowadzenie",
+          "file": "content/inman/intro_inman_pl.html"
+        },
+        {
+          "title": "1. Drgania swobodne",
+          "file": "content/inman/01_free_vibration_pl.html"
+        },
+        {
+          "title": "2. Wymuszenia harmoniczne",
+          "file": "content/inman/02_harmonic_excitation_pl.html"
+        },
+        {
+          "title": "3. Odpowiedź na wymuszenia ogólne",
+          "file": "content/inman/03_forced_response_pl.html"
+        },
+        {
+          "title": "4. Układy wielomasowe",
+          "file": "content/inman/04_mdof_pl.html"
+        },
+        {
+          "title": "5. Analiza modalna",
+          "file": "content/inman/05_modal_analysis_pl.html"
         }
       ]
     }

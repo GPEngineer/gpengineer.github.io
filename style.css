@@ -118,6 +118,7 @@ body {
 
 #toc {
   font-size: 0.9rem;
+  
 }
 
 .toc-section {
@@ -133,6 +134,7 @@ body {
   padding: 6px 8px;
   cursor: pointer;
   font-weight: 500;
+  /*letter-spacing: 0.05em;*/
   border-radius: var(--radius-sm);
   display: flex;
   justify-content: space-between;
