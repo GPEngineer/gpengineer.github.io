@@ -1,5 +1,5 @@
 {
-  "profile_title": "Moje zainteresowania – rozwój zawodowy",
+  "profile_title": "Moje zainteresowania zawodowe",
   "cv_link": "Resume / CV",
 
   "welcome_title": "Witaj na stronie o drganiach mechanicznych",
@@ -8,14 +8,18 @@
   "sections": [
         {
       "id": "industry",
-      "title": "Rozwiązywanie problemów przemysłowych",
+      "title": "Rozwiązywanie problemów zawodowych",
       "items": [
         {
-          "title": "Optymalizacja CNC",
+          "title": "Przemysł - Optymalizacja CNC",
           "file": "content/industry/opt_cnc_pl.html"
         },
-                {
-          "title": "Kodowanie",
+        {
+          "title": "Przemysł - Programowanie CNC",
+          "file": "content/industry/Cod_pl.html"
+        },
+        {
+          "title": "Kodowanie - Python",
           "file": "content/industry/Cod_pl.html"
         }
       ]
