@@ -125,3 +125,31 @@ document.querySelectorAll(".lang-btn").forEach(btn => {
    START
 ============================ */
 loadLanguage(currentLang);
+
+
+/* ===== Lightbox for zoomable images ===== */
+
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("zoomable")) {
+    showLightbox(e.target.src);
+  }
+});
+
+function showLightbox(src) {
+  let lb = document.getElementById("lightbox");
+  if (!lb) {
+    lb = document.createElement("div");
+    lb.id = "lightbox";
+    lb.innerHTML = `<img src="${src}" />`;
+    document.body.appendChild(lb);
+
+    lb.onclick = () => lb.style.display = "none";
+    document.addEventListener("keydown", ev => {
+      if (ev.key === "Escape") lb.style.display = "none";
+    });
+  } else {
+    lb.innerHTML = `<img src="${src}" />`;
+  }
+
+  lb.style.display = "flex";
+}
