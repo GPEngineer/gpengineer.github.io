@@ -21,15 +21,15 @@
   letter-spacing: 0.5px;
 }
 
-.article h1 {
-  font-size: 1.9rem;
+#content-inner .article h1 {
+  font-size: 1.5rem;
   color: #5a98fa; /* NASA blue */
   border-bottom: 1px solid #2b2f3a;
   padding-bottom: 6px;
 }
 
 .article h2 {
-  font-size: 1.45rem;
+  font-size: 1.2rem;
   color: #5a98fa;
 }
 
