@@ -12,15 +12,15 @@
       "items": [
         {
           "title": "Przemysł - Optymalizacja CNC",
-          "file": "content/industry/opt_cnc_pl.html"
+          "file": "content/industry/case_study1_pl.html"
         },
         {
           "title": "Przemysł - Programowanie CNC",
-          "file": "content/industry/Cod_pl.html"
+          "file": "content/industry/case_study2_pl.html"
         },
         {
           "title": "Kodowanie - Python",
-          "file": "content/industry/Cod_pl.html"
+          "file": "content/industry/case_study3_pl.html"
         }
       ]
     },
@@ -107,7 +107,7 @@
       "title": "GD&T – Geometrical Dimensioning and Tolerancing",
       "items": [
         { "title": "Problemy", "file": "content/gdt/problems_pl.html" },
-        { "title": "Zadania", "file": "content/gdt/tasks_pl.html" }
+        { "title": "Zadania", "file": "content/gdt/gdt_task1_pl.html" }
       ]
     },
     {

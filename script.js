@@ -4,14 +4,12 @@ let currentLang = localStorage.getItem("lang") || "pl";
    DYNAMICZNE ŁADOWANIE CSS
 ============================ */
 function loadCSS(path) {
-  // usuń poprzedni CSS podstrony
   const old = document.getElementById("dynamic-css");
   if (old) old.remove();
 
-  // dodaj nowy
   const link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = path;
+  link.href = path + "?v=20260501";
   link.id = "dynamic-css";
   document.head.appendChild(link);
 }
@@ -35,7 +33,7 @@ async function loadLanguage(lang) {
 }
 
 /* ============================
-   GENEROWANIE SIDEBARU
+   SIDEBAR
 ============================ */
 function generateSidebar(sections) {
   const toc = document.getElementById("toc");
@@ -59,9 +57,15 @@ function generateSidebar(sections) {
     section.items.forEach(item => {
       const li = document.createElement("li");
       const a = document.createElement("a");
+
       a.href = "#";
       a.textContent = item.title;
-      a.onclick = () => loadContent(item.file);
+
+      a.onclick = e => {
+        e.preventDefault();
+        loadContent(item.file);
+      };
+
       li.appendChild(a);
       ul.appendChild(li);
     });
@@ -73,45 +77,45 @@ function generateSidebar(sections) {
 }
 
 /* ============================
-   ŁADOWANIE TREŚCI PODSTRONY
+   TRYB STRONY
 ============================ */
-async function loadContent(file) {
-  const res = await fetch(file);
-  const html = await res.text();
-
-  document.getElementById("content-inner").innerHTML = html;
-
-  /* === ŁADOWANIE CSS PODSTRONY === */
-  if (file.includes("inman")) {
-    loadCSS("content/inman/styl_inman.css");
-  }
-  if (file.includes("gdt")) {
-    loadCSS("content/gdt/styl_gdt.css");
-  }
-  if (file.includes("modal_fem")) {
-    loadCSS("content/modal_fem/styl_fem.css");
-  }
-  if (file.includes("modal_matlab")) {
-    loadCSS("content/modal_matlab/styl_matlab.css");
-  }
-  if (file.includes("modal_hypermesh")) {
-    loadCSS("content/modal_hypermesh/styl_hypermesh.css");
-  }
-  if (file.includes("modal_ansys")) {
-    loadCSS("content/modal_ansys/styl_ansys.css");
-  }
-  if (file.includes("industry")) {
-    loadCSS("content/industry/styl_industry.css");
-  }
-
-  /* === MathJax === */
-  if (window.MathJax) {
-    MathJax.typesetPromise();
-  }
+function setPageMode(mode) {
+  document.body.classList.remove("page-index", "page-article");
+  document.body.classList.add(mode === "index" ? "page-index" : "page-article");
 }
 
 /* ============================
-   OBSŁUGA PRZYCISKÓW JĘZYKOWYCH
+   ŁADOWANIE TREŚCI
+============================ */
+async function loadContent(file) {
+  setPageMode("article");
+
+  const res = await fetch(file);
+  const html = await res.text();
+  document.getElementById("content-inner").innerHTML = html;
+
+  const cssMap = {
+    "inman": "content/inman/styl_inman.css",
+    "gdt": "content/gdt/styl_gdt.css",
+    "modal_fem": "content/modal_fem/styl_fem.css",
+    "modal_matlab": "content/modal_matlab/styl_matlab.css",
+    "modal_hypermesh": "content/modal_hypermesh/styl_hypermesh.css",
+    "modal_ansys": "content/modal_ansys/styl_ansys.css",
+    "industry": "content/industry/styl_industry.css"
+  };
+
+  for (const key in cssMap) {
+    if (file.includes(key)) {
+      loadCSS(cssMap[key]);
+      break;
+    }
+  }
+
+  if (window.MathJax) MathJax.typesetPromise();
+}
+
+/* ============================
+   PRZYCISKI JĘZYKA
 ============================ */
 document.querySelectorAll(".lang-btn").forEach(btn => {
   btn.onclick = () => {
@@ -124,11 +128,12 @@ document.querySelectorAll(".lang-btn").forEach(btn => {
 /* ============================
    START
 ============================ */
+setPageMode("index");
 loadLanguage(currentLang);
 
-
-/* ===== Lightbox for zoomable images ===== */
-
+/* ============================
+   LIGHTBOX
+============================ */
 document.addEventListener("click", e => {
   if (e.target.classList.contains("zoomable")) {
     showLightbox(e.target.src);
@@ -137,19 +142,26 @@ document.addEventListener("click", e => {
 
 function showLightbox(src) {
   let lb = document.getElementById("lightbox");
+
   if (!lb) {
     lb = document.createElement("div");
     lb.id = "lightbox";
-    lb.innerHTML = `<img src="${src}" />`;
     document.body.appendChild(lb);
 
-    lb.onclick = () => lb.style.display = "none";
+    lb.onclick = () => {
+      lb.style.display = "none";
+      document.body.style.overflow = "";
+    };
+
     document.addEventListener("keydown", ev => {
-      if (ev.key === "Escape") lb.style.display = "none";
+      if (ev.key === "Escape") {
+        lb.style.display = "none";
+        document.body.style.overflow = "";
+      }
     });
-  } else {
-    lb.innerHTML = `<img src="${src}" />`;
   }
 
+  lb.innerHTML = `<img src="${src}" />`;
   lb.style.display = "flex";
+  document.body.style.overflow = "hidden";
 }

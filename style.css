@@ -22,17 +22,12 @@
 }
 
 body {
-  font-family:
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: var(--bg-main);
   color: var(--text-main);
 }
 
-/* ===== GRID LAYOUT: APP (NASA-style) ===== */
+/* ===== GRID LAYOUT ===== */
 
 #app {
   display: grid;
@@ -114,7 +109,7 @@ body {
   text-decoration: underline;
 }
 
-/* TOC (rozwijane menu) */
+/* ===== TOC ===== */
 
 #toc {
   font-size: 0.9rem;
@@ -133,7 +128,6 @@ body {
   padding: 6px 8px;
   cursor: pointer;
   font-weight: 500;
-  /*letter-spacing: 0.05em;*/
   border-radius: var(--radius-sm);
   display: flex;
   justify-content: space-between;
@@ -168,7 +162,7 @@ body {
   color: #aafc9b;
 }
 
-/* ===== CONTENT AREA ===== */
+/* ===== CONTENT ===== */
 
 #content {
   padding: 16px 20px;
@@ -181,7 +175,6 @@ body {
 }
 
 #content-inner h1 {
-  margin-bottom: 12px;
   font-size: 1.8rem;
   color: var(--accent-soft);
 }
@@ -210,11 +203,9 @@ body {
   }
 }
 
-/* ===== ARTICLE-SAFE GLOBALS (dla podstron z własnym CSS) ===== */
+/* ===== ARTICLE-SAFE GLOBALS ===== */
 
 .article {
   max-width: 900px;
   margin: 0 auto;
 }
-
-/* Nie narzucamy globalnych stylów img, żeby nie psuć lokalnych layoutów */

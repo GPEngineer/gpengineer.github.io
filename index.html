@@ -6,39 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Anti-cache -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
-    <link rel="stylesheet" href="style.css?v=20260501" />
+    <link rel="stylesheet" href="style.css?v=20260501" id="index-css" />
 
     <!-- MathJax global config -->
     <script>
       window.MathJax = {
         tex: {
-          inlineMath: [
-            ["\\(", "\\)"],
-            ["$", "$"],
-          ],
-          displayMath: [
-            ["\\[", "\\]"],
-            ["$$", "$$"],
-          ],
+          inlineMath: [["\\(", "\\)"], ["$", "$"]],
+          displayMath: [["\\[", "\\]"], ["$$", "$$"]],
         },
         svg: { fontCache: "global" },
       };
     </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
-      id="MathJax-script"
-      async
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
   </head>
 
-  <body>
+  <body class="page-index">
     <div id="app">
       <aside id="sidebar">
         <div class="language-switcher">
@@ -55,7 +42,6 @@
           <a href="#" class="cv-link">[PDF]</a>
         </div>
 
-        <!-- TOC: rozwijane menu (Inman, GD&T, FEM, MATLAB, HyperMesh, ANSYS, Industry) -->
         <nav id="toc"></nav>
       </aside>
 
