@@ -116,14 +116,14 @@ mjx-container[display="true"] {
 .link-cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
-  margin: 24px 0;
+  gap: 5px;
+  margin: 10px 0;
 }
 
 .link-card {
   display: grid;
   grid-template-columns: 120px 1fr;
-  gap: 14px;
+  gap: 24px;
   background-color: #1c1f2a;
   border: 1px solid #333;
   border-radius: 6px;
@@ -132,6 +132,7 @@ mjx-container[display="true"] {
   transition: 0.2s ease;
   align-items: center;
   padding: 10px;
+  
 }
 
 .link-card:hover {
