@@ -5,6 +5,13 @@
   margin: 0;
   padding: 0;
 }
+/* ===== separator z klasą ===== */
+.projects-separator {
+  border: none;
+  border-top: 1px solid var(--border-soft);
+  margin: 6px 0 10px 0;
+}
+/* ===== separator z klasą ===== */
 
 :root {
   --bg-main: #0b0c10;
@@ -31,7 +38,7 @@ body {
 
 #app {
   display: grid;
-  grid-template-columns: minmax(300px, 00px) 1fr;
+  grid-template-columns: minmax(320px, 370px) 1fr;
   height: 100vh;
   background: radial-gradient(circle at top left, #1b2430 0, #050608 55%);
 }
@@ -138,11 +145,16 @@ body {
   background-color: #262b3a;
 }
 
+/* ANIMOWANA PODLISTA */
+
 .toc-sublist {
   list-style: none;
   margin-left: 8px;
   margin-top: 4px;
-  display: none;
+
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
 }
 
 .toc-sublist li {
@@ -160,6 +172,10 @@ body {
 .toc-sublist a:hover {
   background-color: #2b3142;
   color: #aafc9b;
+}
+
+.toc-sublist.open {
+  max-height: 500px; /* wystarczająco dużo dla każdej sekcji */
 }
 
 /* ===== CONTENT ===== */
@@ -208,4 +224,24 @@ body {
 .article {
   max-width: 900px;
   margin: 0 auto;
+}
+
+/* ===== SPECIAL BUTTON (HOME) ===== */
+
+.special-btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px solid #2f3545;
+  width: 100%;
+  text-align: left;
+}
+
+.special-btn:hover,
+.special-btn.active {
+  background-color: #5a98fa;
 }

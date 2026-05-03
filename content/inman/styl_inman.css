@@ -255,3 +255,35 @@ mjx-container[display="true"] {
   }
 }
 
+/* ===== SPECIAL BUTTONS (HOME / BACK) ===== */
+
+.special-btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px solid #2f3545;
+}
+
+.special-btn:hover,
+.special-btn.active {
+  background-color: #5a98fa;
+}
+
+.back-home-btn {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin: 20px 0;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+}
+
+.back-home-btn:hover {
+  background-color: #5a98fa;
+}

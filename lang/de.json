@@ -1,0 +1,91 @@
+{
+  "profile_title": "Meine beruflichen Interessen",
+  "cv_link": "Lebenslauf / CV",
+
+  "welcome_title": "Willkommen auf der Seite über mechanische Schwingungen",
+  "welcome_text": "Wähle einen Eintrag im Menü links, um Inhalte zu laden.",
+
+  "sections": [
+    {
+      "id": "projects",
+      "title": "Projektbeiträge",
+      "items": [
+        { "title": "Automotive", "file": "content/projects/automotive_de.html" },
+        { "title": "Aviation", "file": "content/projects/aviation_de.html" },
+        { "title": "Transportation", "file": "content/projects/transportation_de.html" }
+      ]
+    },
+
+    {
+      "id": "industry",
+      "title": "Industrielle Problemlösung",
+      "items": [
+        { "title": "Industrie – CNC‑Optimierung", "file": "content/industry/case_study1_de.html" },
+        { "title": "Industrie – CNC‑Programmierung", "file": "content/industry/case_study2_de.html" },
+        { "title": "Programmierung – Python", "file": "content/industry/case_study3_de.html" }
+      ]
+    },
+
+    {
+      "id": "modal_fem",
+      "title": "Modalanalyse – FEM",
+      "items": [
+        { "title": "Aufgabe 1", "file": "content/modal_fem/modal_fem1_de.html" },
+        { "title": "Aufgabe 2", "file": "content/modal_fem/modal_fem2_de.html" },
+        { "title": "Aufgabe 3", "file": "content/modal_fem/modal_fem3_de.html" }
+      ]
+    },
+
+    {
+      "id": "modal_matlab",
+      "title": "Modalanalyse – MATLAB",
+      "items": [
+        { "title": "Aufgabe 1", "file": "content/modal_matlab/modal_matlab1_de.html" },
+        { "title": "Aufgabe 2", "file": "content/modal_matlab/modal_matlab2_de.html" },
+        { "title": "Aufgabe 3", "file": "content/modal_matlab/modal_matlab3_de.html" }
+      ]
+    },
+
+    {
+      "id": "modal_hypermesh",
+      "title": "Modalanalyse – HyperMesh",
+      "items": [
+        { "title": "Aufgabe 1", "file": "content/modal_hypermesh/modal_hypermesh1_de.html" },
+        { "title": "Aufgabe 2", "file": "content/modal_hypermesh/modal_hypermesh2_de.html" },
+        { "title": "Aufgabe 3", "file": "content/modal_hypermesh/modal_hypermesh3_de.html" }
+      ]
+    },
+
+    {
+      "id": "modal_ansys",
+      "title": "Modalanalyse – ANSYS",
+      "items": [
+        { "title": "Aufgabe 1", "file": "content/modal_ansys/modal_ansys1_de.html" },
+        { "title": "Aufgabe 2", "file": "content/modal_ansys/modal_ansys2_de.html" },
+        { "title": "Aufgabe 3", "file": "content/modal_ansys/modal_ansys3_de.html" }
+      ]
+    },
+
+    {
+      "id": "gdt",
+      "title": "GD&T – Geometrische Bemaßung und Tolerierung",
+      "items": [
+        { "title": "Probleme", "file": "content/gdt/problems_de.html" },
+        { "title": "Aufgaben", "file": "content/gdt/gdt_task1_de.html" }
+      ]
+    },
+
+    {
+      "id": "inman",
+      "title": "Mechanische Schwingungen – Inman 4. Ausgabe",
+      "items": [
+        { "title": "Einführung", "file": "content/inman/00_intro_inman_de.html" },
+        { "title": "1. Freie Schwingungen", "file": "content/inman/01_free_vibration_de.html" },
+        { "title": "2. Harmonische Anregung", "file": "content/inman/02_harmonic_excitation_de.html" },
+        { "title": "3. Allgemeine erzwungene Antwort", "file": "content/inman/03_forced_response_de.html" },
+        { "title": "4. Mehrmassensysteme", "file": "content/inman/04_mdof_de.html" },
+        { "title": "5. Modalanalyse", "file": "content/inman/05_modal_analysis_de.html" }
+      ]
+    }
+  ]
+}

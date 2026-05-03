@@ -1,0 +1,91 @@
+{
+  "profile_title": "Mes intérêts professionnels",
+  "cv_link": "CV / Resume",
+
+  "welcome_title": "Bienvenue sur le site des vibrations mécaniques",
+  "welcome_text": "Choisissez un élément dans le menu à gauche pour charger le contenu.",
+
+  "sections": [
+    {
+      "id": "projects",
+      "title": "Contributions aux projets",
+      "items": [
+        { "title": "Automotive", "file": "content/projects/automotive_fr.html" },
+        { "title": "Aviation", "file": "content/projects/aviation_fr.html" },
+        { "title": "Transportation", "file": "content/projects/transportation_fr.html" }
+      ]
+    },
+
+    {
+      "id": "industry",
+      "title": "Résolution de problèmes industriels",
+      "items": [
+        { "title": "Industrie – Optimisation CNC", "file": "content/industry/case_study1_fr.html" },
+        { "title": "Industrie – Programmation CNC", "file": "content/industry/case_study2_fr.html" },
+        { "title": "Programmation – Python", "file": "content/industry/case_study3_fr.html" }
+      ]
+    },
+
+    {
+      "id": "modal_fem",
+      "title": "Analyse modale – FEM",
+      "items": [
+        { "title": "Exercice 1", "file": "content/modal_fem/modal_fem1_fr.html" },
+        { "title": "Exercice 2", "file": "content/modal_fem/modal_fem2_fr.html" },
+        { "title": "Exercice 3", "file": "content/modal_fem/modal_fem3_fr.html" }
+      ]
+    },
+
+    {
+      "id": "modal_matlab",
+      "title": "Analyse modale – MATLAB",
+      "items": [
+        { "title": "Exercice 1", "file": "content/modal_matlab/modal_matlab1_fr.html" },
+        { "title": "Exercice 2", "file": "content/modal_matlab/modal_matlab2_fr.html" },
+        { "title": "Exercice 3", "file": "content/modal_matlab/modal_matlab3_fr.html" }
+      ]
+    },
+
+    {
+      "id": "modal_hypermesh",
+      "title": "Analyse modale – HyperMesh",
+      "items": [
+        { "title": "Exercice 1", "file": "content/modal_hypermesh/modal_hypermesh1_fr.html" },
+        { "title": "Exercice 2", "file": "content/modal_hypermesh/modal_hypermesh2_fr.html" },
+        { "title": "Exercice 3", "file": "content/modal_hypermesh/modal_hypermesh3_fr.html" }
+      ]
+    },
+
+    {
+      "id": "modal_ansys",
+      "title": "Analyse modale – ANSYS",
+      "items": [
+        { "title": "Exercice 1", "file": "content/modal_ansys/modal_ansys1_fr.html" },
+        { "title": "Exercice 2", "file": "content/modal_ansys/modal_ansys2_fr.html" },
+        { "title": "Exercice 3", "file": "content/modal_ansys/modal_ansys3_fr.html" }
+      ]
+    },
+
+    {
+      "id": "gdt",
+      "title": "GD&T – Cotation géométrique et tolérancement",
+      "items": [
+        { "title": "Problèmes", "file": "content/gdt/problems_fr.html" },
+        { "title": "Exercices", "file": "content/gdt/gdt_task1_fr.html" }
+      ]
+    },
+
+    {
+      "id": "inman",
+      "title": "Vibrations mécaniques – Inman 4e édition",
+      "items": [
+        { "title": "Introduction", "file": "content/inman/00_intro_inman_fr.html" },
+        { "title": "1. Vibrations libres", "file": "content/inman/01_free_vibration_fr.html" },
+        { "title": "2. Excitation harmonique", "file": "content/inman/02_harmonic_excitation_fr.html" },
+        { "title": "3. Réponse forcée générale", "file": "content/inman/03_forced_response_fr.html" },
+        { "title": "4. Systèmes multi‑degrés", "file": "content/inman/04_mdof_fr.html" },
+        { "title": "5. Analyse modale", "file": "content/inman/05_modal_analysis_fr.html" }
+      ]
+    }
+  ]
+}

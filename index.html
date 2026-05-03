@@ -16,13 +16,22 @@
     <script>
       window.MathJax = {
         tex: {
-          inlineMath: [["\\(", "\\)"], ["$", "$"]],
-          displayMath: [["\\[", "\\]"], ["$$", "$$"]],
+          inlineMath: [
+            ["\\(", "\\)"],
+            ["$", "$"],
+          ],
+          displayMath: [
+            ["\\[", "\\]"],
+            ["$$", "$$"],
+          ],
         },
         svg: { fontCache: "global" },
       };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+      async
+    ></script>
   </head>
 
   <body class="page-index">
@@ -46,10 +55,7 @@
       </aside>
 
       <main id="content">
-        <div id="content-inner">
-          <h1 data-i18n="welcome_title"></h1>
-          <p data-i18n="welcome_text"></p>
-        </div>
+        <div id="content-inner"></div>
       </main>
     </div>
 

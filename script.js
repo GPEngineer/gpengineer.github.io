@@ -24,7 +24,7 @@ async function loadLanguage(lang) {
   const res = await fetch(`lang/${lang}.json`);
   const dict = await res.json();
 
-  document.querySelectorAll("[data-i18n]").forEach(el => {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.getAttribute("data-i18n");
     el.textContent = dict[key] || key;
   });
@@ -39,30 +39,34 @@ function generateSidebar(sections) {
   const toc = document.getElementById("toc");
   toc.innerHTML = "";
 
-  sections.forEach(section => {
+  sections.forEach((section) => {
     const div = document.createElement("div");
     div.className = "toc-section";
+
+    const ul = document.createElement("ul");
+    ul.className = "toc-sublist";
 
     const btn = document.createElement("button");
     btn.className = "toc-toggle";
     btn.textContent = section.title;
 
-    const ul = document.createElement("ul");
-    ul.className = "toc-sublist";
-
     btn.onclick = () => {
-      ul.style.display = ul.style.display === "block" ? "none" : "block";
+      ul.classList.toggle("open");
     };
 
-    section.items.forEach(item => {
+    div.appendChild(btn);
+
+    section.items.forEach((item) => {
       const li = document.createElement("li");
       const a = document.createElement("a");
 
       a.href = "#";
       a.textContent = item.title;
 
-      a.onclick = e => {
+      a.onclick = (e) => {
         e.preventDefault();
+        clearActiveSidebar();
+        a.classList.add("active");
         loadContent(item.file);
       };
 
@@ -70,10 +74,18 @@ function generateSidebar(sections) {
       ul.appendChild(li);
     });
 
-    div.appendChild(btn);
     div.appendChild(ul);
     toc.appendChild(div);
   });
+}
+
+/* ============================
+   PODŚWIETLANIE
+============================ */
+function clearActiveSidebar() {
+  document
+    .querySelectorAll(".toc-sublist a")
+    .forEach((el) => el.classList.remove("active"));
 }
 
 /* ============================
@@ -95,13 +107,14 @@ async function loadContent(file) {
   document.getElementById("content-inner").innerHTML = html;
 
   const cssMap = {
-    "inman": "content/inman/styl_inman.css",
-    "gdt": "content/gdt/styl_gdt.css",
-    "modal_fem": "content/modal_fem/styl_fem.css",
-    "modal_matlab": "content/modal_matlab/styl_matlab.css",
-    "modal_hypermesh": "content/modal_hypermesh/styl_hypermesh.css",
-    "modal_ansys": "content/modal_ansys/styl_ansys.css",
-    "industry": "content/industry/styl_industry.css"
+    inman: "content/inman/styl_inman.css",
+    gdt: "content/gdt/styl_gdt.css",
+    modal_fem: "content/modal_fem/styl_fem.css",
+    modal_matlab: "content/modal_matlab/styl_matlab.css",
+    modal_hypermesh: "content/modal_hypermesh/styl_hypermesh.css",
+    modal_ansys: "content/modal_ansys/styl_ansys.css",
+    industry: "content/industry/styl_industry.css",
+    projects: "content/projects/styl_projects.css"
   };
 
   for (const key in cssMap) {
@@ -117,24 +130,37 @@ async function loadContent(file) {
 /* ============================
    PRZYCISKI JĘZYKA
 ============================ */
-document.querySelectorAll(".lang-btn").forEach(btn => {
-  btn.onclick = () => {
-    document.querySelectorAll(".lang-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    loadLanguage(btn.dataset.lang);
-  };
-});
+function setupLanguageButtons() {
+  const buttons = document.querySelectorAll(".lang-btn");
+
+  buttons.forEach((btn) => {
+    if (btn.dataset.lang === currentLang) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+
+    btn.onclick = () => {
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const lang = btn.dataset.lang;
+      loadLanguage(lang);
+    };
+  });
+}
 
 /* ============================
    START
 ============================ */
 setPageMode("index");
 loadLanguage(currentLang);
+setupLanguageButtons();
 
 /* ============================
    LIGHTBOX
 ============================ */
-document.addEventListener("click", e => {
+document.addEventListener("click", (e) => {
   if (e.target.classList.contains("zoomable")) {
     showLightbox(e.target.src);
   }
@@ -153,7 +179,7 @@ function showLightbox(src) {
       document.body.style.overflow = "";
     };
 
-    document.addEventListener("keydown", ev => {
+    document.addEventListener("keydown", (ev) => {
       if (ev.key === "Escape") {
         lb.style.display = "none";
         document.body.style.overflow = "";
