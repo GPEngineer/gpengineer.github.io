@@ -273,3 +273,33 @@ body {
   scrollbar-width: thin;
   scrollbar-color: #142b50 #0f1118;
 }
+
+
+/* ===== CUSTOM SCROLLBAR FOR CONTENT (WEBKIT) ===== */
+
+#content::-webkit-scrollbar {
+  width: 12px;
+}
+
+#content::-webkit-scrollbar-track {
+  background: #0c0e14; /* ciemny, ale inny niż sidebar */
+  border-radius: 10px;
+}
+
+#content::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #5a98fa, #3b82f6);
+  border-radius: 10px;
+  border: 2px solid #0c0e14; /* kontrast, lekko jaśniejszy niż sidebar */
+}
+
+#content::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #7ab0ff, #5a98fa);
+}
+
+
+/* ===== CUSTOM SCROLLBAR FOR CONTENT (FIREFOX) ===== */
+
+#content {
+  scrollbar-width: thin;
+  scrollbar-color: #5a98fa #0c0e14;
+}
