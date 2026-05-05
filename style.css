@@ -62,6 +62,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 4px;
+  margin-bottom: 14px; /* NOWE — odstęp pod przyciskami języka */
 }
 
 .lang-btn {
@@ -85,7 +86,7 @@ body {
 /* Profile */
 
 .profile {
-  border-bottom: 1px solid var(--border-soft);
+ /* border-bottom: 1px solid var(--border-soft);*/
   padding-bottom: 10px;
 }
 
@@ -302,4 +303,34 @@ body {
 #content {
   scrollbar-width: thin;
   scrollbar-color: #5a98fa #0c0e14;
+}
+
+/* ===== FIXED + SCROLLABLE SIDEBAR STRUCTURE ===== */
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.sidebar-fixed {
+  padding: 12px;
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--border-soft);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.sidebar-scroll {
+  padding: 12px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* separator */
+.sidebar-separator {
+  border: none;
+  border-top: 1px solid var(--border-soft);
+  margin-top: 10px;
 }
