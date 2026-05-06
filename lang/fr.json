@@ -7,12 +7,26 @@
 
   "sections": [
     {
-      "id": "projects",
-      "title": "Contributions aux projets",
+      "id": "automotive",
+      "title": "Automotive",
       "items": [
-        { "title": "Automotive", "file": "content/projects/automotive_fr.html" },
-        { "title": "Aviation", "file": "content/projects/aviation_fr.html" },
-        { "title": "Transportation", "file": "content/projects/transportation_fr.html" }
+        { "title": "Projet 1", "file": "content/projects/automotive_fr.html" }
+      ]
+    },
+
+    {
+      "id": "aviation",
+      "title": "Aviation",
+      "items": [
+        { "title": "Projet 1", "file": "content/projects/aviation_fr.html" }
+      ]
+    },
+
+    {
+      "id": "transportation",
+      "title": "Transportation",
+      "items": [
+        { "title": "Projet 1", "file": "content/projects/transportation_fr.html" }
       ]
     },
 
