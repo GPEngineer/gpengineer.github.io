@@ -334,3 +334,17 @@ body {
   border-top: 1px solid var(--border-soft);
   margin-top: 10px;
 }
+
+.github-link {
+  color: var(--accent-soft);
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 6px;
+}
+
+.github-link:hover {
+  text-decoration: underline;
+  color: var(--accent);
+}
