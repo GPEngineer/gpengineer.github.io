@@ -1,10 +1,382 @@
-<section class="article">
-  <h1>Automotive</h1>
-  <p>Wybrane projekty z branży automotive, w których brałem udział.</p>
+<div class="article">
+  <h1>Automotive – składane dachy kabrioletów</h1>
 
-  <ul class="stats">
-    <li>Optymalizacja drgań układów zawieszenia</li>
-    <li>Analiza modalna elementów karoserii</li>
-    <li>Diagnostyka NVH (Noise, Vibration, Harshness)</li>
+  <p>
+    W branży automotive pracowałem dla niemieckiej korporacji Karmann, jednego z
+    kluczowych ekspertów w projektowaniu i integracji składanych dachów dla
+    kabrioletów i coupé-cabriolet. Firma współpracowała z wieloma producentami
+    klasy premium, m.in. <strong>BMW</strong>, <strong>Bentley</strong>,
+    <strong>Volkswagen</strong>, <strong>Ford</strong> czy
+    <strong>Renault</strong>, dostarczając kompletne systemy dachów
+    składanych – od koncepcji kinematyki, przez konstrukcję, aż po walidację
+    prototypów.
+  </p>
+
+ <iframe
+  src="content/projects/image_prj/roof_animation.html"
+  width="720"
+  height="400"
+  style="border:none; margin: 20px 0; border-radius: 8px; overflow:hidden;">
+</iframe>
+
+  <figcaption>Schemat kinematyki dachu składanego.</figcaption>
+
+
+  <p>
+    Analizę kinematyki mechanizmów dachów, dobór
+    rozwiązań konstrukcyjnych, ocenę sztywności oraz współpracę z działami
+    odpowiedzialnymi za bezpieczeństwo, stylistykę i produkcję. Poniżej
+    przedstawiam syntetyczny opis typowego projektu dachu składanego z
+    perspektywy inżynierskiej.
+  </p>
+
+  <hr />
+
+  <h2>Architektura dachu składanego</h2>
+
+  <p>
+    Składany dach kabrioletu można traktować jako złożony mechanizm wieloczłonowy,
+    zwykle oparty na układach cztero- lub wielodrążkowych, połączonych z
+    siłownikami hydraulicznymi lub elektrycznymi. Typowy system obejmuje:
+  </p>
+
+  <ul>
+    <li><strong>Ramy dachowe</strong> – główne łuki nośne (front bow, middle bow, rear bow).</li>
+    <li><strong>Mechanizmy przegubowe</strong> – łączniki, cięgna, dźwignie, zawiasy.</li>
+    <li><strong>Napęd</strong> – siłowniki hydrauliczne lub elektryczne, przekładnie śrubowe, cięgna.</li>
+    <li><strong>Poszycie</strong> – tkaniny wielowarstwowe, kompozyty, elementy szklane.</li>
+    <li><strong>Uszczelnienia</strong> – profile gumowe, elementy przeciwhałasowe i przeciwdeszczowe.</li>
+    <li><strong>System sterowania</strong> – czujniki położenia, sterownik, logika bezpieczeństwa.</li>
   </ul>
-</section>
+
+  <p>
+    Poniżej przykładowa ilustracja koncepcyjna kinematyki dachu (schematyczna):
+  </p>
+
+  <figure>
+    <img
+      src="content/projects/image_pr/roof_kinematics.jpg"
+      alt="Schemat kinematyki dachu składanego"
+      class="zoomable"
+    />
+    <figcaption>Schemat poglądowy kinematyki dachu składanego (mechanizm wieloczłonowy).</figcaption>
+  </figure>
+
+  <hr />
+
+  <h2>Prosty model kinematyki – mechanizm czterodrążkowy</h2>
+
+  <p>
+    Jednym z klasycznych modeli opisujących ruch segmentu dachu jest
+    mechanizm czterodrążkowy. W najprostszym ujęciu możemy rozpatrywać
+    układ o długościach:
+  </p>
+
+  <ul>
+    <li><strong>\(a\)</strong> – długość ramienia napędowego [m],</li>
+    <li><strong>\(b\)</strong> – długość ramienia wyjściowego (segment dachu) [m],</li>
+    <li><strong>\(c\)</strong> – długość łącznika [m],</li>
+    <li><strong>\(d\)</strong> – odległość między osiami mocowania w karoserii [m].</li>
+  </ul>
+
+  <p>
+    Dla zadanej zmiennej kąta napędowego \(\varphi\) (obrót ramienia
+    napędowego) można wyznaczyć kąt położenia segmentu dachu \(\theta\)
+    z równań geometrycznych mechanizmu. W uproszczonej postaci (dla
+    odpowiednio dobranych długości) zależność można zapisać jako:
+  </p>
+
+  <p>
+    
+
+\[
+      f(\varphi, \theta, a, b, c, d) = 0
+    \]
+
+
+  </p>
+
+  <p>
+    gdzie funkcja \(f\) wynika z warunku zamknięcia układu wektorowego
+    (równowaga geometryczna pętli). W praktyce rozwiązanie \(\theta(\varphi)\)
+    wyznacza się numerycznie lub symbolicznie, a następnie analizuje:
+  </p>
+
+  <ul>
+    <li><strong>zakres kątów</strong> – czy dach składa się i rozkłada bez kolizji,</li>
+    <li><strong>prędkości kątowe</strong> – komfort i bezpieczeństwo ruchu,</li>
+    <li><strong>przyspieszenia</strong> – obciążenia dynamiczne w przegubach.</li>
+  </ul>
+
+  <p>
+    Przykładowo, prędkość kątowa segmentu dachu można zapisać jako:
+  </p>
+
+  <p>
+    
+
+\[
+      \dot{\theta} = \frac{\partial \theta}{\partial \varphi} \, \dot{\varphi}
+    \]
+
+
+  </p>
+
+  <p>
+    gdzie:
+  </p>
+
+  <ul>
+    <li><strong>\(\dot{\theta}\)</strong> – prędkość kątowa segmentu dachu [rad/s],</li>
+    <li><strong>\(\dot{\varphi}\)</strong> – prędkość kątowa ramienia napędowego [rad/s],</li>
+    <li><strong>\(\frac{\partial \theta}{\partial \varphi}\)</strong> – wrażliwość kinematyczna (bez jednostki).</li>
+  </ul>
+
+  <p>
+    Analiza tych zależności pozwala dobrać taką geometrię, aby ruch był
+    płynny, bez gwałtownych przyspieszeń i nieprzyjemnych szarpnięć.
+  </p>
+
+  <hr />
+
+  <h2>Materiały i wymagania eksploatacyjne</h2>
+
+  <p>
+    Składany dach musi spełniać jednocześnie wymagania:
+  </p>
+
+  <ul>
+    <li><strong>sztywności</strong> – ograniczenie ugięć i drgań,</li>
+    <li><strong>masy</strong> – minimalizacja masy ruchomych segmentów,</li>
+    <li><strong>trwałości</strong> – odporność na zmęczenie i warunki atmosferyczne,</li>
+    <li><strong>komfortu</strong> – izolacja akustyczna, szczelność, estetyka.</li>
+  </ul>
+
+  <p>
+    Typowe materiały stosowane w konstrukcji dachów składanych to:
+  </p>
+
+  <ul>
+    <li>stale o podwyższonej wytrzymałości (HSLA),</li>
+    <li>aluminium i jego stopy (profile wytłaczane, odlewy),</li>
+    <li>kompozyty (np. laminaty zbrojone włóknem szklanym lub węglowym),</li>
+    <li>tkaniny wielowarstwowe z warstwą uszczelniającą i akustyczną.</li>
+  </ul>
+
+  <p>
+    Zwiększenie udziału aluminium lub kompozytów zwykle:
+  </p>
+
+  <ul>
+    <li><strong>zmniejsza masę</strong> segmentów dachu,</li>
+    <li>może <strong>zwiększyć koszt</strong> produkcji i złożoność technologii,</li>
+    <li>wpływa na <strong>sztywność lokalną</strong> – konieczna jest analiza FEM.</li>
+  </ul>
+
+  <hr />
+
+  <h2>Sztywność dachu a sztywność nadwozia</h2>
+
+  <p>
+    W porównaniu z klasycznym nadwoziem zamkniętym (sedan, hatchback),
+    kabriolet z dachem składanym ma z natury <strong>mniejszą sztywność
+    skrętną i zginającą</strong> nadwozia. Wynika to z braku stałego
+    dachu jako elementu nośnego. W praktyce oznacza to:
+  </p>
+
+  <ul>
+    <li>większą podatność na drgania własne nadwozia,</li>
+    <li>większą wrażliwość na nierówności drogi,</li>
+    <li>konieczność wzmacniania progów, słupków i podłogi.</li>
+  </ul>
+
+  <p>
+    Sztywność skrętna nadwozia można opisać w uproszczeniu jako:
+  </p>
+
+  <p>
+    
+
+\[
+      k_\varphi = \frac{M_\varphi}{\varphi}
+    \]
+
+
+  </p>
+
+  <p>
+    gdzie:
+  </p>
+
+  <ul>
+    <li><strong>\(k_\varphi\)</strong> – sztywność skrętna nadwozia [Nm/rad],</li>
+    <li><strong>\(M_\varphi\)</strong> – moment skręcający przyłożony do nadwozia [Nm],</li>
+    <li><strong>\(\varphi\)</strong> – kąt skręcenia nadwozia [rad].</li>
+  </ul>
+
+  <p>
+    Zwiększenie sztywności (większe \(k_\varphi\)) poprawia:
+  </p>
+
+  <ul>
+    <li>precyzję prowadzenia,</li>
+    <li>komfort jazdy (mniej rezonansów i drgań),</li>
+    <li>odporność na zmęczenie konstrukcji.</li>
+  </ul>
+
+  <p>
+    Jednocześnie wymaga to:
+  </p>
+
+  <ul>
+    <li>zwiększenia masy (dodatkowe wzmocnienia),</li>
+    <li>złożonych analiz wytrzymałościowych (FEM),</li>
+    <li>optymalizacji przekrojów i materiałów.</li>
+  </ul>
+
+  <hr />
+
+  <h2>Wymagania normowe i homologacyjne – ujęcie ogólne</h2>
+
+  <p>
+    Konstrukcja dachu składanego oraz całego nadwozia musi spełniać
+    wymagania norm i regulacji dotyczących:
+  </p>
+
+  <ul>
+    <li>bezpieczeństwa zderzeniowego,</li>
+    <li>ochrony pieszych,</li>
+    <li>sztywności nadwozia i odporności na przewrócenie (roll-over),</li>
+    <li>szczelności, hałasu, komfortu użytkowania.</li>
+  </ul>
+
+  <p>
+    W praktyce producenci odwołują się do:
+  </p>
+
+  <ul>
+    <li>europejskich regulacji homologacyjnych,</li>
+    <li>międzynarodowych regulacji dotyczących bezpieczeństwa pojazdów,</li>
+    <li>wewnętrznych standardów koncernów (np. minimalna sztywność skrętna nadwozia, kryteria drgań własnych).</li>
+  </ul>
+
+  <p>
+    Konkretnych wartości progowych (np. minimalnej sztywności skrętnej
+    nadwozia czy dopuszczalnych ugięć dachu) nie można uogólnić dla
+    wszystkich producentów – są one zwykle określane w wewnętrznych
+    specyfikacjach koncernów i dokumentach homologacyjnych. Ogólnie:
+  </p>
+
+  <ul>
+    <li>kabriolety mają <strong>niższą sztywność</strong> niż odpowiedniki z dachem stałym,</li>
+    <li>różnica ta jest kompensowana przez <strong>wzmocnienia strukturalne</strong> w innych obszarach nadwozia,</li>
+    <li>projekt dachu składanego musi być zintegrowany z całą strukturą pojazdu.</li>
+  </ul>
+
+  <p>
+    W literaturze inżynierskiej i podręcznikach z zakresu mechaniki
+    konstrukcji oraz dynamiki pojazdów (np. klasyczne pozycje dotyczące
+    wytrzymałości materiałów i dynamiki układów mechanicznych) omawia się
+    metody wyznaczania sztywności, drgań własnych oraz wpływu zmian
+    geometrii i materiałów na zachowanie konstrukcji. W praktyce
+    projektowej stosuje się kombinację:
+  </p>
+
+  <ul>
+    <li>obliczeń analitycznych (proste modele belkowe, ramowe),</li>
+    <li>obliczeń numerycznych (FEM),</li>
+    <li>testów prototypów (pomiary sztywności, drgań, hałasu).</li>
+  </ul>
+
+  <hr />
+
+  <h2>Analiza inżynierska – wpływ zmian parametrów</h2>
+
+  <p>
+    Przykładowo, rozważmy wpływ zwiększenia masy segmentu dachu
+    \(\Delta m\) na obciążenia w przegubach i siłownikach. Dla uproszczonego
+    modelu można przyjąć, że moment grawitacyjny działający na segment
+    dachu wynosi:
+  </p>
+
+  <p>
+    
+
+\[
+      M_g = m \, g \, l_\text{cg} \, \sin(\theta)
+    \]
+
+
+  </p>
+
+  <p>
+    gdzie:
+  </p>
+
+  <ul>
+    <li><strong>\(m\)</strong> – masa segmentu dachu [kg],</li>
+    <li><strong>\(g\)</strong> – przyspieszenie ziemskie \(\approx 9{,}81 \, \text{m/s}^2\),</li>
+    <li><strong>\(l_\text{cg}\)</strong> – odległość środka masy segmentu od osi obrotu [m],</li>
+    <li><strong>\(\theta\)</strong> – kąt położenia segmentu dachu [rad].</li>
+  </ul>
+
+  <p>
+    Zwiększenie masy o \(\Delta m\) powoduje wzrost momentu:
+  </p>
+
+  <p>
+    
+
+\[
+      \Delta M_g \approx \Delta m \, g \, l_\text{cg} \, \sin(\theta)
+    \]
+
+
+  </p>
+
+  <p>
+    co przekłada się na:
+  </p>
+
+  <ul>
+    <li>większe siły w siłownikach,</li>
+    <li>większe obciążenia przegubów,</li>
+    <li>potencjalnie większe ugięcia i drgania konstrukcji.</li>
+  </ul>
+
+  <p>
+    Z kolei zwiększenie sztywności elementów (np. profili aluminiowych)
+    przy zachowaniu masy może:
+  </p>
+
+  <ul>
+    <li>zmniejszyć ugięcia i poprawić komfort,</li>
+    <li>przesunąć częstotliwości drgań własnych poza zakres pobudzeń eksploatacyjnych,</li>
+    <li>wymagać bardziej zaawansowanych technologii produkcji.</li>
+  </ul>
+
+  <hr />
+
+  <h2>Podsumowanie</h2>
+
+  <p>
+    Projekt składanych dachów kabrioletów, realizowany m.in. w Karmann
+    dla marek takich jak BMW czy Bentley, łączy w sobie:
+  </p>
+
+  <ul>
+    <li>zaawansowaną <strong>kinematykę mechanizmów</strong>,</li>
+    <li><strong>analizy wytrzymałościowe</strong> i sztywnościowe,</li>
+    <li><strong>dobór materiałów</strong> pod kątem masy, trwałości i komfortu,</li>
+    <li><strong>wymagania normowe i homologacyjne</strong> dotyczące bezpieczeństwa i jakości.</li>
+  </ul>
+
+  <p>
+    Tego typu projekty są dobrym przykładem praktycznego zastosowania
+    mechaniki, wytrzymałości materiałów, dynamiki układów mechanicznych
+    oraz metod numerycznych. Pozwalają też pokazać, że za pozornie
+    prostym ruchem składanego dachu stoi złożona inżynieria, w której
+    każdy detal – od geometrii przegubów po dobór materiału uszczelki –
+    ma znaczenie dla bezpieczeństwa, komfortu i trwałości pojazdu.
+  </p>
+</div>

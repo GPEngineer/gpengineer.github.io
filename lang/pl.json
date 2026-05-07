@@ -10,7 +10,7 @@
       "id": "automotive",
       "title": "Automotive",
       "items": [
-        { "title": "Projekt 1", "file": "content/projects/automotive_pl.html" }
+        { "title": "Cabriolet", "file": "content/projects/automotive_pl.html" }
       ]
     },
 
