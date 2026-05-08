@@ -1,122 +1,170 @@
-<div id="roof-anim-container">
-  <svg id="roof-anim" width="700" height="360" viewBox="0 0 700 360">
-    <rect width="700" height="360" fill="#05060a"/>
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Roof kinematics – PRO</title>
+    <style>
+      body {
+        margin: 0;
+        background: #05060a;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
 
-    <!-- Karoseria (prosty zarys) -->
-    <g id="body">
-      <rect x="60" y="240" width="580" height="40" fill="#11141c" stroke="#2b2f3a" stroke-width="2"/>
-      <rect x="120" y="210" width="260" height="30" fill="#11141c" stroke="#2b2f3a" stroke-width="2"/>
-      <rect x="380" y="220" width="180" height="25" fill="#11141c" stroke="#2b2f3a" stroke-width="2"/>
-    </g>
+      #roof-anim-container {
+        width: 700px;
+        margin: 10px auto;
+        background: radial-gradient(circle at top, #151821 0, #05060a 60%);
+        border-radius: 8px;
+        box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+        padding: 10px;
+      }
 
-    <!-- Punkt bazowy zawiasu dachu -->
-    <circle cx="140" cy="210" r="4" fill="#ffaa00"/>
+      #roof-anim {
+        display: block;
+        margin: 0 auto;
+      }
 
-    <!-- Grupa całego dachu (3 segmenty) -->
-    <g id="roof-group" transform="translate(140,210)">
-      <!-- front bow -->
-      <line id="front-bow" x1="0" y1="0" x2="140" y2="-40"
-            stroke="#5a98fa" stroke-width="6" stroke-linecap="round"/>
+      .label {
+        fill: #cccccc;
+        font-size: 13px;
+      }
+    </style>
+  </head>
 
-      <!-- mid bow -->
-      <line id="mid-bow" x1="140" y1="-40" x2="260" y2="-20"
-            stroke="#5a98fa" stroke-width="6" stroke-linecap="round"/>
+  <body>
+    <div id="roof-anim-container">
+      <svg id="roof-anim" width="700" height="360" viewBox="0 0 700 360">
+        <rect width="700" height="360" fill="#05060a" />
 
-      <!-- rear bow -->
-      <line id="rear-bow" x1="260" y1="-20" x2="340" y2="10"
-            stroke="#5a98fa" stroke-width="6" stroke-linecap="round"/>
-    </g>
+        <!-- Karoseria -->
+        <g id="body">
+          <rect x="60" y="240" width="580" height="40" fill="#11141c" stroke="#2b2f3a" stroke-width="2" />
+          <rect x="120" y="210" width="260" height="30" fill="#11141c" stroke="#2b2f3a" stroke-width="2" />
+          <rect x="380" y="220" width="180" height="25" fill="#11141c" stroke="#2b2f3a" stroke-width="2" />
+        </g>
 
-    <!-- Siłownik hydrauliczny (tłok + cylinder) -->
-    <g id="actuator-group">
-      <!-- cylinder (mocowany do karoserii) -->
-      <line x1="120" y1="230" x2="200" y2="260"
-            stroke="#888" stroke-width="6" stroke-linecap="round"/>
+        <!-- Punkt bazowy zawiasu -->
+        <circle id="hinge-base" cx="140" cy="210" r="4" fill="#ffaa00" />
 
-      <!-- tłoczysko (połączone z dachem) -->
-      <line id="rod" x1="200" y1="260" x2="260" y2="220"
-            stroke="#d0d4dd" stroke-width="4" stroke-linecap="round"/>
-      <circle id="rod-joint" cx="260" cy="220" r="5" fill="#ffaa00"/>
-    </g>
+        <!-- Dach – 3 segmenty w jednej grupie -->
+        <g id="roof-group" transform="translate(140,210)">
+          <!-- front bow -->
+          <line id="front-bow" x1="0" y1="0" x2="140" y2="-40"
+                stroke="#5a98fa" stroke-width="6" stroke-linecap="round" />
 
-    <!-- „MES” – symboliczne ugięcie dachu (kolorowe pole) -->
-    <g id="fem-cloud" opacity="0">
-      <ellipse cx="320" cy="150" rx="120" ry="40"
-               fill="url(#femGradient)"/>
-    </g>
+          <!-- mid bow -->
+          <line id="mid-bow" x1="140" y1="-40" x2="260" y2="-20"
+                stroke="#5a98fa" stroke-width="6" stroke-linecap="round" />
 
-    <!-- Gradient do „MES” -->
-    <defs>
-      <linearGradient id="femGradient" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#3b82f6"/>
-        <stop offset="50%" stop-color="#ffaa00"/>
-        <stop offset="100%" stop-color="#ff4b4b"/>
-      </linearGradient>
-    </defs>
+          <!-- rear bow -->
+          <line id="rear-bow" x1="260" y1="-20" x2="340" y2="10"
+                stroke="#5a98fa" stroke-width="6" stroke-linecap="round" />
+        </g>
 
-    <!-- Podpisy -->
-    <g fill="#cccccc" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13">
-      <text x="70" y="230">Karoseria</text>
-      <text x="150" y="200">Zawias bazowy</text>
-      <text x="260" y="120">Front bow</text>
-      <text x="360" y="110">Mid bow</text>
-      <text x="460" y="130">Rear bow</text>
-      <text x="210" y="275">Cylinder</text>
-      <text x="270" y="215">Tłoczysko</text>
-    </g>
-  </svg>
-</div>
+        <!-- Siłownik hydrauliczny -->
+        <g id="actuator-group">
+          <!-- cylinder (do karoserii) -->
+          <line id="cylinder" x1="120" y1="230" x2="200" y2="260"
+                stroke="#888888" stroke-width="6" stroke-linecap="round" />
 
-<style>
-#roof-anim-container {
-  width: 700px;
-  margin: 20px auto;
-  background: radial-gradient(circle at top, #151821 0, #05060a 60%);
-  border-radius: 8px;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
-  padding: 10px;
-}
+          <!-- tłoczysko (do dachu) -->
+          <line id="rod" x1="200" y1="260" x2="260" y2="220"
+                stroke="#d0d4dd" stroke-width="4" stroke-linecap="round" />
+          <circle id="rod-joint" cx="260" cy="220" r="5" fill="#ffaa00" />
+        </g>
 
-/* 6‑etapowa animacja składania dachu – jak cykl roboczy */
-@keyframes roofCycle {
-  0%   { transform: rotate(0deg); }      /* Dach zamknięty */
-  15%  { transform: rotate(-20deg); }    /* Etap 1 – odryglowanie i start ruchu */
-  35%  { transform: rotate(-60deg); }    /* Etap 2 – front bow w ruchu */
-  55%  { transform: rotate(-100deg); }   /* Etap 3 – mid bow nad bagażnikiem */
-  75%  { transform: rotate(-135deg); }   /* Etap 4 – rear bow schodzi w dół */
-  100% { transform: rotate(-160deg); }   /* Etap 5/6 – dach w schowku */
-}
+        <!-- „MES” – symboliczne ugięcie -->
+        <g id="fem-cloud" opacity="0">
+          <ellipse id="fem-ellipse" cx="320" cy="150" rx="120" ry="40"
+                   fill="url(#femGradient)" />
+        </g>
 
-/* „MES” – ugięcie dachu (symboliczne) */
-@keyframes femPulse {
-  0%   { opacity: 0; transform: scale(0.8); }
-  40%  { opacity: 0.9; transform: scale(1.05); }
-  80%  { opacity: 0.4; transform: scale(1.0); }
-  100% { opacity: 0; transform: scale(0.9); }
-}
+        <defs>
+          <linearGradient id="femGradient" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#3b82f6" />
+            <stop offset="50%" stop-color="#ffaa00" />
+            <stop offset="100%" stop-color="#ff4b4b" />
+          </linearGradient>
+        </defs>
 
-/* Ruch tłoczyska siłownika – zsynchronizowany z dachem */
-@keyframes rodMove {
-  0%   { transform: translate(0px, 0px); }
-  25%  { transform: translate(10px, -10px); }
-  50%  { transform: translate(25px, -25px); }
-  75%  { transform: translate(35px, -30px); }
-  100% { transform: translate(40px, -35px); }
-}
+        <!-- Podpisy -->
+        <g class="label">
+          <text x="70" y="230">Karoseria</text>
+          <text x="150" y="200">Zawias bazowy</text>
+          <text x="260" y="120">Front bow</text>
+          <text x="360" y="110">Mid bow</text>
+          <text x="460" y="130">Rear bow</text>
+          <text x="210" y="275">Cylinder</text>
+          <text x="270" y="215">Tłoczysko</text>
+        </g>
+      </svg>
+    </div>
 
-/* Dach – cała grupa obracana wokół zawiasu bazowego */
-#roof-group {
-  transform-origin: 0px 0px;
-  animation: roofCycle 7s ease-in-out infinite alternate;
-}
+    <script>
+      // Parametry ruchu
+      const cycleTime = 7000; // [ms] pełny cykl
+      const maxAngle = -160;  // [deg] maksymalny kąt złożenia dachu (ujemny = w dół)
 
-/* Siłownik – ruch tłoczyska */
-#rod, #rod-joint {
-  animation: rodMove 7s ease-in-out infinite alternate;
-}
+      const roofGroup = document.getElementById("roof-group");
+      const rod = document.getElementById("rod");
+      const rodJoint = document.getElementById("rod-joint");
+      const femCloud = document.getElementById("fem-cloud");
+      const femEllipse = document.getElementById("fem-ellipse");
 
-/* „MES” – ugięcie dachu w trakcie ruchu */
-#fem-cloud {
-  animation: femPulse 7s ease-in-out infinite alternate;
-}
-</style>
+      // Prosta funkcja ease-in-out (0..1)
+      function easeInOut(t) {
+        return t < 0.5
+          ? 2 * t * t
+          : -1 + (4 - 2 * t) * t;
+      }
+
+      // Główna pętla animacji
+      function animateRoof(timestamp) {
+        if (!animateRoof.start) animateRoof.start = timestamp;
+        const elapsed = timestamp - animateRoof.start;
+
+        // faza cyklu 0..1..0 (tam i z powrotem)
+        const phase = (elapsed % cycleTime) / cycleTime;
+        const dir = phase <= 0.5 ? (phase / 0.5) : (1 - (phase - 0.5) / 0.5);
+        const eased = easeInOut(dir);
+
+        // kąt dachu
+        const angle = eased * maxAngle;
+        roofGroup.setAttribute("transform", `translate(140,210) rotate(${angle})`);
+
+        // ruch siłownika – uproszczony model zależności od kąta
+        const baseRodX = 200;
+        const baseRodY = 260;
+
+        const rodLength0 = 60; // [px] długość początkowa
+        const rodDelta = 40;   // [px] dodatkowy skok
+
+        const rodLength = rodLength0 + rodDelta * eased;
+
+        // położenie końca tłoczyska (przy dachu)
+        const rodAngleRad = (-40 - angle * 0.3) * Math.PI / 180; // symboliczna zależność
+        const rodEndX = baseRodX + rodLength * Math.cos(rodAngleRad);
+        const rodEndY = baseRodY + rodLength * Math.sin(rodAngleRad);
+
+        rod.setAttribute("x2", rodEndX);
+        rod.setAttribute("y2", rodEndY);
+        rodJoint.setAttribute("cx", rodEndX);
+        rodJoint.setAttribute("cy", rodEndY);
+
+        // „MES” – ugięcie zależne od kąta (im bardziej złożony, tym większe ugięcie)
+        const deflectionFactor = Math.abs(angle / maxAngle); // 0..1
+        const rx = 80 + 60 * deflectionFactor;
+        const ry = 20 + 25 * deflectionFactor;
+        femEllipse.setAttribute("rx", rx);
+        femEllipse.setAttribute("ry", ry);
+
+        const femOpacity = 0.2 + 0.6 * deflectionFactor;
+        femCloud.setAttribute("opacity", femOpacity.toFixed(2));
+
+        requestAnimationFrame(animateRoof);
+      }
+
+      requestAnimationFrame(animateRoof);
+    </script>
+  </body>
+</html>
