@@ -23,8 +23,9 @@ na poziomie doświadczonego inżyniera, podaj źródła, jakie znajdziesz, odpow
 
 Przykładowo Dach BMW E63: założenie że przód samochodu jest po lewej stronie a tył po prawej,
 Dach składa się jak harmonia i przyczepia się do belki dachowej przedniej szyby, 
-dach składa się z czterech łuków Bow front - Bo mid, Bow rear , idąc od lewej ma dach szczepia się belką szyby przedniej - punkt 1,  
-pierszy łuk - Bow front obraca sie wokól pierwszego zawiasu - H1 o około 170 stopni, 
-mid bow pozostaje w pozycji poziomej
+dach składa się z czterech łuków: Bow front, Bow mid, Bow rear, Bow boot:
+idąc od lewej ma dach szczepia się belką szyby przedniej - punkt 0,  
+pierszy łuk - Bow front - obraca sie wokól pierwszego zawiasu H1 o około 170 stopni, 
+mid bow cały czas pozostaje w pozycji poziomej, w tym samym czsie podnosi się Bow boot
 
 animację MES (ugięcie dachu)
