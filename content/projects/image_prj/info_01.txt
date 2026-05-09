@@ -1,0 +1,30 @@
+3‑segmentową animację 2D dachu kabrioletu na poziomie inżynierskim,
+każdy element ma być opisany: elementy front bow, mid bow, rear bow, do tego opis przegubów: H1, H2, H3 itd.
+Opisy nich podążają za elementami np: front bow za łukiem, H1 za przegubem,
+pozostałe elementy tak samo, animację z siłownikiem hydraulicznym jak w realnych kabrioletach,
+Do tego potrzebuje obliczenia mechaniczne z zakresu mechaniki kinematyki-krok po kroku,
+każdy etap ma własną logikę i prędkość, animację z różniczkowymi równaniami ruchu,
+ułóż jakieś różniczkowe równianie ruchu, podaj jednostki i opisz co zwiera wzór,
+potrzebuję pełną animację składania dachu (6 etapów), zrób tak, żeby wyglądało jak z dokumentacji BMW,
+do zapisu animacji użyj java script - chyba że znajdziesz coś lepszego - ma być w osobnym pliku auomotive_pl.html,
+będzie kod odwołujący się do pliku z animacją:
+
+<iframe
+  src="content/projects/image_prj/roof_animation.html"
+  width="820"
+  height="620"
+  style="border:none; margin: 20px 0; border-radius: 8px; overflow:hidden;">
+</iframe>
+- animacja ma odbywać się w pliku roof_animation.html ta animacja jest podstroną w projekcie,
+który ma opisywać moje zainteresowania zawodowe. Udziel odpowiedz w języku polskim.
+Jestem inżynierem, który próbuje opisać, to czym zajmowałem się w życiu zawodowym,
+do animacji tego potrzebuję opis tj. zachęcającą zwięzłą treść tej animacji do strony www,
+na poziomie doświadczonego inżyniera, podaj źródła, jakie znajdziesz, odpowiedź w języku polskim.
+
+Przykładowo Dach BMW E63: założenie że przód samochodu jest po lewej stronie a tył po prawej,
+Dach składa się jak harmonia i przyczepia się do belki dachowej przedniej szyby, 
+dach składa się z czterech łuków Bow front - Bo mid, Bow rear , idąc od lewej ma dach szczepia się belką szyby przedniej - punkt 1,  
+pierszy łuk - Bow front obraca sie wokól pierwszego zawiasu - H1 o około 170 stopni, 
+mid bow pozostaje w pozycji poziomej
+
+animację MES (ugięcie dachu)
