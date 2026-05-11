@@ -44,6 +44,8 @@ punktu/zawiasu H1, kolejny jest łuk Bow boot obrót w lewo wokół pnktu/zawias
 Bow front osiąga obrót 
 
 
+
+
 pierszy łuk - Bow front - obraca sie wokól pierwszego zawiasu H1 o około 170 stopni, 
 zawias H1 łączy punkt mid bow cały czas pozostaje w pozycji poziomej, 
 jako drugi zaczyna obracać się obraca się  Bow boot
