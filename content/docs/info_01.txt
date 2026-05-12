@@ -41,7 +41,7 @@ względem pnktu/zawiasu H2, Bow boot punkt P2 leży na 180 stopniu względem pun
 Otwarcie dachu: Rozczepienie P1 od P0 nastepuję po ruchu obrotowym przyjmijmy 45 stopni w prawo Bow front wokół 
 punktu/zawiasu H1, kolejny jest łuk Bow boot obrót w lewo wokół pnktu/zawiasu/przegubu H3 do położenia 125 stopni
 (wcześniejsza pozycja była 180 stopni), kolejny jest ruch Bow front i Bow rear obracają się równocześnie w prawo,
-Bow front osiąga obrót 
+Bow front osiąga obrót około 170 stopni, 
 
 
 
