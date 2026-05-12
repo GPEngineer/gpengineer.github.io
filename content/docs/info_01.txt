@@ -21,6 +21,7 @@ Jestem inżynierem, który próbuje opisać, to czym zajmowałem się w życiu z
 do animacji tego potrzebuję opis tj. zachęcającą zwięzłą treść tej animacji do strony www,
 na poziomie doświadczonego inżyniera, podaj źródła, jakie znajdziesz, odpowiedź w języku polskim.
 
+====
 Przykładowo Dach BMW E63 zachęcającą 2008 - może być inny jaki znadziejsz, dobrze byłoby przeszukać patenty, 
 np. firmy Karmann pamiętam że że mają patenty moga odnosić się do innych modeli niż BMW, Karman robił systemy dachowe 
 nie tylko dla BMW, robił też dla Bentley czy marek samochodów:
@@ -29,22 +30,33 @@ Dach składa się jak harmonia z czterech łuków o konktretnych długościach, 
 Bow front, Bow mid, Bow rear, Bow boot:
 
 Idąc od lewej P4 to stały, nieruchomy punkt, czyli górna belka szyby przedniej, nie będący zawiasem punkt P3 łączy
-się z punktem P2 to łuk -  
-Bow front - P2 to zawias połaczy się z łukiem - Bow mid - z punktem P1, który też jest zawiasem i łaczy się
+się z punktem P2 to łuk - Bow front  to zawias połaczy się z łukiem - Bow mid - w punkcie P1, który też jest zawiasem i łaczy się
 z łukiem Bow rear który łączy się z P0, który jest zawiasem i w tym punkcie łączy się z łukiem Bow boot do punktu P4,
-który nie jest zawiasem.
-Dodakowo jest klapa na przegubie 
+który nie jest zawiasem. Dodakowo jest klapa na zawiasie w punkcie P5. 
 
-na zawiasie/punkcie H3 i ten punkt nie przemiszcza się w przestrzeni, jest przegubem ma tylko obrotowy punkt swobobody, 
+Opis kinematyki: Przyjęto Oś X poziomo na prawo dodatnie na lewo ujemne, oś Y pionowo - do góry dodatnie 
+do dołu ujemne. Punkty P4 i P5 do są punkty które mają tylko obrotowe stopnie swobody, czli nie zmieniają swojego położenia 
+w przestrzeni. Jako pierwszy punkt P3 zmienia swoje położenie po promieniu wokół punktu P2, czyli łuk Bow front
+obraca się o jakieś 30 stopni do góry, w tym samym czasie klapa Bow boot wokół punktu P5 obraca się też do góry
+o 85 stopni, następnie jest zatrzymanie na 1.5 sekundy po czym równocześnie łuki: Bow front znowu się obraca w prawo 
+wokół P2 i łuk Bow rear obraca się wokół P0, oba łuki obracają cię do kąta 180 stopni (bezwględnie wg. 
+przyjętego układu), łuk bow mid między punktami P2 i P1 cały czas porusza się w pozycji horyzontalnej, 
+przemieszczając się podąża w prawo za łukiem Bow rear aż do zamknięcia się dachu, nastepnie łuk Bow boot
+obraca się w lewo aż do zamknięcia do pozycji bezwgldnego 0 stopni. długości do obliczeń przyjmij jakieś realne,
+do wyświtlania na ekranie przyjmij długości skalowane takie żeby się całość mieściła na ekranie.
+Pasek 
+
+ w  unkt nie przemiszcza się w przestrzeni, jest przegubem ma tylko obrotowy punkt swobobody, 
 kolejny łuk to Bow boot zaczyna się w punkcie H3 (H3 to wspólny punkt dla Bow rear i Bow boot) i kończy na P2.
 
-Opis kinematyki: Po pierwsze trzba przyjąć jak przyjęte jest 0 stopni, na płasko przyjabym również że jest to oś X,
+ Po pierwsze trzba przyjąć jak przyjęte jest 0 stopni, na płasko przyjabym również że jest to oś X,
 leży na lewo od zera, obrót w prawo
 daje dodatnie wartości kąta. Opis ułożenia dachu w pozycji zamkniętej:
 P0 jest połączone z P1 łui Bow front i Bow mid przyjmijmy że leżą w pozycji zero, łuk Bow rear leży na kącie +225 stopni
 względem pnktu/zawiasu H2, Bow boot punkt P2 leży na 180 stopniu względem punktu/zawiasu/przegubu H3.
 Jest jeszcze punkt P3 który leży 
-Otwarcie dachu: Rozczepienie P1 od P0 nastepuję po ruchu obrotowym przyjmijmy 45 stopni w prawo Bow front wokół 
+Otwarcie dachu: Rozczepienie P1 od P0 nastepuję po ruchu obrotowym przyjmijmy 45 stopni w prawo Bow front
+wokół 
 punktu/zawiasu H1, nastęy jst ... kolejny jest łuk Bow boot obrót w lewo wokół pnktu/zawiasu/przegubu H3 do położenia 125 stopni
 (wcześniejsza pozycja była 180 stopni), kolejny jest ruch Bow front i Bow rear obracają się równocześnie w prawo,
 Bow front osiąga obrót około 170 stopni, 
