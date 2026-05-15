@@ -48,6 +48,8 @@ Analizuj, popraw kod kinematyki i weź pod uwagę rysunek.
 
 
 
+
+
 animację MES (ugięcie dachu) - później
 
 1. jaki był inżynierski problem - what was the engineering problem? 
