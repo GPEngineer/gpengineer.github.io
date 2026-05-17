@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinematyka Dachu Kabrioletu — BMW E63 type</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+  :root {
+    --bg:#0b0d11; --panel:#111418; --border:#1c2028; --dim:#252a34;
+    --acc:#c8a44a; --blue:#4a8ec8; --green:#4ac87a; --red:#c85050;
+    --pur:#9060c8; --text:#ccd0d8; --muted:#505a6a; --cvs:#0d0f14;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;
+       min-height:100vh;display:flex;flex-direction:column;overflow:hidden}
+  .hdr{display:flex;align-items:center;justify-content:space-between;
+       padding:10px 20px;border-bottom:1px solid var(--border);background:var(--panel);flex-shrink:0}
+  .hdr-l{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--acc);letter-spacing:2px}
+  .hdr-c{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px}
+  .hdr-r{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--acc);
+          border:1px solid var(--acc);padding:2px 8px;border-radius:2px}
+  .main{display:flex;flex:1;overflow:hidden}
+  .cw{flex:1;display:flex;flex-direction:column;background:var(--cvs);border-right:1px solid var(--border);position:relative}
+  .ctop{display:flex;align-items:center;justify-content:space-between;
+        padding:7px 16px;border-bottom:1px solid var(--border);background:rgba(17,20,24,.92);z-index:5;flex-shrink:0}
+  .ctop span{font-family:'IBM Plex Mono',monospace;font-size:10px}
+  .ls{color:var(--acc)} .lp{color:var(--text)} .lt{color:var(--muted)}
+  canvas{flex:1;display:block;width:100%;height:100%}
+  .ctrl{display:flex;align-items:center;gap:10px;padding:9px 16px;
+        border-top:1px solid var(--border);background:var(--panel);flex-shrink:0}
+  .btn{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;
+       padding:5px 14px;border:1px solid var(--border);background:transparent;color:var(--text);
+       cursor:pointer;border-radius:2px;transition:all .15s}
+  .btn:hover{border-color:var(--acc);color:var(--acc)}
+  .btn.p{border-color:var(--acc);color:var(--acc)}
+  .btn.a{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+  .pb{flex:1;height:3px;background:var(--dim);border-radius:2px;overflow:hidden}
+  .pf{height:100%;background:linear-gradient(90deg,var(--blue),var(--acc));border-radius:2px;width:0%;transition:width .05s linear}
+  .pp{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);min-width:34px;text-align:right}
+  .side{width:272px;flex-shrink:0;display:flex;flex-direction:column;overflow-y:auto;background:var(--panel)}
+  .side::-webkit-scrollbar{width:3px}
+  .side::-webkit-scrollbar-thumb{background:var(--dim)}
+  .sec{border-bottom:1px solid var(--border);padding:12px 14px}
+  .st{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
+  .phi{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;
+       padding:6px 8px;border-radius:2px;border:1px solid transparent;cursor:pointer;transition:all .12s}
+  .phi:hover{border-color:var(--dim)}
+  .phi.on{border-color:var(--acc);background:rgba(200,164,74,.05)}
+  .pn{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);min-width:16px;padding-top:1px}
+  .phi.on .pn{color:var(--acc)}
+  .pt{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text);margin-bottom:2px}
+  .pd{font-size:9px;color:var(--muted);line-height:1.45}
+  .dg{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  .dc{background:var(--bg);border:1px solid var(--border);padding:6px 8px;border-radius:2px}
+  .dl{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px;margin-bottom:2px}
+  .dv{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--acc);font-weight:600}
+  .du{font-size:8px;color:var(--muted)}
+  .fm{background:var(--bg);border:1px solid var(--border);border-left:2px solid var(--blue);
+      padding:9px 11px;border-radius:2px;margin-bottom:7px}
+  .ft{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--blue);margin-bottom:5px}
+  .fe{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--text);line-height:1.75}
+  .fn{font-size:8.5px;color:var(--muted);margin-top:5px;line-height:1.5}
+  .li{display:flex;align-items:center;gap:7px;margin-bottom:4px}
+  .ls2{width:22px;height:3px;border-radius:1px;flex-shrink:0}
+  .lt2{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted)}
+  .hw{height:7px;background:var(--bg);border:1px solid var(--border);border-radius:2px;overflow:hidden;margin-top:5px}
+  .hf{height:100%;background:linear-gradient(90deg,var(--red),var(--acc));border-radius:2px;transition:width .1s}
+  .hl{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--muted);margin-top:3px}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-l">CABRIO ROOF / KINEMATYKA 2D</div>
+  <div class="hdr-c">4-ŁUKOWY MECH. — WIDOK BOCZNY — PRZÓD: LEWO (X−), TYŁ: PRAWO (X+)</div>
+  <div class="hdr-r">BMW E63 TYPE</div>
+</div>
+<div class="main">
+  <div class="cw">
+    <div class="ctop">
+      <span class="ls" id="IS">ETAP 1/6</span>
+      <span class="lp" id="IP">INICJALIZACJA</span>
+      <span class="lt" id="IT">t = 0.00 s</span>
+    </div>
+    <canvas id="C"></canvas>
+    <div class="ctrl">
+      <button class="btn p" id="btnP" onclick="togglePlay()">▶ START</button>
+      <button class="btn"   onclick="doReset()">↺ RESET</button>
+      <div class="pb"><div class="pf" id="pgf"></div></div>
+      <span class="pp" id="pgp">0%</span>
+    </div>
+  </div>
+  <div class="side">
+    <div class="sec">
+      <div class="st">SEKWENCJA (6 ETAPÓW)</div>
+      <div class="phi on" id="ph0" onclick="jumpTo(0)">
+        <div class="pn">01</div>
+        <div><div class="pt">KLAPA BOW BOOT OTWIERA SIĘ</div>
+             <div class="pd">Obrót wokół P5: 0° → +85° (do góry) — HYD aktywny</div></div>
+      </div>
+      <div class="phi" id="ph1" onclick="jumpTo(1)">
+        <div class="pn">02</div>
+        <div><div class="pt">BOW FRONT UNOSI SIĘ</div>
+             <div class="pd">P3 obraca się wokół P4: 0° → +30° (do góry)</div></div>
+      </div>
+      <div class="phi" id="ph2" onclick="jumpTo(2)">
+        <div class="pn">03</div>
+        <div><div class="pt">PAUZA TECHNICZNA 1.5 s</div>
+             <div class="pd">Układ zatrzymany — weryfikacja pozycji</div></div>
+      </div>
+      <div class="phi" id="ph3" onclick="jumpTo(3)">
+        <div class="pn">04</div>
+        <div><div class="pt">SYNCHRO: FRONT + REAR → 180°</div>
+             <div class="pd">Front P4: 30°→180°; Rear P0: 0°→180°; Mid poziomo przesuwa się</div></div>
+      </div>
+      <div class="phi" id="ph4" onclick="jumpTo(4)">
+        <div class="pn">05</div>
+        <div><div class="pt">PAKOWANIE — BOW MID WYSUWA SIĘ</div>
+             <div class="pd">Bow Mid podąża poziomo za Rear do komory</div></div>
+      </div>
+      <div class="phi" id="ph5" onclick="jumpTo(5)">
+        <div class="pn">06</div>
+        <div><div class="pt">ZAMKNIĘCIE KLAPY BOW BOOT</div>
+             <div class="pd">P5: 85° → 0° — dach złożony i zamknięty</div></div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="st">DANE KINEMATYCZNE</div>
+      <div class="dg">
+        <div class="dc"><div class="dl">θ BOOT (P5)</div><div class="dv" id="dB">0.0<span class="du">°</span></div></div>
+        <div class="dc"><div class="dl">θ FRONT (P4)</div><div class="dv" id="dF">0.0<span class="du">°</span></div></div>
+        <div class="dc"><div class="dl">θ REAR (P0)</div><div class="dv" id="dR">0.0<span class="du">°</span></div></div>
+        <div class="dc"><div class="dl">Δx MID [mm]</div><div class="dv" id="dM">0<span class="du">mm</span></div></div>
+        <div class="dc"><div class="dl">CIŚNIENIE</div><div class="dv" id="dP">0<span class="du">bar</span></div></div>
+        <div class="dc"><div class="dl">SKOK CYL.</div><div class="dv" id="dS">0.0<span class="du">mm</span></div></div>
+      </div>
+      <div class="dl" style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--muted);margin-top:8px">CIŚNIENIE ROBOCZE SIŁOWNIKA HYD.</div>
+      <div class="hw"><div class="hf" id="hBar"></div></div>
+      <div class="hl"><span>0</span><span id="hLbl">0 bar</span><span>200 bar</span></div>
+    </div>
+    <div class="sec">
+      <div class="st">RÓWNANIA RUCHU</div>
+      <div class="fm">
+        <div class="ft">EOM — DYNAMICZNE (1-DOF / SEGMENT)</div>
+        <div class="fe">I·θ̈ + c·θ̇ + k·θ = M_hyd(t)<br>I = m·r²  [kg·m²]<br>c  [N·m·s/rad]<br>k  [N·m/rad]<br>M_hyd = F·l_arm·sin(α)</div>
+        <div class="fn">F = p·A; p ≤ 200 bar; A = π(d/2)²; d=25 mm → F_max ≈ 9.8 kN</div>
+      </div>
+      <div class="fm">
+        <div class="ft">KINEMATYKA PRZEGUBU 2D</div>
+        <div class="fe">x(t) = x₀ + l·cos(θ(t))<br>y(t) = y₀ + l·sin(θ(t))<br>v = l·ω·[−sinθ, cosθ]ᵀ<br>a = l·[−ω²cosθ − α·sinθ, ...]</div>
+        <div class="fn">l — dł. łuku [m]; θ — kąt [rad]; ω=θ̇ [rad/s]; α=θ̈ [rad/s²]</div>
+      </div>
+      <div class="fm">
+        <div class="ft">PROFIL PRĘDKOŚCI (TRAPEZOWY)</div>
+        <div class="fe">ω(t) = ω_max · f_smooth(t)<br>f ∈ [0,1] — easeInOut<br>jerk = d³θ/dt³ → minimalne<br>t_total ≈ 9.5 s</div>
+        <div class="fn">Minimalizacja szarpnięcia — standard OEM (BMW, Karmann)</div>
+      </div>
+    </div>
+    <div class="sec">
+      <div class="st">LEGENDA</div>
+      <div class="li"><div class="ls2" style="background:#c8a44a"></div><div class="lt2">BOW FRONT — P4 (stały) → P2</div></div>
+      <div class="li"><div class="ls2" style="background:#4a8ec8"></div><div class="lt2">BOW MID — P2 → P1 (poziomo)</div></div>
+      <div class="li"><div class="ls2" style="background:#4ac87a"></div><div class="lt2">BOW REAR — P1 → P0</div></div>
+      <div class="li"><div class="ls2" style="background:#9060c8"></div><div class="lt2">BOW BOOT (klapa) — P5 → koniec</div></div>
+      <div class="li"><div class="ls2" style="background:#c85050"></div><div class="lt2">SIŁOWNIK HYDRAULICZNY</div></div>
+      <div class="li"><div style="width:8px;height:8px;border-radius:50%;background:#e0e0e0;flex-shrink:0"></div><div class="lt2">P0..P5 — przeguby obrotowe</div></div>
+      <div class="li"><div style="width:12px;height:10px;background:none;border-bottom:2px solid #607080;flex-shrink:0"></div><div class="lt2">▲ P4/P5 — punkt stały (karoseria)</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// CANVAS
+// ════════════════════════════════════════════════════════════
+const cv = document.getElementById('C');
+const cx = cv.getContext('2d');
+function resize(){
+  const p=cv.parentElement;
+  cv.width=p.clientWidth;
+  cv.height=p.clientHeight-36-43;
+}
+resize();
+window.addEventListener('resize',()=>{resize();draw();});
+
+// ════════════════════════════════════════════════════════════
+// REAL DIMENSIONS (mm) — BMW E63 Cabrio approximate values
+// Bow Front  (P4→P2):  850 mm  (incl. P3 stiffener)
+// Bow Mid    (P2→P1):  780 mm
+// Bow Rear   (P1→P0):  720 mm
+// Bow Boot   (P5→end): 640 mm  (boot lid)
+// ════════════════════════════════════════════════════════════
+const R={Lf:850,Lm:780,Lr:720,Lb:640};
+
+// ════════════════════════════════════════════════════════════
+// ANIM STATE
+// ════════════════════════════════════════════════════════════
+let playing=false,animT=0,lastNow=null,raf=null;
+const TOTDUR=9.5; // seconds
+
+// Phase time ranges [0..1]
+const PH=[
+  [0.00,0.13,'KLAPA BOW BOOT OTWIERA SIĘ'],
+  [0.13,0.26,'BOW FRONT UNOSI SIĘ +30°'],
+  [0.26,0.42,'PAUZA TECHNICZNA 1.5 s'],
+  [0.42,0.72,'SYNCHRO: FRONT+REAR → 180°'],
+  [0.72,0.88,'PAKOWANIE — MID PRZESUWA SIĘ'],
+  [0.88,1.00,'ZAMKNIĘCIE KLAPY BOW BOOT'],
+];
+
+function pp(t,a,b){return Math.max(0,Math.min(1,(t-a)/(b-a)));}
+function ei(t){return t<.5?2*t*t:-1+(4-2*t)*t;}   // ease in-out
+function eo(t){return 1-(1-t)**3;}                  // ease out
+
+// ════════════════════════════════════════════════════════════
+// DRAW HELPERS
+// ════════════════════════════════════════════════════════════
+function beam(x1,y1,x2,y2,col,w,al=1){
+  cx.save();cx.globalAlpha=al;cx.strokeStyle=col;cx.lineWidth=w;cx.lineCap='round';
+  cx.beginPath();cx.moveTo(x1,y1);cx.lineTo(x2,y2);cx.stroke();cx.restore();
+}
+function label(x,y,txt,col,sz=9,align='left'){
+  cx.save();cx.font=sz+"px 'IBM Plex Mono',monospace";cx.fillStyle=col;cx.textAlign=align;
+  cx.fillText(txt,x,y);cx.restore();
+}
+// Fixed support (triangle) symbol
+function fixedSupport(x,y,col){
+  cx.save();
+  cx.beginPath();cx.moveTo(x,y);cx.lineTo(x-9,y+15);cx.lineTo(x+9,y+15);cx.closePath();
+  cx.fillStyle='#1a2230';cx.strokeStyle=col;cx.lineWidth=1.5;cx.fill();cx.stroke();
+  cx.beginPath();cx.moveTo(x-12,y+17);cx.lineTo(x+12,y+17);
+  cx.strokeStyle=col;cx.lineWidth=1;cx.stroke();
+  // hatching
+  for(let i=-10;i<=10;i+=5){
+    cx.beginPath();cx.moveTo(x+i,y+17);cx.lineTo(x+i-4,y+23);
+    cx.strokeStyle=col;cx.lineWidth=.7;cx.stroke();
+  }
+  cx.restore();
+}
+// Free hinge (circle)
+function hinge(x,y,label_txt,col,r=7){
+  cx.save();
+  cx.beginPath();cx.arc(x,y,r,0,Math.PI*2);
+  cx.fillStyle='#0b0d11';cx.strokeStyle=col;cx.lineWidth=2;cx.fill();cx.stroke();
+  cx.beginPath();cx.arc(x,y,r*.38,0,Math.PI*2);cx.fillStyle=col;cx.fill();
+  if(label_txt){
+    cx.font="bold 9px 'IBM Plex Mono',monospace";cx.fillStyle=col;
+    cx.fillText(label_txt,x+r+3,y-r-1);
+  }
+  cx.restore();
+}
+// Hydraulic cylinder from a→b
+function cylinder(ax,ay,bx,by){
+  const ang=Math.atan2(by-ay,bx-ax);
+  const dist=Math.hypot(bx-ax,by-ay);
+  cx.save();
+  cx.translate((ax+bx)/2,(ay+by)/2);cx.rotate(ang);
+  const bl=dist*.52,bw=8;
+  cx.fillStyle='#1c2230';cx.strokeStyle='#384050';cx.lineWidth=1;
+  cx.beginPath();cx.roundRect(-bl/2,-bw/2,bl,bw,2);cx.fill();cx.stroke();
+  const rl=dist*.45;
+  cx.fillStyle='#c85050';cx.beginPath();cx.rect(bl/2-1,-3,rl+1,6);cx.fill();
+  // end caps
+  cx.beginPath();cx.arc(-bl/2,0,5,0,Math.PI*2);
+  cx.fillStyle='#222';cx.strokeStyle='#c85050';cx.lineWidth=1.5;cx.fill();cx.stroke();
+  cx.beginPath();cx.arc(dist/2,0,4,0,Math.PI*2);cx.fillStyle='#c85050';cx.fill();
+  cx.restore();
+}
+function pt(ox,oy,len,ang){return[ox+len*Math.cos(ang),oy+len*Math.sin(ang)];}
+function lerp(a,b,t){return a+(b-a)*t;}
+
+// ════════════════════════════════════════════════════════════
+// MAIN DRAW
+// ════════════════════════════════════════════════════════════
+function draw(){
+  const W=cv.width,H=cv.height;
+  cx.clearRect(0,0,W,H);
+
+  // BG
+  cx.fillStyle='#0d0f16';cx.fillRect(0,0,W,H);
+  // Grid
+  cx.save();cx.strokeStyle='rgba(28,32,40,.5)';cx.lineWidth=.5;
+  const gs=40;
+  for(let x=0;x<W;x+=gs){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke();}
+  for(let y=0;y<H;y+=gs){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke();}
+  cx.restore();
+
+  const t=animT;
+
+  // ── SCALE ──
+  // Total real horizontal span (closed) ≈ Lf+Lm+Lr+Lb ≈ 2990 mm
+  // Use 72% of canvas width
+  const S=(W*0.72)/(R.Lf+R.Lm+R.Lr+R.Lb);
+  const Lf=R.Lf*S, Lm=R.Lm*S, Lr=R.Lr*S, Lb=R.Lb*S;
+
+  // ── LAYOUT ──
+  // Canvas Y: top=0, bottom=H; car body horizontal at ~55% down
+  // X: P4 (front, windscreen top) at left; P0 (rear, trunk pivot) to right
+  // Coord system displayed: X+ right, Y+ UP (canvas Y is inverted, we account for this in sign)
+  // We'll use SCREEN coords directly (Y down is positive in canvas).
+
+  const bodyY = H*0.55;  // Y of the horizontal roofline / pivot axis
+
+  // P4 = top of windscreen (fixed, left)
+  const P4x=W*0.14, P4y=bodyY;
+
+  // When CLOSED: all bows stretch LEFTWARD from P0 to P4
+  // P0 is at P4x + Lf + Lm + Lr (bows are roughly co-linear when closed)
+  const P0x=P4x+Lf+Lm+Lr, P0y=bodyY;
+
+  // P5 = boot lid pivot (fixed), slightly right of P0 and slightly below
+  const P5x=P0x+Lb*0.1, P5y=bodyY+H*0.03;
+
+  // ── PHASE PROGRESS ──
+  const q0=ei(pp(t,PH[0][0],PH[0][1])); // boot opens 0→85°
+  const q1=ei(pp(t,PH[1][0],PH[1][1])); // front 0→30°
+  // q2 = pause (no geometry)
+  const q3=ei(pp(t,PH[3][0],PH[3][1])); // front 30→180°, rear 0→180°, mid slides
+  const q4=ei(pp(t,PH[4][0],PH[4][1])); // mid packing
+  const q5=ei(pp(t,PH[5][0],PH[5][1])); // boot closes
+
+  // ══ BOW FRONT ══
+  // Pivot: P4 (fixed). End: P2 (floating).
+  // CLOSED (initial): P2 is to the RIGHT of P4 (bow stretches right-ward along body)
+  // So initial angle (standard math, CCW from +X right): 0° (pointing right +X)
+  // Phase 1: P3 (tip) goes UP (screen = negative Y direction) by +30°
+  //   In screen coords (Y down): "up on screen" = negative Y change
+  //   If we treat screen Y-up as positive: rotation CCW = upward = angle increases
+  //   Let's define: angle measured from +X axis, screen-up = CCW (we'll use -y for upward)
+  //   Initial: angle_front_from_Xplus = 0  (pointing right)
+  //   Phase1: rotates +30° (upward = screen CCW)
+  //   Phase3: continues +150° more → total 180° (pointing left = fully packed)
+  const dFront_p1 = 30*Math.PI/180 * q1;
+  const dFront_p3 = 150*Math.PI/180 * q3;
+  const angFront  = dFront_p1 + dFront_p3; // 0 → π
+
+  // P2 = end of Bow Front
+  // In screen coords: angle 0 = rightward, increasing CCW = upward (screen Y inverted!)
+  // We use: x2 = P4x + Lf*cos(angFront), y2 = P4y - Lf*sin(angFront) [- because screen Y down]
+  const P2x = P4x + Lf*Math.cos(angFront);
+  const P2y = P4y - Lf*Math.sin(angFront);
+
+  // ══ BOW REAR ══
+  // Pivot: P0 (fixed). End: P1 (floating).
+  // CLOSED: P1 is to the LEFT of P0 → angle_rear = π (pointing left)
+  // Phase3: rotates CLOCKWISE (downward in screen = +Y direction, i.e. angle DECREASES in math coords)
+  //   "do kąta 180° bezwzględnie" — after full rotation, pointing RIGHT = 0°, tucked into trunk
+  //   So total rotation = from π to 0 = -π (CW in math, which is +angle in screen coords if we go down)
+  //   Screen: initial = pointing LEFT, rotates so tip goes DOWN and RIGHT → angle in screen-convention:
+  //   screen_ang_rear = π - π*q3  (starts at π = left, ends at 0 = right)
+  const angRear = Math.PI*(1 - q3);  // π→0 (from left to right, going through bottom)
+
+  // Tip of rear bow going DOWN first, then right (through bottom arc)
+  // So: P1x = P0x + Lr*cos(angRear_screen), P1y = P0y + Lr*sin(angRear_screen) [DOWN = +y]
+  // But angRear here is math angle (CCW from +X): π means left, 0 means right
+  // When q3=0: P1 = (P0x - Lr, P0y) = left of P0 ✓
+  // When q3=0.5: P1 = (P0x + Lr*cos(π/2), P0y + Lr*sin(π/2)) = (P0x, P0y + Lr) = directly DOWN ✓
+  // When q3=1: P1 = (P0x + Lr, P0y) = right of P0 ✓ (packed into trunk)
+  // But we go through BOTTOM arc (CW) = through +Y in screen = down first
+  // With standard math convention going π→0 via bottom means NEGATIVE arc (CW)
+  // Let's use: angRear_screen = -π*(1-q3) → from -π (left) to 0 (right) via bottom
+  // Actually simplest: angle starts at π (left), decreases via BOTTOM to 0 (right):
+  //   π→0 via bottom in screen coords (y down) means angle goes from π DOWN through π/2 (pointing down in screen) to 0
+  //   cos(π)=-1→0→1; sin(π)=0→1(down)→0 : This is CW in MATH = correct for "goes down then right"
+  //   So P1x = P0x + Lr*cos(angRear), P1y = P0y - Lr*sin(angRear) gives UP arc
+  //   P1x = P0x + Lr*cos(angRear), P1y = P0y + Lr*sin(angRear) ... sin(π)=0, sin(π/2)=1 → DOWN ✓
+  const P1x = P0x + Lr*Math.cos(angRear);
+  const P1y = P0y + Lr*Math.sin(angRear); // +sin: goes DOWN through arc ✓
+
+  // ══ BOW MID ══
+  // "cały czas porusza się w pozycji horyzontalnej" = always horizontal
+  // Left end connects to P2 (front bow end), right end connects to P1 (rear bow end)
+  // Since it stays HORIZONTAL but P2 and P1 move differently, we keep Y = midpoint
+  // and treat it as rigid horizontal rod of length Lm sliding between constraints
+  // Visual: draw it horizontal at average Y of P2 and P1 during motion
+  // When closed: P2 = (P4x+Lf, P4y) and P1 = (P0x-Lr, P0y) so mid is horizontal ✓
+  const midY = lerp(P2y, P1y, 0.5);   // visual horizontal approximation
+  // But keep X extent matching P2→P1 projected (mid is rigid Lm long)
+  // Left end of mid = follow P2.x, right end = left end + Lm
+  // As front rotates, P2 moves; as rear rotates, P1 moves; mid stays horizontal, slides:
+  const P2mx = P2x;
+  const P2my = midY;
+  // Right end: keep horizontal length Lm
+  const P1mx = P2mx + Lm;
+  const P1my = midY;
+  // Small vertical connecting links (P2 → P2m, P1 → P1m)
+  // These represent the actual 4-bar link compensation (main mechanism)
+
+  // ══ BOW BOOT (klapa) ══
+  // Pivot: P5 (fixed). End: PB (floating).
+  // CLOSED (initial): boot lid CLOSED = pointing LEFTWARD = angle π
+  // Phase 0: opens UPWARD = rotates CCW in screen = angle decreases
+  //   In our screen-coords convention (angle in standard math): 
+  //   "up" = angle increases (CCW) but "screen up" = -Y direction
+  //   Boot opens toward screen-up → angBoot decreases from π
+  //   Open position: π - 85°·π/180
+  const dBoot = (85*Math.PI/180)*(q0 - q5);  // opens then closes
+  const angBoot = Math.PI - dBoot;
+  const PBx = P5x + Lb*Math.cos(angBoot);
+  const PBy = P5y - Lb*Math.sin(angBoot);  // screen: -sin for upward
+
+  // ══ HYDRAULIC CYLINDER ══
+  // Body anchor near P0 (below), rod pushes rear bow link near midpoint
+  const cylAx = P0x + 5;
+  const cylAy = P0y + H*0.08;
+  const cylBx = lerp(P0x,P1x,0.55);
+  const cylBy = lerp(P0y,P1y,0.55);
+
+  // ════════ DRAW ════════
+
+  drawBody(W,H,P4x,P4y,P0x,P0y,P5x,P5y,Lf,Lm,Lr,Lb);
+
+  // Bow Boot
+  beam(P5x,P5y,PBx,PBy,'#9060c8',6);
+  label(lerp(P5x,PBx,.4)+6,lerp(P5y,PBy,.4)-11,'BOW BOOT','#9060c8');
+
+  // Bow Rear
+  beam(P0x,P0y,P1x,P1y,'#4ac87a',6);
+  const rMidX=lerp(P0x,P1x,.45), rMidY=lerp(P0y,P1y,.45);
+  label(rMidX+8,rMidY-10,'BOW REAR','#4ac87a');
+
+  // Bow Mid (horizontal)
+  beam(P2mx,P2my,P1mx,P1my,'#4a8ec8',6);
+  label(lerp(P2mx,P1mx,.45),P2my-13,'BOW MID','#4a8ec8');
+
+  // Connecting links (P2→P2m and P1→P1m) — thin, dashed, shows kinematic constraint
+  cx.save(); cx.strokeStyle='rgba(74,142,200,.4)'; cx.lineWidth=1.5;
+  cx.setLineDash([4,4]);
+  cx.beginPath();cx.moveTo(P2x,P2y);cx.lineTo(P2mx,P2my);cx.stroke();
+  cx.strokeStyle='rgba(74,200,122,.4)';
+  cx.beginPath();cx.moveTo(P1x,P1y);cx.lineTo(P1mx,P1my);cx.stroke();
+  cx.setLineDash([]);cx.restore();
+
+  // Bow Front
+  beam(P4x,P4y,P2x,P2y,'#c8a44a',6);
+  label(lerp(P4x,P2x,.35),lerp(P4y,P2y,.35)-15,'BOW FRONT','#c8a44a');
+  // P3 (intermediate stiffener point at ~60% along front bow)
+  const P3x=lerp(P4x,P2x,.6), P3y=lerp(P4y,P2y,.6);
+  cx.save();cx.beginPath();cx.arc(P3x,P3y,4,0,Math.PI*2);
+  cx.fillStyle='#c8a44a';cx.globalAlpha=.6;cx.fill();cx.restore();
+  label(P3x+5,P3y-6,'P3','#c8a44a',8);
+
+  // Hydraulic cylinder
+  cylinder(cylAx,cylAy,cylBx,cylBy);
+  label(cylAx,cylAy+18,'CYL.HYD.','#c85050',8);
+
+  // Coord axes
+  drawAxes(46,H-58);
+
+  // ── HINGES & FIXED SUPPORTS ──
+  // Fixed supports first (behind hinges)
+  fixedSupport(P4x,P4y,'#607080');
+  fixedSupport(P0x,P0y,'#607080');
+  fixedSupport(P5x,P5y,'#7060a0');
+
+  // Free hinges
+  hinge(P2x,P2y,'P2','#c8a44a');
+  hinge(P1x,P1y,'P1','#4ac87a');
+  hinge(PBx,PBy,'','#9060c8',4);
+  // Labels on fixed points
+  label(P4x-2,P4y-18,'P4','#808080',8);
+  label(P0x-2,P0y-18,'P0','#808080',8);
+  label(P5x-2,P5y-18,'P5','#9060c8',8);
+
+  // Dimension annotation
+  if(t>.03) drawDims(P4x,P4y,P2x,P2y,P0x,P0y,P1x,P1y,S);
+
+  // Update panel
+  const thetaBoot = Math.abs(dBoot)*180/Math.PI;
+  const thetaFront = angFront*180/Math.PI;
+  const thetaRear  = (Math.PI - angRear)*180/Math.PI;
+  const dxMid = (P2mx - P4x)/S;
+
+  let pres=0;
+  if(t<PH[0][1])      pres=160*q0;
+  else if(t<PH[1][1]) pres=140+40*q1;
+  else if(t<PH[2][1]) pres=20;
+  else if(t<PH[3][1]) pres=100+80*q3;
+  else if(t<PH[4][1]) pres=180*(1-q3);
+  else                 pres=80*(1-q5);
+
+  const stroke=(q1*.2+q3*.6+q0*.2)*180;
+
+  V('dB',thetaBoot.toFixed(1),'°');
+  V('dF',thetaFront.toFixed(1),'°');
+  V('dR',thetaRear.toFixed(1),'°');
+  V('dM',(dxMid).toFixed(0),'mm');
+  V('dP',pres.toFixed(0),'bar');
+  V('dS',stroke.toFixed(1),'mm');
+  document.getElementById('hBar').style.width=(pres/200*100)+'%';
+  document.getElementById('hLbl').textContent=pres.toFixed(0)+' bar';
+  document.getElementById('IT').textContent='t = '+(t*TOTDUR).toFixed(2)+' s';
+
+  let si=0;
+  for(let i=0;i<PH.length;i++){if(t>=PH[i][0])si=i;}
+  document.getElementById('IS').textContent='ETAP '+(si+1)+'/6';
+  document.getElementById('IP').textContent=PH[si][2];
+  for(let i=0;i<6;i++)document.getElementById('ph'+i).className='phi'+(i===si?' on':'');
+  const pct=Math.round(t*100);
+  document.getElementById('pgf').style.width=pct+'%';
+  document.getElementById('pgp').textContent=pct+'%';
+}
+
+function drawBody(W,H,P4x,P4y,P0x,P0y,P5x,P5y,Lf,Lm,Lr,Lb){
+  cx.save();
+  // Ground
+  cx.strokeStyle='rgba(28,32,45,.7)';cx.lineWidth=.8;cx.setLineDash([8,10]);
+  cx.beginPath();cx.moveTo(0,P4y+H*.18);cx.lineTo(W,P4y+H*.18);cx.stroke();
+  cx.setLineDash([]);
+  // Body block
+  cx.fillStyle='#111620';cx.strokeStyle='#1e2838';cx.lineWidth=1.5;
+  cx.beginPath();cx.roundRect(P4x-70,P4y,P0x-P4x+160,H*.18,4);cx.fill();cx.stroke();
+  // Windscreen (A-pillar)
+  cx.strokeStyle='#243040';cx.lineWidth=3.5;cx.lineCap='round';
+  cx.beginPath();cx.moveTo(P4x,P4y);cx.lineTo(P4x-28,P4y+H*.05);cx.lineTo(P4x-60,P4y+H*.10);cx.stroke();
+  // Trunk compartment box
+  cx.fillStyle='#0c1018';cx.strokeStyle='#182030';cx.lineWidth=1;
+  cx.beginPath();cx.roundRect(P4x+40,P4y-H*.20,P0x-P4x+80,H*.20,3);cx.fill();cx.stroke();
+  cx.fillStyle='#1a2535';cx.font="7px 'IBM Plex Mono',monospace";cx.textAlign='center';
+  cx.fillText('KOMORA DACHU (TRUNK)',P4x+(P0x-P4x)/2+60,P4y-H*.08);cx.textAlign='left';
+  // Wheel arches
+  drawWheel(P4x-20,P4y+H*.17,H*.055);
+  drawWheel(P0x+60,P4y+H*.17,H*.055);
+  cx.restore();
+}
+function drawWheel(cx2,cy2,r){
+  cx.save();cx.beginPath();cx.arc(cx2,cy2,r,0,Math.PI*2);
+  cx.fillStyle='#0d1018';cx.strokeStyle='#1e2838';cx.lineWidth=2;cx.fill();cx.stroke();
+  cx.beginPath();cx.arc(cx2,cy2,r*.45,0,Math.PI*2);cx.fillStyle='#181e28';cx.fill();
+  cx.restore();
+}
+function drawAxes(x0,y0){
+  const AL=36;
+  cx.save();cx.strokeStyle='rgba(80,95,115,.75)';cx.lineWidth=1;cx.lineCap='round';
+  cx.beginPath();cx.moveTo(x0,y0);cx.lineTo(x0,y0-AL);cx.stroke();
+  cx.beginPath();cx.moveTo(x0,y0);cx.lineTo(x0+AL,y0);cx.stroke();
+  const ah=5;
+  cx.fillStyle='rgba(80,95,115,.8)';
+  cx.beginPath();cx.moveTo(x0,y0-AL);cx.lineTo(x0-3,y0-AL+ah);cx.lineTo(x0+3,y0-AL+ah);cx.fill();
+  cx.beginPath();cx.moveTo(x0+AL,y0);cx.lineTo(x0+AL-ah,y0-3);cx.lineTo(x0+AL-ah,y0+3);cx.fill();
+  cx.font="8px 'IBM Plex Mono',monospace";cx.fillStyle='rgba(80,95,115,.9)';
+  cx.fillText('Y+',x0-14,y0-AL+4);
+  cx.fillText('X+',x0+AL+3,y0+4);
+  cx.fillText('(0,0)',x0+3,y0+13);
+  cx.restore();
+}
+function drawDims(P4x,P4y,P2x,P2y,P0x,P0y,P1x,P1y,S){
+  cx.save();cx.globalAlpha=.38;cx.strokeStyle='#2a3848';cx.lineWidth=.7;cx.setLineDash([3,5]);
+  const dy=Math.min(P4y,P2y)-24;
+  cx.beginPath();cx.moveTo(P4x,dy+2);cx.lineTo(P4x,P4y);cx.stroke();
+  cx.beginPath();cx.moveTo(P2x,dy+2);cx.lineTo(P2x,P2y);cx.stroke();
+  cx.setLineDash([]);
+  cx.beginPath();cx.moveTo(P4x,dy);cx.lineTo(P2x,dy);cx.lineWidth=.7;cx.stroke();
+  cx.globalAlpha=.5;cx.font="8px 'IBM Plex Mono',monospace";cx.fillStyle='#38465a';cx.textAlign='center';
+  const lf_mm=Math.round(Math.hypot(P2x-P4x,P2y-P4y)/S);
+  cx.fillText('L_front≈'+lf_mm+' mm',(P4x+P2x)/2,dy-5);
+  cx.restore();
+}
+
+function V(id,val,unit){document.getElementById(id).innerHTML=val+'<span class="du">'+unit+'</span>';}
+
+// ════════════════════════════════════════════════════════════
+// ANIMATION LOOP
+// ════════════════════════════════════════════════════════════
+function tick(now){
+  if(!playing)return;
+  if(!lastNow)lastNow=now;
+  const dt=(now-lastNow)/1000;lastNow=now;
+  animT=Math.min(1,animT+dt/TOTDUR);
+  draw();
+  if(animT>=1){
+    playing=false;
+    document.getElementById('btnP').textContent='▶ START';
+    document.getElementById('btnP').className='btn p';
+    lastNow=null;return;
+  }
+  raf=requestAnimationFrame(tick);
+}
+function togglePlay(){
+  playing=!playing;
+  const b=document.getElementById('btnP');
+  if(playing){b.textContent='⏸ PAUZA';b.className='btn a';lastNow=null;raf=requestAnimationFrame(tick);}
+  else{b.textContent='▶ START';b.className='btn p';cancelAnimationFrame(raf);}
+}
+function doReset(){
+  playing=false;cancelAnimationFrame(raf);
+  animT=0;lastNow=null;
+  document.getElementById('btnP').textContent='▶ START';
+  document.getElementById('btnP').className='btn p';
+  draw();
+}
+function jumpTo(idx){animT=PH[idx][0]+.002;draw();}
+
+draw();
+</script>
+</body>
+</html>

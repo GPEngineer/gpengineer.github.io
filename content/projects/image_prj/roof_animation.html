@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -37,20 +36,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 24px;
+    padding: 8px 20px;
     border-bottom: 1px solid var(--border);
     background: var(--panel);
+    height: 34px;
   }
   .header-logo {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     color: var(--accent);
     letter-spacing: 2px;
     text-transform: uppercase;
   }
   .header-title {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
+    font-size: 10px;
     color: var(--muted);
     letter-spacing: 1px;
   }
@@ -59,7 +59,7 @@
     font-size: 10px;
     color: var(--accent);
     border: 1px solid var(--accent);
-    padding: 2px 8px;
+    padding: 1px 7px;
     border-radius: 2px;
     letter-spacing: 1px;
   }
@@ -67,9 +67,9 @@
   /* ── LAYOUT ── */
   .main {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 290px;
     gap: 0;
-    height: calc(100vh - 49px);
+    height: calc(100vh - 34px);
   }
 
   /* ── CANVAS AREA ── */
@@ -86,28 +86,28 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 16px;
+    padding: 4px 14px;
     border-bottom: 1px solid var(--border);
-    background: rgba(17,19,24,0.8);
-    backdrop-filter: blur(4px);
+    background: rgba(17,19,24,0.9);
     position: relative;
     z-index: 10;
+    height: 22px;
+    flex-shrink: 0;
   }
   .stage-indicator {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     color: var(--accent);
     letter-spacing: 1px;
   }
   .phase-name {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text);
-    letter-spacing: 0.5px;
   }
   .time-display {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     color: var(--muted);
   }
 
@@ -120,19 +120,21 @@
 
   /* ── CONTROLS ── */
   .controls {
-    padding: 10px 16px;
+    padding: 5px 14px;
     border-top: 1px solid var(--border);
     background: var(--panel);
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    height: 28px;
+    flex-shrink: 0;
   }
   .btn {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    padding: 6px 14px;
+    padding: 2px 11px;
     border: 1px solid var(--border);
     background: transparent;
     color: var(--text);
@@ -146,7 +148,7 @@
 
   .progress-bar-wrap {
     flex: 1;
-    height: 4px;
+    height: 3px;
     background: var(--dim);
     border-radius: 2px;
     overflow: hidden;
@@ -159,19 +161,17 @@
     width: 0%;
   }
 
-  /* ── SIDE PANEL ── */
+  /* ── SIDE PANEL — scrollable, original approach ── */
   .side-panel {
-    display: flex;
-    flex-direction: column;
     overflow-y: auto;
     background: var(--panel);
   }
   .side-panel::-webkit-scrollbar { width: 4px; }
-  .side-panel::-webkit-scrollbar-thumb { background: var(--dim); }
+  .side-panel::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
 
   .panel-section {
     border-bottom: 1px solid var(--border);
-    padding: 14px 16px;
+    padding: 8px 13px;
   }
   .panel-section-title {
     font-family: 'IBM Plex Mono', monospace;
@@ -179,16 +179,16 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 12px;
+    margin-bottom: 7px;
   }
 
   /* ── PHASE LIST ── */
   .phase-item {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 8px;
-    padding: 7px 8px;
+    gap: 7px;
+    margin-bottom: 3px;
+    padding: 4px 6px;
     border-radius: 2px;
     border: 1px solid transparent;
     cursor: pointer;
@@ -198,35 +198,35 @@
   .phase-item.active { border-color: var(--accent); background: rgba(200,164,74,0.05); }
   .phase-num {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     color: var(--muted);
-    min-width: 18px;
+    min-width: 16px;
     padding-top: 1px;
   }
   .phase-item.active .phase-num { color: var(--accent); }
   .phase-text { flex: 1; }
   .phase-label {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text);
-    margin-bottom: 2px;
+    margin-bottom: 1px;
   }
   .phase-desc {
-    font-size: 9px;
+    font-size: 8px;
     color: var(--muted);
-    line-height: 1.4;
+    line-height: 1.3;
   }
 
   /* ── KINEMATICS DATA ── */
   .data-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    gap: 4px;
   }
   .data-cell {
     background: var(--bg);
     border: 1px solid var(--border);
-    padding: 7px 9px;
+    padding: 4px 7px;
     border-radius: 2px;
   }
   .data-label {
@@ -234,11 +234,11 @@
     font-size: 8px;
     color: var(--muted);
     letter-spacing: 0.5px;
-    margin-bottom: 3px;
+    margin-bottom: 1px;
   }
   .data-value {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--accent);
     font-weight: 600;
   }
@@ -253,39 +253,39 @@
     background: var(--bg);
     border: 1px solid var(--border);
     border-left: 2px solid var(--accent2);
-    padding: 10px 12px;
+    padding: 7px 10px;
     border-radius: 2px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
   }
   .formula-title {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 9px;
     color: var(--accent2);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     letter-spacing: 0.5px;
   }
   .formula-eq {
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text);
-    line-height: 1.7;
+    line-height: 1.6;
   }
   .formula-note {
     font-size: 8px;
     color: var(--muted);
-    margin-top: 6px;
-    line-height: 1.5;
+    margin-top: 4px;
+    line-height: 1.4;
   }
 
   /* ── LEGEND ── */
   .legend-item {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 5px;
+    gap: 7px;
+    margin-bottom: 3px;
   }
   .legend-swatch {
-    width: 24px;
+    width: 22px;
     height: 3px;
     border-radius: 1px;
     flex-shrink: 0;
@@ -298,12 +298,12 @@
 
   /* ── HYDRAULIC BAR ── */
   .hyd-bar-wrap {
-    height: 8px;
+    height: 6px;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: 2px;
     overflow: hidden;
-    margin-top: 6px;
+    margin-top: 5px;
   }
   .hyd-bar-fill {
     height: 100%;
@@ -316,32 +316,18 @@
     display: flex;
     justify-content: space-between;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 9px;
+    font-size: 8px;
     color: var(--muted);
-    margin-top: 4px;
+    margin-top: 3px;
   }
-
-  /* ── GRID OVERLAY ── */
-  .grid-overlay {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(30,34,40,0.4) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(30,34,40,0.4) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-  canvas { position: relative; z-index: 1; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-logo">KINEMATYKA / CABRIO ROOF SYS</div>
-  <div class="header-title">ANALIZA MECHANIZMU SKŁADANIA DACHU — 3-SEGMENTOWY</div>
-  <div class="header-badge">REV 1.0</div>
+  <div class="header-title">4-ŁUKOWY MECH. — WIDOK BOCZNY — PRZÓD: LEWO, TYŁ: PRAWO</div>
+  <div class="header-badge">BMW E63 TYPE</div>
 </div>
 
 <div class="main">
@@ -353,88 +339,84 @@
       <div class="phase-name" id="phaseName">INICJALIZACJA SYSTEMU</div>
       <div class="time-display" id="timeDisplay">t = 0.00 s</div>
     </div>
-    <div class="grid-overlay"></div>
     <canvas id="roofCanvas"></canvas>
-
     <div class="controls">
       <button class="btn primary" id="btnPlay" onclick="togglePlay()">▶ START</button>
       <button class="btn" onclick="resetAnim()">↺ RESET</button>
       <div class="progress-bar-wrap">
         <div class="progress-bar-fill" id="progressBar"></div>
       </div>
-      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted)" id="progressPct">0%</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted)" id="progressPct">0%</span>
     </div>
   </div>
 
   <!-- SIDE PANEL -->
   <div class="side-panel">
 
-    <!-- PHASES -->
     <div class="panel-section">
       <div class="panel-section-title">ETAPY SEKWENCJI</div>
       <div class="phase-item active" id="ph0" onclick="jumpToPhase(0)">
         <div class="phase-num">01</div>
         <div class="phase-text">
-          <div class="phase-label">ZWOLNIENIE ZAMKA</div>
-          <div class="phase-desc">Siłownik H1 otwiera zaczep przedni; ciśnienie 180 bar</div>
+          <div class="phase-label">KLAPA BOW BOOT OTWIERA SIĘ</div>
+          <div class="phase-desc">Obrót wokół P5: 0°→+85° (do góry) — HYD aktywny</div>
         </div>
       </div>
       <div class="phase-item" id="ph1" onclick="jumpToPhase(1)">
         <div class="phase-num">02</div>
         <div class="phase-text">
-          <div class="phase-label">ROTACJA FRONT BOW</div>
-          <div class="phase-desc">Obrotowe uniesienie przedniego łuku; θ₁: 0→45°</div>
+          <div class="phase-label">BOW FRONT UNOSI SIĘ</div>
+          <div class="phase-desc">P3 obraca się wokół P4: 0°→+30° (do góry)</div>
         </div>
       </div>
       <div class="phase-item" id="ph2" onclick="jumpToPhase(2)">
         <div class="phase-num">03</div>
         <div class="phase-text">
-          <div class="phase-label">SKŁADANIE MID BOW</div>
-          <div class="phase-desc">Złożenie środkowego segmentu; θ₂: 0→−90°</div>
+          <div class="phase-label">PAUZA TECHNICZNA 1.5 s</div>
+          <div class="phase-desc">Układ zatrzymany — weryfikacja pozycji</div>
         </div>
       </div>
       <div class="phase-item" id="ph3" onclick="jumpToPhase(3)">
         <div class="phase-num">04</div>
         <div class="phase-text">
-          <div class="phase-label">RUCH REAR BOW</div>
-          <div class="phase-desc">Tylny łuk opada do komory; θ₃: 0→−60°</div>
+          <div class="phase-label">SYNCHRO: FRONT + REAR → 180°</div>
+          <div class="phase-desc">Front P4: 30°→180°; Rear P0: 0°→180°; Mid poziomo</div>
         </div>
       </div>
       <div class="phase-item" id="ph4" onclick="jumpToPhase(4)">
         <div class="phase-num">05</div>
         <div class="phase-text">
-          <div class="phase-label">PAKOWANIE DO KOMORY</div>
-          <div class="phase-desc">Synchroniczne zagnieżdżenie; siłownik główny max skok</div>
+          <div class="phase-label">PAKOWANIE — BOW MID WYSUWA SIĘ</div>
+          <div class="phase-desc">Bow Mid podąża poziomo za Rear do komory</div>
         </div>
       </div>
       <div class="phase-item" id="ph5" onclick="jumpToPhase(5)">
         <div class="phase-num">06</div>
         <div class="phase-text">
-          <div class="phase-label">ZAMKNIĘCIE POKRYWY</div>
-          <div class="phase-desc">Klapa bagażnika zamyka komorę; układ gotowy</div>
+          <div class="phase-label">ZAMKNIĘCIE KLAPY BOW BOOT</div>
+          <div class="phase-desc">P5: 85°→0° — dach złożony i zamknięty</div>
         </div>
       </div>
     </div>
 
-    <!-- KINEMATICS DATA -->
     <div class="panel-section">
       <div class="panel-section-title">DANE KINEMATYCZNE</div>
       <div class="data-grid">
         <div class="data-cell">
-          <div class="data-label">KĄTY θ₁ (FRONT)</div>
+          <div class="data-label">θ BOOT (P5)</div>
           <div class="data-value" id="dTheta1">0.0<span class="data-unit">°</span></div>
         </div>
         <div class="data-cell">
-          <div class="data-label">KĄTY θ₂ (MID)</div>
+          <div class="data-label">θ FRONT (P4)</div>
           <div class="data-value" id="dTheta2">0.0<span class="data-unit">°</span></div>
         </div>
         <div class="data-cell">
-          <div class="data-label">KĄTY θ₃ (REAR)</div>
+          <div class="data-label">θ REAR (P0)</div>
           <div class="data-value" id="dTheta3">0.0<span class="data-unit">°</span></div>
         </div>
         <div class="data-cell">
-          <div class="data-label">PRĘDKOŚĆ ω</div>
-          <div class="data-value" id="dOmega">0.0<span class="data-unit">°/s</span></div>
+          <div class="data-label">Δx MID BOW</div>
+          <div class="data-value" id="dOmega">0<span class="data-unit">mm</span></div>
         </div>
         <div class="data-cell">
           <div class="data-label">CIŚNIENIE HYD.</div>
@@ -445,13 +427,9 @@
           <div class="data-value" id="dStroke">0.0<span class="data-unit">mm</span></div>
         </div>
       </div>
-
-      <!-- Hydraulic pressure -->
-      <div style="margin-top:10px">
-        <div class="data-label" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.5px">CIŚNIENIE ROBOCZE SIŁOWNIKA HYDRAULICZNEGO</div>
-        <div class="hyd-bar-wrap">
-          <div class="hyd-bar-fill" id="hydBar"></div>
-        </div>
+      <div style="margin-top:7px">
+        <div class="data-label" style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.5px">CIŚNIENIE ROBOCZE SIŁOWNIKA HYDRAULICZNEGO</div>
+        <div class="hyd-bar-wrap"><div class="hyd-bar-fill" id="hydBar"></div></div>
         <div class="hyd-label">
           <span>0 bar</span>
           <span id="hydPressureLabel">0 bar</span>
@@ -460,642 +438,419 @@
       </div>
     </div>
 
-    <!-- FORMULA -->
     <div class="panel-section">
       <div class="panel-section-title">RÓWNANIA RUCHU</div>
-
       <div class="formula-block">
-        <div class="formula-title">RÓWNANIE DYNAMICZNE (EOM)</div>
+        <div class="formula-title">EOM — DYNAMICZNE (1-DOF / SEGMENT)</div>
         <div class="formula-eq">
           I·θ̈ + c·θ̇ + k·θ = M<sub>hyd</sub>(t)<br>
-          <br>
-          θ̈ = dω/dt [rad/s²]<br>
-          I = Σmᵢ·rᵢ² [kg·m²]<br>
-          c = wsp. tłumienia [N·m·s]<br>
-          k = sztywność złącza [N·m/rad]<br>
-          M<sub>hyd</sub> = F<sub>hyd</sub>·l·sin(α) [N·m]
+          I = m·r²&nbsp;&nbsp;[kg·m²]<br>
+          c&nbsp;&nbsp;[N·m·s/rad] — tłumienie<br>
+          k&nbsp;&nbsp;[N·m/rad] — sztywność<br>
+          M<sub>hyd</sub> = F·l·sin(α) [N·m]
         </div>
-        <div class="formula-note">
-          I — moment bezwładności segmentu; c — tłumienie lepkie przegubu; k — sprężystość elastomerowa; M_hyd — moment od siłownika hydraulicznego
-        </div>
+        <div class="formula-note">F=p·A; p≤200 bar; d=25 mm → F_max≈9.8 kN</div>
       </div>
-
       <div class="formula-block">
-        <div class="formula-title">KINEMATYKA PRZEGUBU (4-BAR LINKAGE)</div>
+        <div class="formula-title">KINEMATYKA PRZEGUBU 2D</div>
         <div class="formula-eq">
-          x_H = l·cos(θ) + x₀<br>
-          y_H = l·sin(θ) + y₀<br>
-          v = l·ω·[−sin θ, cos θ]ᵀ<br>
-          a = l·[−ω²cos θ − α·sin θ]
+          x(t) = x₀ + l·cos(θ(t))<br>
+          y(t) = y₀ + l·sin(θ(t))<br>
+          v = l·ω·[−sinθ, cosθ]ᵀ<br>
+          a = l·[−ω²cosθ − α·sinθ]
         </div>
-        <div class="formula-note">
-          l — długość ramienia [m]; θ — kąt obrotu [rad]; ω = θ̇ [rad/s]; α = θ̈ [rad/s²]
-        </div>
+        <div class="formula-note">l [m]; θ [rad]; ω=θ̇ [rad/s]; α=θ̈ [rad/s²]</div>
       </div>
-
       <div class="formula-block">
-        <div class="formula-title">SIŁA HYDRAULICZNA</div>
+        <div class="formula-title">PROFIL PRĘDKOŚCI (TRAPEZOWY)</div>
         <div class="formula-eq">
-          F = p · A [N]<br>
-          p ∈ [0, 200] bar<br>
-          A = π·(d/2)² [m²]<br>
-          d = 25 mm (tłok)
+          ω(t) = ω_max · f_smooth(t)<br>
+          f ∈ [0,1] — easeInOut<br>
+          jerk = d³θ/dt³ → minimalne<br>
+          t_total ≈ 9.5 s
         </div>
-        <div class="formula-note">
-          p — ciśnienie robocze; A — powierzchnia tłoka; Fₘₐₓ ≈ 9.82 kN przy 200 bar
-        </div>
+        <div class="formula-note">Standard OEM (BMW, Karmann) — min. szarpnięcie</div>
       </div>
     </div>
 
-    <!-- LEGEND -->
     <div class="panel-section">
       <div class="panel-section-title">LEGENDA ELEMENTÓW</div>
-      <div class="legend-item"><div class="legend-swatch" style="background:#c8a44a"></div><div class="legend-text">FRONT BOW — przedni łuk dachowy</div></div>
-      <div class="legend-item"><div class="legend-swatch" style="background:#4a7fc8"></div><div class="legend-text">MID BOW — środkowy łuk dachowy</div></div>
-      <div class="legend-item"><div class="legend-swatch" style="background:#4ac87a"></div><div class="legend-text">REAR BOW — tylny łuk dachowy</div></div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#c8a44a"></div><div class="legend-text">BOW FRONT — P4(stały)→P2</div></div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#4a7fc8"></div><div class="legend-text">BOW MID — P2→P1 (poziomo)</div></div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#4ac87a"></div><div class="legend-text">BOW REAR — P1→P0</div></div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#9060c8"></div><div class="legend-text">BOW BOOT (klapa) — P5→koniec</div></div>
       <div class="legend-item"><div class="legend-swatch" style="background:#c84a4a"></div><div class="legend-text">SIŁOWNIK HYDRAULICZNY</div></div>
-      <div class="legend-item"><div class="legend-swatch" style="background:#8a60c8;height:8px;width:8px;border-radius:50%"></div><div class="legend-text">H1/H2/H3 — przeguby obrotowe</div></div>
-      <div class="legend-item"><div class="legend-swatch" style="background:#555;border:1px solid #888"></div><div class="legend-text">KAROSERIA / RAMA POJAZDU</div></div>
+      <div class="legend-item"><div class="legend-swatch" style="background:#aaaacc;height:7px;width:7px;border-radius:50%"></div><div class="legend-text">P0..P5 — przeguby obrotowe</div></div>
+      <div class="legend-item"><div style="width:10px;height:10px;border-bottom:2px solid #607080;flex-shrink:0"></div><div class="legend-text">▲ P4/P0/P5 — punkt stały</div></div>
     </div>
 
-  </div>
-</div>
+  </div><!-- /side-panel -->
+</div><!-- /main -->
 
 <script>
-// ── CANVAS SETUP ──────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════
+// CANVAS
+// ════════════════════════════════════════════════════════════
 const canvas = document.getElementById('roofCanvas');
-const ctx = canvas.getContext('2d');
+const ctx    = canvas.getContext('2d');
 
 function resizeCanvas() {
   const area = canvas.parentElement;
-  canvas.width = area.clientWidth;
-  canvas.height = area.clientHeight - 80; // topbar + controls
+  // subtract topbar (22px) and controls (28px)
+  canvas.width  = area.clientWidth;
+  canvas.height = area.clientHeight - 22 - 28;
 }
 resizeCanvas();
 window.addEventListener('resize', () => { resizeCanvas(); draw(); });
 
-// ── ANIMATION STATE ───────────────────────────────────────────
-let playing = false;
-let animT = 0;         // 0..1 overall progress
-const TOTAL_DUR = 9.0; // seconds total
-let lastRealTime = null;
-let rafId = null;
+// ════════════════════════════════════════════════════════════
+// REAL DIMENSIONS (mm) — BMW E63 Cabrio approximate
+// ════════════════════════════════════════════════════════════
+const R = { Lf:850, Lm:780, Lr:720, Lb:640 };
 
-// ── PHASE DEFINITIONS ─────────────────────────────────────────
-// Each phase: [startT, endT, name]  (0..1 range)
+// ════════════════════════════════════════════════════════════
+// ANIMATION STATE
+// ════════════════════════════════════════════════════════════
+let playing = false, animT = 0, lastRealTime = null, rafId = null;
+const TOTAL_DUR = 9.5;
+
 const PHASES = [
-  [0.00, 0.12, 'ZWOLNIENIE ZAMKA'],
-  [0.12, 0.30, 'ROTACJA FRONT BOW'],
-  [0.30, 0.52, 'SKŁADANIE MID BOW'],
-  [0.52, 0.72, 'RUCH REAR BOW'],
-  [0.72, 0.90, 'PAKOWANIE DO KOMORY'],
-  [0.90, 1.00, 'ZAMKNIĘCIE POKRYWY'],
+  [0.00, 0.13, 'KLAPA BOW BOOT OTWIERA SIĘ'],
+  [0.13, 0.26, 'BOW FRONT UNOSI SIĘ +30°'],
+  [0.26, 0.42, 'PAUZA TECHNICZNA 1.5 s'],
+  [0.42, 0.72, 'SYNCHRO: FRONT+REAR → 180°'],
+  [0.72, 0.88, 'PAKOWANIE — MID PRZESUWA SIĘ'],
+  [0.88, 1.00, 'ZAMKNIĘCIE KLAPY BOW BOOT'],
 ];
 
-// ── EASING FUNCTIONS ─────────────────────────────────────────
-function easeInOut(t) {
-  return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
-}
-function easeOut(t) {
-  return 1 - Math.pow(1-t, 3);
-}
-function easeIn(t) {
-  return t * t * t;
-}
-function clamp01(t) { return Math.max(0, Math.min(1, t)); }
+function pp(t,a,b){ return Math.max(0,Math.min(1,(t-a)/(b-a))); }
+function ei(t){ return t<.5 ? 2*t*t : -1+(4-2*t)*t; }
+function lerp(a,b,t){ return a+(b-a)*t; }
+function ptOn(ox,oy,len,ang){ return [ox+len*Math.cos(ang), oy+len*Math.sin(ang)]; }
 
-// Local phase progress [0..1]
-function phaseProgress(t, start, end) {
-  return clamp01((t - start) / (end - start));
-}
-
-// ── GEOMETRY HELPERS ──────────────────────────────────────────
-function rotate(cx, cy, x, y, ang) {
-  const cos = Math.cos(ang), sin = Math.sin(ang);
-  return [
-    cx + (x - cx)*cos - (y - cy)*sin,
-    cy + (x - cx)*sin + (y - cy)*cos
-  ];
-}
-function lerp(a, b, t) { return a + (b - a)*t; }
-
-// ── DRAWING PRIMITIVES ───────────────────────────────────────
-function drawBeam(x1, y1, x2, y2, color, w, alpha=1) {
-  ctx.save();
-  ctx.globalAlpha = alpha;
-  ctx.strokeStyle = color;
-  ctx.lineWidth = w;
-  ctx.lineCap = 'round';
-  ctx.beginPath();
-  ctx.moveTo(x1, y1);
-  ctx.lineTo(x2, y2);
-  ctx.stroke();
+// ════════════════════════════════════════════════════════════
+// DRAW HELPERS
+// ════════════════════════════════════════════════════════════
+function beam(x1,y1,x2,y2,col,w,al=1){
+  ctx.save(); ctx.globalAlpha=al; ctx.strokeStyle=col;
+  ctx.lineWidth=w; ctx.lineCap='round';
+  ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
   ctx.restore();
 }
 
-function drawHinge(x, y, label, color='#8a60c8', r=7) {
-  ctx.save();
-  // Outer ring
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, Math.PI*2);
-  ctx.fillStyle = '#0a0c0f';
-  ctx.fill();
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 2;
-  ctx.stroke();
-  // Inner dot
-  ctx.beginPath();
-  ctx.arc(x, y, r*0.4, 0, Math.PI*2);
-  ctx.fillStyle = color;
-  ctx.fill();
-  ctx.restore();
+function lbl(x,y,txt,col,sz=9,align='left'){
+  ctx.save(); ctx.font=sz+"px 'IBM Plex Mono',monospace";
+  ctx.fillStyle=col; ctx.textAlign=align; ctx.fillText(txt,x,y); ctx.restore();
+}
 
-  // Label
-  if (label) {
-    ctx.save();
-    ctx.font = "bold 9px 'IBM Plex Mono', monospace";
-    ctx.fillStyle = color;
-    ctx.fillText(label, x + r + 3, y - r - 2);
-    ctx.restore();
+function fixedSupport(x,y,col){
+  ctx.save();
+  ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x-8,y+13); ctx.lineTo(x+8,y+13); ctx.closePath();
+  ctx.fillStyle='#1a2230'; ctx.strokeStyle=col; ctx.lineWidth=1.5; ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x-11,y+15); ctx.lineTo(x+11,y+15);
+  ctx.strokeStyle=col; ctx.lineWidth=1; ctx.stroke();
+  for(let i=-9;i<=9;i+=5){
+    ctx.beginPath(); ctx.moveTo(x+i,y+15); ctx.lineTo(x+i-3,y+20);
+    ctx.lineWidth=.7; ctx.stroke();
   }
-}
-
-function drawLabel(x, y, text, color, align='left') {
-  ctx.save();
-  ctx.font = "9px 'IBM Plex Mono', monospace";
-  ctx.fillStyle = color;
-  ctx.textAlign = align;
-  ctx.fillText(text, x, y);
   ctx.restore();
 }
 
-function drawCylinder(x1, y1, x2, y2, color, strokeLen, maxLen) {
-  // Draw a hydraulic cylinder from point 1 to point 2
-  const dx = x2 - x1, dy = y2 - y1;
-  const dist = Math.sqrt(dx*dx + dy*dy);
-  const ang = Math.atan2(dy, dx);
-  const cx = (x1+x2)/2, cy = (y1+y2)/2;
-
+function hinge(x,y,lbl_txt,col,r=6){
   ctx.save();
-  ctx.translate(cx, cy);
-  ctx.rotate(ang);
-
-  // Barrel
-  const barrelLen = dist * 0.55;
-  const barrelW = 8;
-  ctx.fillStyle = '#1e2230';
-  ctx.strokeStyle = '#3a4050';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.roundRect(-barrelLen/2, -barrelW/2, barrelLen, barrelW, 2);
-  ctx.fill();
-  ctx.stroke();
-
-  // Rod (extending part)
-  const rodLen = dist * 0.45;
-  ctx.fillStyle = color;
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 2;
-  ctx.beginPath();
-  ctx.rect(barrelLen/2 - 2, -2, rodLen + 2, 4);
-  ctx.fillStyle = color;
-  ctx.fill();
-
-  // End caps
-  ctx.beginPath();
-  ctx.arc(-barrelLen/2, 0, 5, 0, Math.PI*2);
-  ctx.fillStyle = '#2a3040';
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 1.5;
-  ctx.fill();
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.arc(dist/2 - cx + cx - cx, 0, 4, 0, Math.PI*2); // rod end
-  ctx.fillStyle = color;
-  ctx.fill();
-
+  ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+  ctx.fillStyle='#0a0c0f'; ctx.strokeStyle=col; ctx.lineWidth=2; ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(x,y,r*.38,0,Math.PI*2); ctx.fillStyle=col; ctx.fill();
+  if(lbl_txt){
+    ctx.font="bold 9px 'IBM Plex Mono',monospace"; ctx.fillStyle=col;
+    ctx.fillText(lbl_txt,x+r+3,y-r-1);
+  }
   ctx.restore();
 }
 
-// ── MAIN DRAW ────────────────────────────────────────────────
-function draw() {
-  const W = canvas.width;
-  const H = canvas.height;
-  ctx.clearRect(0, 0, W, H);
+function cylinder(ax,ay,bx,by){
+  const ang=Math.atan2(by-ay,bx-ax), dist=Math.hypot(bx-ax,by-ay);
+  ctx.save(); ctx.translate((ax+bx)/2,(ay+by)/2); ctx.rotate(ang);
+  const bl=dist*.52, bw=7;
+  ctx.fillStyle='#1c2230'; ctx.strokeStyle='#384050'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.roundRect(-bl/2,-bw/2,bl,bw,2); ctx.fill(); ctx.stroke();
+  ctx.fillStyle='#c84a4a';
+  ctx.beginPath(); ctx.rect(bl/2-1,-2.5,dist*.45+1,5); ctx.fill();
+  ctx.beginPath(); ctx.arc(-bl/2,0,5,0,Math.PI*2);
+  ctx.fillStyle='#222'; ctx.strokeStyle='#c84a4a'; ctx.lineWidth=1.5; ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(dist/2,0,4,0,Math.PI*2); ctx.fillStyle='#c84a4a'; ctx.fill();
+  ctx.restore();
+}
 
-  const t = animT;
+// ════════════════════════════════════════════════════════════
+// MAIN DRAW
+// ════════════════════════════════════════════════════════════
+function draw(){
+  const W=canvas.width, H=canvas.height;
+  ctx.clearRect(0,0,W,H);
 
-  // ── BACKGROUND ──
-  const grad = ctx.createLinearGradient(0, 0, 0, H);
-  grad.addColorStop(0, '#0d0f14');
-  grad.addColorStop(1, '#080a0d');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, W, H);
+  // BG
+  const gr=ctx.createLinearGradient(0,0,0,H);
+  gr.addColorStop(0,'#0d0f14'); gr.addColorStop(1,'#080a0d');
+  ctx.fillStyle=gr; ctx.fillRect(0,0,W,H);
 
-  // ── COORDINATE SYSTEM ──
-  // Origin: center-ish, at "windscreen top" position
-  const OX = W * 0.42;
-  const OY = H * 0.62;
-  const SCALE = Math.min(W, H) * 0.28;
+  // Grid
+  ctx.save(); ctx.strokeStyle='rgba(28,32,40,.4)'; ctx.lineWidth=.5;
+  for(let x=0;x<W;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+  for(let y=0;y<H;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  ctx.restore();
 
-  // ── CAR BODY (simplified silhouette) ──
-  drawCarBody(OX, OY, SCALE, W, H);
+  const t=animT;
 
-  // ── COMPUTE ANGLES ──
-  // Phase 1: 0..0.12 — lock release (visual only, no bow movement)
-  const p0 = phaseProgress(t, 0.00, 0.12);
-  // Phase 2: 0.12..0.30 — front bow rises θ₁: 0 → 45°
-  const p1 = easeInOut(phaseProgress(t, 0.12, 0.30));
-  // Phase 3: 0.30..0.52 — mid bow folds θ₂: 0 → -90°
-  const p2 = easeInOut(phaseProgress(t, 0.30, 0.52));
-  // Phase 4: 0.52..0.72 — rear bow drops θ₃: 0 → -60°
-  const p3 = easeInOut(phaseProgress(t, 0.52, 0.72));
-  // Phase 5: 0.72..0.90 — pack into trunk
-  const p4 = easeInOut(phaseProgress(t, 0.72, 0.90));
-  // Phase 6: 0.90..1.0 — lid closes
-  const p5 = easeInOut(phaseProgress(t, 0.90, 1.00));
+  // ── SCALE & LAYOUT ──
+  // Scale: fit Lf+Lm+Lr in 82% of canvas width
+  const S = (W*0.82) / (R.Lf+R.Lm+R.Lr);
+  const Lf=R.Lf*S, Lm=R.Lm*S, Lr=R.Lr*S, Lb=R.Lb*S;
 
-  // Pack-down: all bows sink as unit
-  const packY = p4 * SCALE * 0.35;
+  // Pivot axis at 40% height — bows arc up into top 40%, body below
+  const bodyY = H*0.40;
+  const P4x=W*0.07, P4y=bodyY;
+  const P0x=P4x+Lf+Lm+Lr, P0y=bodyY;
+  const P5x=P0x+Lb*0.10, P5y=bodyY+H*0.025;
 
-  // ── HINGE POSITIONS (fixed to car body) ──
-  // H1: windscreen top-rear connection (rear of front bow)
-  // H2: mid bow fold joint
-  // H3: rear bow to body joint
-  const H1x = OX, H1y = OY - packY;
-  const H3x = OX + SCALE * 0.55, H3y = OY - packY * 0.3;
+  // ── PHASE PROGRESS ──
+  const q0=ei(pp(t,0.00,0.13)); // boot opens
+  const q1=ei(pp(t,0.13,0.26)); // front +30°
+  const q3=ei(pp(t,0.42,0.72)); // synchro front→180 + rear→180
+  const q5=ei(pp(t,0.88,1.00)); // boot closes
 
   // ── ANGLES ──
-  const theta1 = (p1 * 45 + p4 * 25) * Math.PI / 180;        // front bow angle from horizontal
-  const theta2 = -(p2 * 90 + p4 * 10) * Math.PI / 180;       // mid bow fold angle
-  const theta3_base = -(p3 * 60) * Math.PI / 180;             // rear bow drop
-  const theta3 = theta3_base - p4 * 20 * Math.PI / 180;
+  // Bow Front: pivot P4, initial→right (0°), rotates CCW (screen-upward)
+  const angFront = (30*q1 + 150*q3) * Math.PI/180;
+  const [P2x,P2y] = ptOn(P4x, P4y, Lf, angFront);
+  // screen-up: y2 = P4y - Lf*sin
+  const P2xs=P4x+Lf*Math.cos(angFront), P2ys=P4y-Lf*Math.sin(angFront);
 
-  // ── SEGMENT LENGTHS ──
-  const LF = SCALE * 0.52;   // front bow
-  const LM = SCALE * 0.48;   // mid bow
-  const LR = SCALE * 0.50;   // rear bow
+  // Bow Rear: pivot P0, initial→left (π), rotates CW into trunk (goes through bottom, +Y)
+  const angRear = Math.PI*(1-q3);
+  const P1xs=P0x+Lr*Math.cos(angRear), P1ys=P0y+Lr*Math.sin(angRear);
 
-  // ── FRONT BOW ──
-  // H1 is pivot; front bow extends forward-upward
-  const FBangle = Math.PI + theta1; // initially points left (toward windscreen), tilts up
-  const FB_end_x = H1x + LF * Math.cos(FBangle);
-  const FB_end_y = H1y + LF * Math.sin(FBangle);
+  // Bow Mid: always horizontal, between P2 and P1 x-positions, at averaged Y
+  const midY = lerp(P2ys, P1ys, 0.5);
+  const P2mx=P2xs, P2my=midY;
+  const P1mx=P1xs, P1my=midY;
 
-  // ── H2 (mid of front-mid joint) at end of front bow ──
-  const H2x = H1x + LF * Math.cos(FBangle);
-  const H2y = H1y + LF * Math.sin(FBangle);
+  // Bow Boot: pivot P5, initial→left (π), opens upward (screen -Y)
+  const dBoot=(85*Math.PI/180)*(q0-q5);
+  const angBoot=Math.PI-dBoot;
+  const PBxs=P5x+Lb*Math.cos(angBoot), PBys=P5y-Lb*Math.sin(angBoot);
 
-  // ── MID BOW ──
-  // extends from H2, folding under theta2 relative to front bow direction
-  const MBangle = FBangle + theta2;
-  const MB_end_x = H2x + LM * Math.cos(MBangle);
-  const MB_end_y = H2y + LM * Math.sin(MBangle);
+  // Hydraulic cylinder: body anchor below P0, rod to rear bow midpoint
+  const cAx=P0x+6, cAy=P0y+H*0.07;
+  const cBx=lerp(P0x,P1xs,.55), cBy=lerp(P0y,P1ys,.55);
 
-  // ── H3a (junction mid-rear) ──
-  const H3ax = MB_end_x;
-  const H3ay = MB_end_y;
+  // ════ DRAW ════
 
-  // ── REAR BOW ──
-  // Rear bow is anchored at H3 (body), but its upper end connects to mid bow
-  // Simplified: rear bow pivots at H3 (body fixed), extends to trunk corner
-  const RBangle_init = Math.PI * 1.1; // initially pointing up-left
-  const RBangle = RBangle_init + theta3;
-  const RB_top_x = H3x + LR * Math.cos(RBangle);
-  const RB_top_y = H3y + LR * Math.sin(RBangle);
+  // Car body
+  drawBody(W,H,P4x,P4y,P0x,P0y,Lf,Lm,Lr,Lb,S);
 
-  // ── HYDRAULIC CYLINDER ──
-  // Connects a point on the body (below H1) to mid-bow
-  const CYL_BASE_x = H1x + SCALE * 0.08;
-  const CYL_BASE_y = H1y + SCALE * 0.15;
-  const CYL_ROD_x = lerp(CYL_BASE_x, H2x, 0.7);
-  const CYL_ROD_y = lerp(CYL_BASE_y, H2y, 0.7);
+  // Bow Boot
+  beam(P5x,P5y,PBxs,PBys,'#9060c8',6);
+  lbl(lerp(P5x,PBxs,.38)+5,lerp(P5y,PBys,.38)-10,'BOW BOOT','#9060c8');
 
-  // ── DRAW HYDRAULIC CYLINDER ──
-  drawCylinder(CYL_BASE_x, CYL_BASE_y, CYL_ROD_x, CYL_ROD_y, '#c84a4a', 0, 1);
+  // Bow Rear
+  beam(P0x,P0y,P1xs,P1ys,'#4ac87a',6);
+  lbl(lerp(P0x,P1xs,.4)+6,lerp(P0y,P1ys,.4)-10,'BOW REAR','#4ac87a');
 
-  // Cylinder label
-  drawLabel(CYL_BASE_x - 4, CYL_BASE_y + 18, 'CYL.HYD.', '#c84a4a');
+  // Bow Mid (horizontal)
+  beam(P2mx,P2my,P1mx,P1my,'#4a7fc8',6);
+  lbl(lerp(P2mx,P1mx,.42),P2my-13,'BOW MID','#4a7fc8');
 
-  // ── DRAW ROOF FABRIC (between bows) ──
-  if (t > 0.01) {
-    ctx.save();
-    ctx.globalAlpha = Math.max(0, 1 - p4 * 1.5);
-    ctx.beginPath();
-    ctx.moveTo(FB_end_x, FB_end_y);
-    ctx.lineTo(H2x, H2y);
-    ctx.lineTo(MB_end_x, MB_end_y);
-    ctx.lineTo(RB_top_x, RB_top_y);
-    ctx.strokeStyle = 'rgba(60,70,90,0.5)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([3, 3]);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    // Fill with semi-transparent
-    ctx.beginPath();
-    ctx.moveTo(FB_end_x, FB_end_y);
-    ctx.quadraticCurveTo(H2x - 20, H2y - 30, MB_end_x, MB_end_y);
-    ctx.lineTo(RB_top_x, RB_top_y);
-    ctx.lineTo(H1x, H1y);
-    ctx.closePath();
-    ctx.fillStyle = 'rgba(30,40,60,0.15)';
-    ctx.fill();
-    ctx.restore();
-  }
+  // Kinematic links (dashed connectors mid bow to actual end points)
+  ctx.save(); ctx.strokeStyle='rgba(74,127,200,.35)'; ctx.lineWidth=1.5; ctx.setLineDash([4,4]);
+  ctx.beginPath(); ctx.moveTo(P2xs,P2ys); ctx.lineTo(P2mx,P2my); ctx.stroke();
+  ctx.strokeStyle='rgba(74,200,122,.35)';
+  ctx.beginPath(); ctx.moveTo(P1xs,P1ys); ctx.lineTo(P1mx,P1my); ctx.stroke();
+  ctx.setLineDash([]); ctx.restore();
 
-  // ── DRAW REAR BOW ──
-  drawBeam(H3x, H3y, RB_top_x, RB_top_y, '#4ac87a', 6);
-  drawLabel(
-    lerp(H3x, RB_top_x, 0.5) + 8,
-    lerp(H3y, RB_top_y, 0.5) - 8,
-    'REAR BOW', '#4ac87a'
-  );
+  // Bow Front
+  beam(P4x,P4y,P2xs,P2ys,'#c8a44a',6);
+  lbl(lerp(P4x,P2xs,.35),lerp(P4y,P2ys,.35)-14,'BOW FRONT','#c8a44a');
+  // P3 stiffener point (60% along front bow)
+  const P3x=lerp(P4x,P2xs,.6), P3y=lerp(P4y,P2ys,.6);
+  ctx.save(); ctx.beginPath(); ctx.arc(P3x,P3y,3.5,0,Math.PI*2);
+  ctx.fillStyle='#c8a44a'; ctx.globalAlpha=.6; ctx.fill(); ctx.restore();
+  lbl(P3x+4,P3y-5,'P3','#c8a44a',8);
 
-  // ── DRAW MID BOW ──
-  drawBeam(H2x, H2y, MB_end_x, MB_end_y, '#4a7fc8', 6);
-  drawLabel(
-    lerp(H2x, MB_end_x, 0.5) + 8,
-    lerp(H2y, MB_end_y, 0.5) - 8,
-    'MID BOW', '#4a7fc8'
-  );
+  // Hydraulic cylinder
+  cylinder(cAx,cAy,cBx,cBy);
+  lbl(cAx,cAy+16,'CYL.HYD.','#c84a4a',8);
 
-  // ── DRAW FRONT BOW ──
-  drawBeam(H1x, H1y, H2x, H2y, '#c8a44a', 6);
-  drawLabel(
-    lerp(H1x, H2x, 0.5) - 10,
-    lerp(H1y, H2y, 0.5) - 14,
-    'FRONT BOW', '#c8a44a'
-  );
+  // Coord axes
+  drawAxes(38,H-42);
 
-  // ── HINGES ──
-  drawHinge(H1x, H1y, 'H1');
-  drawHinge(H2x, H2y, 'H2');
-  drawHinge(H3x, H3y, 'H3');
-  // Extra: H3a at mid-rear junction
-  drawHinge(H3ax, H3ay, 'H4', '#a0a0c8', 5);
+  // Fixed supports (behind hinges)
+  fixedSupport(P4x,P4y,'#607080');
+  fixedSupport(P0x,P0y,'#607080');
+  fixedSupport(P5x,P5y,'#7060a0');
 
-  // ── TRUNK LID (Phase 6) ──
-  drawTrunkLid(OX, OY, SCALE, p5, W, H);
+  // Free hinges
+  hinge(P2xs,P2ys,'P2','#c8a44a');
+  hinge(P1xs,P1ys,'P1','#4ac87a');
+  hinge(PBxs,PBys,'','#9060c8',4);
+  lbl(P4x-2,P4y-17,'P4','#808080',8);
+  lbl(P0x-2,P0y-17,'P0','#808080',8);
+  lbl(P5x-2,P5y-17,'P5','#9060c8',8);
 
-  // ── LOCK INDICATOR (Phase 1) ──
-  if (p0 < 1) {
-    drawLockIndicator(FB_end_x, FB_end_y, p0);
-  }
+  // Dimension annotation
+  if(t>.03) drawDim(P4x,P4y,P2xs,P2ys,S);
 
-  // ── DIMENSION ANNOTATIONS ──
-  drawAnnotations(H1x, H1y, H2x, H2y, MB_end_x, MB_end_y, H3x, H3y, RB_top_x, RB_top_y, t);
-
-  // ── UPDATE SIDE PANEL ──
-  updatePanel(t, p1, p2, p3, theta1, theta2, theta3);
+  // Update panel
+  updatePanel(t,q0,q1,q3,q5,angFront,angRear,dBoot,P2xs,S);
 }
 
-function drawCarBody(ox, oy, scale, W, H) {
+function drawBody(W,H,P4x,P4y,P0x,P0y,Lf,Lm,Lr,Lb,S){
   ctx.save();
-
-  // Ground line
-  ctx.strokeStyle = '#1e2228';
-  ctx.lineWidth = 1;
-  ctx.setLineDash([8, 8]);
-  ctx.beginPath();
-  ctx.moveTo(ox - scale * 0.5, oy + scale * 0.35);
-  ctx.lineTo(ox + scale * 1.1, oy + scale * 0.35);
-  ctx.stroke();
+  const bh=Math.min(H*.11,48);
+  const ch=Math.min(H*.36,150);
+  // Ground dashed
+  ctx.strokeStyle='rgba(28,32,45,.6)'; ctx.lineWidth=.8; ctx.setLineDash([8,10]);
+  ctx.beginPath(); ctx.moveTo(0,P4y+bh+2); ctx.lineTo(W,P4y+bh+2); ctx.stroke();
   ctx.setLineDash([]);
-  ctx.fillStyle = '#1e2228';
-  ctx.font = "8px 'IBM Plex Mono', monospace";
-  ctx.fillText('PODSTAWA POJAZDU', ox + scale * 0.5, oy + scale * 0.35 + 12);
-
-  // Car side silhouette (simplified)
-  const bx = ox - scale * 0.1;
-  const by = oy;
-
-  // Windscreen frame
-  ctx.beginPath();
-  ctx.moveTo(bx, by);
-  ctx.lineTo(bx - scale * 0.12, by - scale * 0.28);
-  ctx.lineTo(bx - scale * 0.30, by - scale * 0.28);
-  ctx.lineWidth = 4;
-  ctx.strokeStyle = '#2a3040';
-  ctx.lineCap = 'round';
-  ctx.stroke();
-
-  // A-pillar label
-  ctx.fillStyle = '#3a4050';
-  ctx.font = "8px 'IBM Plex Mono', monospace";
-  ctx.fillText('A-PILLAR', bx - scale*0.42, by - scale*0.20);
-
-  // Trunk body
-  ctx.beginPath();
-  ctx.moveTo(ox, oy);
-  ctx.lineTo(ox + scale * 0.7, oy);
-  ctx.lineTo(ox + scale * 0.8, oy + scale * 0.20);
-  ctx.lineTo(ox - scale * 0.2, oy + scale * 0.20);
-  ctx.closePath();
-  ctx.fillStyle = '#141820';
-  ctx.strokeStyle = '#2a3040';
-  ctx.lineWidth = 2;
-  ctx.fill();
-  ctx.stroke();
-
-  // Trunk/compartment box
-  ctx.beginPath();
-  ctx.rect(ox + scale * 0.05, oy - scale * 0.28, scale * 0.55, scale * 0.28);
-  ctx.fillStyle = '#0d1018';
-  ctx.strokeStyle = '#1e2530';
-  ctx.lineWidth = 1.5;
-  ctx.fill();
-  ctx.stroke();
-
-  // Compartment label
-  ctx.fillStyle = '#2a3545';
-  ctx.font = "8px 'IBM Plex Mono', monospace";
-  ctx.textAlign = 'center';
-  ctx.fillText('KOMORA DACHU', ox + scale * 0.32, oy - scale * 0.10);
-  ctx.textAlign = 'left';
-
+  // Body block
+  ctx.fillStyle='#111620'; ctx.strokeStyle='#1e2838'; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.roundRect(P4x-44,P4y,P0x-P4x+130,bh,4); ctx.fill(); ctx.stroke();
+  // A-pillar
+  ctx.strokeStyle='#243040'; ctx.lineWidth=3; ctx.lineCap='round';
+  ctx.beginPath(); ctx.moveTo(P4x,P4y); ctx.lineTo(P4x-18,P4y+bh*.4); ctx.lineTo(P4x-40,P4y+bh*.9); ctx.stroke();
+  // Trunk compartment
+  ctx.fillStyle='#0c1018'; ctx.strokeStyle='#182030'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.roundRect(P4x+18,P4y-ch,P0x-P4x+72,ch,3); ctx.fill(); ctx.stroke();
+  ctx.fillStyle='#1a2535'; ctx.font="7px 'IBM Plex Mono',monospace"; ctx.textAlign='center';
+  ctx.fillText('KOMORA DACHU',P4x+(P0x-P4x)/2+55,P4y-ch/2+4); ctx.textAlign='left';
+  // Wheels
+  const wr=Math.min(bh*.52,24);
+  drawWheel(P4x-12,P4y+bh,wr);
+  drawWheel(P0x+55,P4y+bh,wr);
   ctx.restore();
 }
 
-function drawTrunkLid(ox, oy, scale, p5, W, H) {
-  // Trunk lid swings open (p5=0) then closes (p5=1)
-  const lidAngle = -Math.PI * 0.45 * (1 - p5); // starts open, closes to 0
-  const pivotX = ox + scale * 0.60;
-  const pivotY = oy - scale * 0.02;
-  const lidLen = scale * 0.25;
-
-  const lidEndX = pivotX + lidLen * Math.cos(Math.PI + lidAngle);
-  const lidEndY = pivotY + lidLen * Math.sin(Math.PI + lidAngle);
-
-  ctx.save();
-  ctx.strokeStyle = p5 > 0.5 ? '#4ac87a' : '#c8a44a';
-  ctx.lineWidth = 5;
-  ctx.lineCap = 'round';
-  ctx.beginPath();
-  ctx.moveTo(pivotX, pivotY);
-  ctx.lineTo(lidEndX, lidEndY);
-  ctx.stroke();
-
-  drawHinge(pivotX, pivotY, 'H5', '#6a60a8', 5);
-  drawLabel(lidEndX - 30, lidEndY - 10, 'KLAPA', p5 > 0.5 ? '#4ac87a' : '#c8a44a');
+function drawWheel(cx2,cy2,r){
+  ctx.save(); ctx.beginPath(); ctx.arc(cx2,cy2,r,0,Math.PI*2);
+  ctx.fillStyle='#0d1018'; ctx.strokeStyle='#1e2838'; ctx.lineWidth=2; ctx.fill(); ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx2,cy2,r*.42,0,Math.PI*2); ctx.fillStyle='#181e28'; ctx.fill();
   ctx.restore();
 }
 
-function drawLockIndicator(x, y, p0) {
-  const flash = Math.sin(Date.now() * 0.01) > 0 && p0 < 0.8;
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(x, y, 10, 0, Math.PI*2);
-  ctx.strokeStyle = flash ? '#c84a4a' : 'rgba(200,74,74,0.3)';
-  ctx.lineWidth = 2;
-  ctx.stroke();
-  ctx.fillStyle = flash ? 'rgba(200,74,74,0.15)' : 'transparent';
-  ctx.fill();
-  ctx.fillStyle = '#c84a4a';
-  ctx.font = "8px 'IBM Plex Mono', monospace";
-  ctx.fillText('LOCK', x + 13, y + 3);
+function drawAxes(x0,y0){
+  const AL=32;
+  ctx.save(); ctx.strokeStyle='rgba(80,95,115,.7)'; ctx.lineWidth=1; ctx.lineCap='round';
+  ctx.beginPath(); ctx.moveTo(x0,y0); ctx.lineTo(x0,y0-AL); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(x0,y0); ctx.lineTo(x0+AL,y0); ctx.stroke();
+  const ah=4;
+  ctx.fillStyle='rgba(80,95,115,.8)';
+  ctx.beginPath(); ctx.moveTo(x0,y0-AL); ctx.lineTo(x0-3,y0-AL+ah); ctx.lineTo(x0+3,y0-AL+ah); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(x0+AL,y0); ctx.lineTo(x0+AL-ah,y0-3); ctx.lineTo(x0+AL-ah,y0+3); ctx.fill();
+  ctx.font="8px 'IBM Plex Mono',monospace"; ctx.fillStyle='rgba(80,95,115,.9)';
+  ctx.fillText('Y+',x0-14,y0-AL+4); ctx.fillText('X+',x0+AL+3,y0+4);
   ctx.restore();
 }
 
-function drawAnnotations(H1x, H1y, H2x, H2y, MBx, MBy, H3x, H3y, RBx, RBy, t) {
-  if (t < 0.05) return;
-  ctx.save();
-  ctx.globalAlpha = 0.45;
-
-  // Dimension line: front bow length
-  const ax = Math.min(H1x, H2x) - 20;
-  ctx.strokeStyle = '#3a4050';
-  ctx.lineWidth = 1;
-  ctx.setLineDash([3, 4]);
-  ctx.beginPath();
-  ctx.moveTo(ax, H1y);
-  ctx.lineTo(ax, H2y);
-  ctx.stroke();
-
+function drawDim(P4x,P4y,P2x,P2y,S){
+  ctx.save(); ctx.globalAlpha=.35; ctx.strokeStyle='#2a3848'; ctx.lineWidth=.7; ctx.setLineDash([3,5]);
+  const dy=Math.min(P4y,P2y)-20;
+  ctx.beginPath(); ctx.moveTo(P4x,dy+2); ctx.lineTo(P4x,P4y); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(P2x,dy+2); ctx.lineTo(P2x,P2y); ctx.stroke();
   ctx.setLineDash([]);
-  // Arrow tips
-  const arrowSize = 4;
-  ctx.fillStyle = '#3a4050';
-  ctx.beginPath();
-  ctx.moveTo(ax, H1y);
-  ctx.lineTo(ax - arrowSize, H1y + arrowSize);
-  ctx.lineTo(ax + arrowSize, H1y + arrowSize);
-  ctx.fill();
-  ctx.beginPath();
-  ctx.moveTo(ax, H2y);
-  ctx.lineTo(ax - arrowSize, H2y - arrowSize);
-  ctx.lineTo(ax + arrowSize, H2y - arrowSize);
-  ctx.fill();
-
-  ctx.globalAlpha = 0.6;
-  ctx.font = "8px 'IBM Plex Mono', monospace";
-  ctx.fillStyle = '#3a4050';
-  ctx.fillText('LF', ax - 18, (H1y + H2y)/2 + 3);
-
+  ctx.beginPath(); ctx.moveTo(P4x,dy); ctx.lineTo(P2x,dy); ctx.stroke();
+  ctx.globalAlpha=.5; ctx.font="8px 'IBM Plex Mono',monospace"; ctx.fillStyle='#38465a'; ctx.textAlign='center';
+  ctx.fillText('L_front≈'+Math.round(Math.hypot(P2x-P4x,P2y-P4y)/S)+' mm',(P4x+P2x)/2,dy-4);
   ctx.restore();
 }
 
-// ── PANEL UPDATE ─────────────────────────────────────────────
-function updatePanel(t, p1, p2, p3, theta1, theta2, theta3) {
-  // Angles
-  document.getElementById('dTheta1').innerHTML = (theta1 * 180/Math.PI).toFixed(1) + '<span class="data-unit">°</span>';
-  document.getElementById('dTheta2').innerHTML = (Math.abs(theta2) * 180/Math.PI).toFixed(1) + '<span class="data-unit">°</span>';
-  document.getElementById('dTheta3').innerHTML = (Math.abs(theta3) * 180/Math.PI).toFixed(1) + '<span class="data-unit">°</span>';
+// ════════════════════════════════════════════════════════════
+// PANEL UPDATE
+// ════════════════════════════════════════════════════════════
+function updatePanel(t,q0,q1,q3,q5,angFront,angRear,dBoot,P2x,S){
+  const tBoot  = Math.abs(dBoot)*180/Math.PI;
+  const tFront = angFront*180/Math.PI;
+  const tRear  = (Math.PI-angRear)*180/Math.PI;
+  const dxMid  = q3*R.Lr;
 
-  // Omega (angular velocity, approximated)
-  const omega = (p1 + p2 + p3) * 45 * Math.PI / 180 / TOTAL_DUR;
-  document.getElementById('dOmega').innerHTML = (omega * 180 / Math.PI).toFixed(1) + '<span class="data-unit">°/s</span>';
+  let pres=0;
+  if(t<0.13)      pres=160*q0;
+  else if(t<0.26) pres=140+40*q1;
+  else if(t<0.42) pres=20;
+  else if(t<0.72) pres=100+80*q3;
+  else if(t<0.88) pres=180*(1-q3);
+  else             pres=80*(1-q5);
 
-  // Hydraulic pressure (varies by phase)
-  let pressure = 0;
-  if (t < 0.12) pressure = 180 * phaseProgress(t, 0, 0.12);
-  else if (t < 0.30) pressure = 160 + 20 * Math.sin(Math.PI * p1);
-  else if (t < 0.52) pressure = 140 + 40 * p2;
-  else if (t < 0.72) pressure = 120 + 30 * p3;
-  else if (t < 0.90) pressure = 180 * phaseProgress(t, 0.72, 0.90);
-  else pressure = 60 * (1 - phaseProgress(t, 0.90, 1.00));
+  const stroke=(q1*.2+q3*.6+q0*.2)*180;
 
-  document.getElementById('dPressure').innerHTML = pressure.toFixed(0) + '<span class="data-unit">bar</span>';
-  document.getElementById('hydBar').style.width = (pressure / 200 * 100) + '%';
-  document.getElementById('hydPressureLabel').textContent = pressure.toFixed(0) + ' bar';
+  setVal('dTheta1', tBoot.toFixed(1),  '°');
+  setVal('dTheta2', tFront.toFixed(1), '°');
+  setVal('dTheta3', tRear.toFixed(1),  '°');
+  setVal('dOmega',  dxMid.toFixed(0),  'mm');
+  setVal('dPressure', pres.toFixed(0), 'bar');
+  setVal('dStroke', stroke.toFixed(1), 'mm');
 
-  // Stroke (mm, 0-180mm)
-  const stroke = (p1 * 0.4 + p2 * 0.35 + p3 * 0.25) * 180;
-  document.getElementById('dStroke').innerHTML = stroke.toFixed(1) + '<span class="data-unit">mm</span>';
+  document.getElementById('hydBar').style.width=(pres/200*100)+'%';
+  document.getElementById('hydPressureLabel').textContent=pres.toFixed(0)+' bar';
+  document.getElementById('timeDisplay').textContent='t = '+(t*TOTAL_DUR).toFixed(2)+' s';
 
-  // Time
-  document.getElementById('timeDisplay').textContent = 't = ' + (t * TOTAL_DUR).toFixed(2) + ' s';
+  let si=0;
+  for(let i=0;i<PHASES.length;i++){ if(t>=PHASES[i][0]) si=i; }
+  document.getElementById('stageIndicator').textContent='ETAP '+(si+1)+' / 6';
+  document.getElementById('phaseName').textContent=PHASES[si][2];
+  for(let i=0;i<6;i++)
+    document.getElementById('ph'+i).className='phase-item'+(i===si?' active':'');
 
-  // Stage
-  let stageIdx = 0;
-  for (let i = 0; i < PHASES.length; i++) {
-    if (t >= PHASES[i][0]) stageIdx = i;
-  }
-  document.getElementById('stageIndicator').textContent = 'ETAP ' + (stageIdx+1) + ' / 6';
-  document.getElementById('phaseName').textContent = PHASES[stageIdx][2];
-
-  // Progress
-  const pct = Math.round(t * 100);
-  document.getElementById('progressBar').style.width = pct + '%';
-  document.getElementById('progressPct').textContent = pct + '%';
-
-  // Phase items highlight
-  for (let i = 0; i < 6; i++) {
-    document.getElementById('ph'+i).classList.toggle('active', i === stageIdx);
-  }
+  const pct=Math.round(t*100);
+  document.getElementById('progressBar').style.width=pct+'%';
+  document.getElementById('progressPct').textContent=pct+'%';
 }
 
-// ── ANIMATION LOOP ────────────────────────────────────────────
-function tick(now) {
-  if (!playing) return;
-  if (!lastRealTime) lastRealTime = now;
-  const dt = (now - lastRealTime) / 1000;
-  lastRealTime = now;
+function setVal(id,val,unit){
+  document.getElementById(id).innerHTML=val+'<span class="data-unit">'+unit+'</span>';
+}
 
-  animT = Math.min(1, animT + dt / TOTAL_DUR);
+// ════════════════════════════════════════════════════════════
+// ANIMATION LOOP
+// ════════════════════════════════════════════════════════════
+function tick(now){
+  if(!playing) return;
+  if(!lastRealTime) lastRealTime=now;
+  const dt=(now-lastRealTime)/1000; lastRealTime=now;
+  animT=Math.min(1,animT+dt/TOTAL_DUR);
   draw();
-
-  if (animT >= 1) {
-    playing = false;
-    document.getElementById('btnPlay').textContent = '▶ START';
-    document.getElementById('btnPlay').className = 'btn primary';
-    lastRealTime = null;
-    return;
+  if(animT>=1){
+    playing=false;
+    document.getElementById('btnPlay').textContent='▶ START';
+    document.getElementById('btnPlay').className='btn primary';
+    lastRealTime=null; return;
   }
-  rafId = requestAnimationFrame(tick);
+  rafId=requestAnimationFrame(tick);
 }
 
-function togglePlay() {
-  playing = !playing;
-  const btn = document.getElementById('btnPlay');
-  if (playing) {
-    btn.textContent = '⏸ PAUZA';
-    btn.className = 'btn active';
-    lastRealTime = null;
-    rafId = requestAnimationFrame(tick);
+function togglePlay(){
+  playing=!playing;
+  const b=document.getElementById('btnPlay');
+  if(playing){
+    b.textContent='⏸ PAUZA'; b.className='btn active';
+    lastRealTime=null; rafId=requestAnimationFrame(tick);
   } else {
-    btn.textContent = '▶ START';
-    btn.className = 'btn primary';
+    b.textContent='▶ START'; b.className='btn primary';
     cancelAnimationFrame(rafId);
   }
 }
 
-function resetAnim() {
-  playing = false;
-  cancelAnimationFrame(rafId);
-  animT = 0;
-  lastRealTime = null;
-  document.getElementById('btnPlay').textContent = '▶ START';
-  document.getElementById('btnPlay').className = 'btn primary';
+function resetAnim(){
+  playing=false; cancelAnimationFrame(rafId);
+  animT=0; lastRealTime=null;
+  document.getElementById('btnPlay').textContent='▶ START';
+  document.getElementById('btnPlay').className='btn primary';
   draw();
 }
 
-function jumpToPhase(idx) {
-  animT = PHASES[idx][0] + 0.001;
-  draw();
+function jumpToPhase(idx){
+  animT=PHASES[idx][0]+.002; draw();
 }
 
-// ── INITIAL DRAW ──────────────────────────────────────────────
 draw();
 </script>
 </body>
