@@ -46,7 +46,7 @@ obraca się w lewo aż do zamknięcia do pozycji bezwgldnego 0 stopni. długośc
 do wyświtlania na ekranie przyjmij długości skalowane takie żeby się całość mieściła na ekranie.
 Analizuj, popraw kod kinematyki i weź pod uwagę rysunek.
 
-
+=======
 Powyżej przesyłąm kod do analizy i poprawy animację:
 Do lewej: P4 = utwierdzenie stałe, tylko symbol, brak obrotu, brak przemieszczenia. 
 P4 ma wygląd trójkąta i na szczycie okrąg z kropką ( tak jak w P1, P2 i P3), 
